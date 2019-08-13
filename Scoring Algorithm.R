@@ -107,3 +107,12 @@ PFscored.B2 <- WtPFScores(id,valuesB,PF.B.2)
 PFscored.FU1 <- WtPFScores(id,valuesFU,PF.FU.1)
 PFscored.FU2 <- WtPFScores(id,valuesFU,PF.FU.2)
 describe(PFscored.B1)
+
+
+## How to setup GitHub for yourself AFTER creating a project
+## 1.  Setup project in Rstudio using Git
+## 2.  Ensure usethis package is installed
+## 3.  Make sure you have setup a PAT from GitHub and created the .Renviron file
+## 4.  At the terminal, type:  usethis::use_github()
+## 5.  Follow the propmpts and use HTTPS as the auth method
+## 6.  Viola!  All done now.
