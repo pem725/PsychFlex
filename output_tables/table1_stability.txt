@@ -1,0 +1,7 @@
+Construct	Time_Points	Correlation
+Happiness (SHS)	Baseline to 6-month	0.714
+Happiness (SHS)	Baseline to 2-year	0.722
+Happiness (SHS)	6-month to 2-year	0.730
+Purpose (BPURP)	Baseline to 6-month	0.603
+Purpose (BPURP)	Baseline to 2-year	0.506
+Purpose (BPURP)	6-month to 2-year	0.636

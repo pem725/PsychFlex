@@ -1,0 +1,30 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{fig-invtest}Factorial Invariance Tests for Happiness and
+Purpose Measures Across Timepoints}
+
+\centering{
+
+\includegraphics{PandHfinalDraftMKM2025_files/figure-pdf/fig-invtest-1.pdf}
+
+}
+
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{fig-clpm}Cross-Lagged Panel Model of Purpose and
+Happiness with Standardized Path Coefficients}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{PandHfinalDraftMKM2025_files/figure-pdf/fig-clpm-1.pdf}
+
+}
+
+\end{figure*}

@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='468.00pt' height='468.00pt' viewBox='0 0 468.00 468.00'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHw0NjguMDB8MC4wMHw0NjguMDA='>
+    <rect x='0.00' y='0.00' width='468.00' height='468.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw0NjguMDB8MC4wMHw0NjguMDA=)'>
+<text x='106.36' y='60.79' text-anchor='middle' style='font-size: 11.38px; font-weight: bold; font-family: "Liberation Sans";' textLength='96.13px' lengthAdjust='spacingAndGlyphs'>Time 1 (Baseline)</text>
+<text x='234.00' y='60.79' text-anchor='middle' style='font-size: 11.38px; font-weight: bold; font-family: "Liberation Sans";' textLength='112.90px' lengthAdjust='spacingAndGlyphs'>Time 2 (Follow-up 1)</text>
+<text x='361.64' y='60.79' text-anchor='middle' style='font-size: 11.38px; font-weight: bold; font-family: "Liberation Sans";' textLength='112.90px' lengthAdjust='spacingAndGlyphs'>Time 3 (Follow-up 2)</text>
+<rect x='85.09' y='92.18' width='42.55' height='70.91' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #ADD8E6; fill-opacity: 0.70;' />
+<text x='106.36' y='130.28' text-anchor='middle' style='font-size: 7.40px; font-family: "Liberation Sans";' textLength='36.44px' lengthAdjust='spacingAndGlyphs'>Happiness</text>
+<rect x='212.73' y='92.18' width='42.55' height='70.91' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #ADD8E6; fill-opacity: 0.70;' />
+<text x='234.00' y='130.28' text-anchor='middle' style='font-size: 7.40px; font-family: "Liberation Sans";' textLength='36.44px' lengthAdjust='spacingAndGlyphs'>Happiness</text>
+<rect x='340.36' y='92.18' width='42.55' height='70.91' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #ADD8E6; fill-opacity: 0.70;' />
+<text x='361.64' y='130.28' text-anchor='middle' style='font-size: 7.40px; font-family: "Liberation Sans";' textLength='36.44px' lengthAdjust='spacingAndGlyphs'>Happiness</text>
+<rect x='85.09' y='304.91' width='42.55' height='70.91' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #90EE90; fill-opacity: 0.70;' />
+<text x='106.36' y='343.92' text-anchor='middle' style='font-size: 9.96px; font-family: "Liberation Sans";' textLength='38.80px' lengthAdjust='spacingAndGlyphs'>Purpose</text>
+<rect x='212.73' y='304.91' width='42.55' height='70.91' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #90EE90; fill-opacity: 0.70;' />
+<text x='234.00' y='343.92' text-anchor='middle' style='font-size: 9.96px; font-family: "Liberation Sans";' textLength='38.80px' lengthAdjust='spacingAndGlyphs'>Purpose</text>
+<rect x='340.36' y='304.91' width='42.55' height='70.91' style='stroke-width: 1.07; stroke-linecap: butt; stroke-linejoin: miter; fill: #90EE90; fill-opacity: 0.70;' />
+<text x='361.64' y='343.92' text-anchor='middle' style='font-size: 9.96px; font-family: "Liberation Sans";' textLength='38.80px' lengthAdjust='spacingAndGlyphs'>Purpose</text>
+<line x1='127.64' y1='127.64' x2='212.73' y2='127.64' style='stroke-width: 1.71; stroke-linecap: butt;' />
+<polygon points='205.36,131.89 212.73,127.64 205.36,123.38 ' style='stroke-width: 1.71; stroke-linecap: butt; fill: #000000;' />
+<text x='170.18' y='116.50' text-anchor='middle' style='font-size: 8.54px; font-weight: bold; font-family: "Liberation Sans";' textLength='17.08px' lengthAdjust='spacingAndGlyphs'>0.74</text>
+<line x1='255.27' y1='127.64' x2='340.36' y2='127.64' style='stroke-width: 1.71; stroke-linecap: butt;' />
+<polygon points='333.00,131.89 340.36,127.64 333.00,123.38 ' style='stroke-width: 1.71; stroke-linecap: butt; fill: #000000;' />
+<text x='297.82' y='116.50' text-anchor='middle' style='font-size: 8.54px; font-weight: bold; font-family: "Liberation Sans";' textLength='17.08px' lengthAdjust='spacingAndGlyphs'>0.74</text>
+<line x1='127.64' y1='340.36' x2='212.73' y2='340.36' style='stroke-width: 1.71; stroke-linecap: butt;' />
+<polygon points='205.36,344.62 212.73,340.36 205.36,336.11 ' style='stroke-width: 1.71; stroke-linecap: butt; fill: #000000;' />
+<text x='170.18' y='329.23' text-anchor='middle' style='font-size: 8.54px; font-weight: bold; font-family: "Liberation Sans";' textLength='17.08px' lengthAdjust='spacingAndGlyphs'>0.56</text>
+<line x1='255.27' y1='340.36' x2='340.36' y2='340.36' style='stroke-width: 1.71; stroke-linecap: butt;' />
+<polygon points='333.00,344.62 340.36,340.36 333.00,336.11 ' style='stroke-width: 1.71; stroke-linecap: butt; fill: #000000;' />
+<text x='297.82' y='329.23' text-anchor='middle' style='font-size: 8.54px; font-weight: bold; font-family: "Liberation Sans";' textLength='17.08px' lengthAdjust='spacingAndGlyphs'>0.58</text>
+<line x1='127.64' y1='141.82' x2='212.73' y2='326.18' style='stroke-width: 1.71; stroke: #FF0000; stroke-linecap: butt;' />
+<polygon points='205.78,321.28 212.73,326.18 213.50,317.71 ' style='stroke-width: 1.71; stroke: #FF0000; stroke-linecap: butt; fill: #FF0000;' />
+<text x='170.18' y='194.50' text-anchor='middle' style='font-size: 8.54px; font-weight: bold;fill: #FF0000; font-family: "Liberation Sans";' textLength='17.08px' lengthAdjust='spacingAndGlyphs'>0.19</text>
+<line x1='255.27' y1='141.82' x2='340.36' y2='326.18' style='stroke-width: 1.71; stroke: #FF0000; stroke-linecap: butt;' />
+<polygon points='333.42,321.28 340.36,326.18 341.14,317.71 ' style='stroke-width: 1.71; stroke: #FF0000; stroke-linecap: butt; fill: #FF0000;' />
+<text x='297.82' y='194.50' text-anchor='middle' style='font-size: 8.54px; font-weight: bold;fill: #FF0000; font-family: "Liberation Sans";' textLength='17.08px' lengthAdjust='spacingAndGlyphs'>0.17</text>
+<line x1='127.64' y1='326.18' x2='212.73' y2='141.82' style='stroke-width: 1.71; stroke: #0000FF; stroke-linecap: butt;' />
+<polygon points='213.50,150.29 212.73,141.82 205.78,146.72 ' style='stroke-width: 1.71; stroke: #0000FF; stroke-linecap: butt; fill: #0000FF;' />
+<text x='170.18' y='265.41' text-anchor='middle' style='font-size: 8.54px; font-weight: bold;fill: #0000FF; font-family: "Liberation Sans";' textLength='19.83px' lengthAdjust='spacingAndGlyphs'>-0.03</text>
+<line x1='255.27' y1='326.18' x2='340.36' y2='141.82' style='stroke-width: 1.71; stroke: #0000FF; stroke-linecap: butt;' />
+<polygon points='341.14,150.29 340.36,141.82 333.42,146.72 ' style='stroke-width: 1.71; stroke: #0000FF; stroke-linecap: butt; fill: #0000FF;' />
+<text x='297.82' y='265.41' text-anchor='middle' style='font-size: 8.54px; font-weight: bold;fill: #0000FF; font-family: "Liberation Sans";' textLength='19.83px' lengthAdjust='spacingAndGlyphs'>-0.04</text>
+<polyline points='106.36,163.09 106.48,163.21 107.15,163.90 108.63,165.42 110.79,167.64 113.28,170.19 115.74,172.71 118.01,175.10 120.07,177.36 121.93,179.54 123.64,181.73 124.68,183.15 126.24,185.43 127.68,187.72 128.98,189.97 130.15,192.14 131.21,194.21 132.22,196.26 133.25,198.40 134.28,200.69 135.29,203.15 136.23,205.71 136.76,207.31 137.55,209.95 138.22,212.58 138.78,215.12 139.24,217.54 139.61,219.83 139.96,222.09 140.29,224.44 140.57,226.94 140.78,229.59 140.90,232.32 140.92,234.00 140.87,236.76 140.71,239.46 140.47,242.05 140.17,244.49 139.82,246.80 139.47,249.05 139.07,251.39 138.58,253.86 137.97,256.44 137.26,259.08 136.76,260.69 135.87,263.30 134.90,265.83 133.88,268.23 132.85,270.46 131.83,272.55 130.80,274.59 129.71,276.69 128.49,278.90 127.13,281.17 125.64,283.47 124.68,284.85 123.04,287.06 121.28,289.24 119.35,291.45 117.22,293.75 114.87,296.18 112.37,298.75 109.95,301.23 108.00,303.23 106.82,304.44 106.39,304.88 106.36,304.91 ' style='stroke-width: 1.28; stroke: #A9A9A9; stroke-dasharray: 6.83,6.83; stroke-linecap: butt;' />
+<polygon points='111.82,164.63 106.36,163.09 107.76,168.59 ' style='stroke-width: 1.28; stroke: #A9A9A9; stroke-dasharray: 6.83,6.83; stroke-linecap: butt; fill: #A9A9A9;' />
+<polygon points='107.76,299.41 106.36,304.91 111.82,303.37 ' style='stroke-width: 1.28; stroke: #A9A9A9; stroke-dasharray: 6.83,6.83; stroke-linecap: butt; fill: #A9A9A9;' />
+<text x='76.58' y='237.05' text-anchor='middle' style='font-size: 8.54px; font-weight: bold;fill: #A9A9A9; font-family: "Liberation Sans";' textLength='17.08px' lengthAdjust='spacingAndGlyphs'>0.43</text>
+<polyline points='234.00,163.09 234.11,163.21 234.79,163.90 236.27,165.42 238.43,167.64 240.92,170.19 243.38,172.71 245.65,175.10 247.71,177.36 249.57,179.54 251.28,181.73 252.32,183.15 253.87,185.43 255.31,187.72 256.62,189.97 257.79,192.14 258.84,194.21 259.86,196.26 260.89,198.40 261.92,200.69 262.93,203.15 263.87,205.71 264.40,207.31 265.19,209.95 265.86,212.58 266.42,215.12 266.87,217.54 267.25,219.83 267.60,222.09 267.93,224.44 268.21,226.94 268.42,229.59 268.54,232.32 268.56,234.00 268.50,236.76 268.35,239.46 268.11,242.05 267.80,244.49 267.46,246.80 267.11,249.05 266.71,251.39 266.22,253.86 265.61,256.44 264.89,259.08 264.40,260.69 263.51,263.30 262.54,265.83 261.52,268.23 260.49,270.46 259.46,272.55 258.44,274.59 257.35,276.69 256.13,278.90 254.77,281.17 253.28,283.47 252.32,284.85 250.68,287.06 248.92,289.24 246.99,291.45 244.86,293.75 242.51,296.18 240.01,298.75 237.59,301.23 235.64,303.23 234.45,304.44 234.03,304.88 234.00,304.91 ' style='stroke-width: 1.28; stroke: #A9A9A9; stroke-dasharray: 6.83,6.83; stroke-linecap: butt;' />
+<polygon points='239.46,164.63 234.00,163.09 235.40,168.59 ' style='stroke-width: 1.28; stroke: #A9A9A9; stroke-dasharray: 6.83,6.83; stroke-linecap: butt; fill: #A9A9A9;' />
+<polygon points='235.40,299.41 234.00,304.91 239.46,303.37 ' style='stroke-width: 1.28; stroke: #A9A9A9; stroke-dasharray: 6.83,6.83; stroke-linecap: butt; fill: #A9A9A9;' />
+<text x='204.22' y='237.05' text-anchor='middle' style='font-size: 8.54px; font-weight: bold;fill: #A9A9A9; font-family: "Liberation Sans";' textLength='17.08px' lengthAdjust='spacingAndGlyphs'>0.53</text>
+<polyline points='361.64,163.09 361.75,163.21 362.42,163.90 363.90,165.42 366.07,167.64 368.56,170.19 371.01,172.71 373.29,175.10 375.34,177.36 377.20,179.54 378.92,181.73 379.96,183.15 381.51,185.43 382.95,187.72 384.26,189.97 385.42,192.14 386.48,194.21 387.50,196.26 388.53,198.40 389.56,200.69 390.56,203.15 391.50,205.71 392.04,207.31 392.82,209.95 393.50,212.58 394.06,215.12 394.51,217.54 394.88,219.83 395.23,222.09 395.56,224.44 395.85,226.94 396.06,229.59 396.17,232.32 396.19,234.00 396.14,236.76 395.98,239.46 395.74,242.05 395.44,244.49 395.10,246.80 394.74,249.05 394.34,251.39 393.85,253.86 393.25,256.44 392.53,259.08 392.04,260.69 391.15,263.30 390.17,265.83 389.16,268.23 388.12,270.46 387.10,272.55 386.07,274.59 384.98,276.69 383.76,278.90 382.40,281.17 380.91,283.47 379.96,284.85 378.31,287.06 376.55,289.24 374.63,291.45 372.49,293.75 370.14,296.18 367.64,298.75 365.23,301.23 363.28,303.23 362.09,304.44 361.67,304.88 361.64,304.91 ' style='stroke-width: 1.28; stroke: #A9A9A9; stroke-dasharray: 6.83,6.83; stroke-linecap: butt;' />
+<polygon points='367.09,164.63 361.64,163.09 363.03,168.59 ' style='stroke-width: 1.28; stroke: #A9A9A9; stroke-dasharray: 6.83,6.83; stroke-linecap: butt; fill: #A9A9A9;' />
+<polygon points='363.03,299.41 361.64,304.91 367.09,303.37 ' style='stroke-width: 1.28; stroke: #A9A9A9; stroke-dasharray: 6.83,6.83; stroke-linecap: butt; fill: #A9A9A9;' />
+<text x='331.85' y='237.05' text-anchor='middle' style='font-size: 8.54px; font-weight: bold;fill: #A9A9A9; font-family: "Liberation Sans";' textLength='17.08px' lengthAdjust='spacingAndGlyphs'>0.48</text>
+<text x='234.00' y='428.29' text-anchor='middle' style='font-size: 7.97px; font-family: "Liberation Sans";' textLength='394.28px' lengthAdjust='spacingAndGlyphs'>Note: Black = stability paths, Red = Happiness → Purpose, Blue = Purpose → Happiness, Grey = Correlations</text>
+</g>
+</svg>

@@ -1,0 +1,657 @@
+---
+title: "Purpose vs. Happiness"
+author: 
+  - name: Patrick E. McKnight
+    orcid: 0000-0002-9067-9066
+    email: pmcknigh@gmu.edu
+    affiliation: 
+      name: George Mason University
+      department: Department of Psychology
+    role: "corresponding author - Supplement"
+  - name: Todd B. Kashdan
+    orcid: 0000-0001-6438-0485
+    email: tkashdan@gmu.edu
+    affiliation: 
+      name: George Mason University
+      department: Department of Psychology
+    role: "corresponding author - Manuscript"
+  - name: Player to be Determined Later
+    affiliation:
+      name: George Mason University
+      department: Department of Psychology
+format: 
+  html:
+    toc: true
+    code-fold: true
+  #pdf:
+  #  toc: true
+  #  colorlinks: true
+  #docx:
+  #  reference_docx: "apa6.docx"
+  #  toc: true
+  #  fig_width: 6
+  #  fig_height: 4
+  #  fig_caption: true
+  #  number_sections: true
+  #  highlight: tango
+bibliography: references.bib
+---
+
+# Setup Data Analytic Environment
+
+```{r setup}
+#| echo: true
+#| message: false
+#| warning: false
+#| error: false
+
+# Load the necessary libraries
+library(knitr)
+library(psych)
+library(car)
+library(tidyverse)
+library(haven)
+library(lavaan)
+library(semPlot)
+library(semTools)
+library(sjlabelled)
+library(kableExtra)
+
+
+# include all user-created functions
+
+# function to get the column numbers and labels from the SPSS sav file
+getQuests <- function(x) {
+  as.data.frame(unlist(as.list(sjlabelled::get_label(x))))
+}
+
+gQs <- function(x) {
+  data.frame(Column = 1:ncol(x),
+             Label = unlist(as.list(sjlabelled::get_label(x))))
+}
+
+gQs2 <- function(x) {
+  # Create the data frame
+  df <- data.frame(
+    Column = 1:ncol(x),
+    VariableName = names(x),
+    Label = unlist(as.list(sjlabelled::get_label(x)), use.names = FALSE)
+  )
+  
+  # Use kable for bold formatting (example for R Markdown or HTML output)
+  kable(df, format = "markdown", align = c('c', 'l', 'l')) %>%
+    kableExtra::column_spec(1, bold = TRUE)
+}
+
+misscheck <- function(data) {
+  tmp <- data %>% 
+    gather(key = "key", value = "val") %>%
+    mutate(isna = is.na(val)) %>%
+    group_by(key) %>%
+    mutate(total = n()) %>%
+    group_by(key, total, isna) %>%
+    summarise(num.isna = n()) %>%
+    mutate(pct = num.isna / total * 100)
+  
+  levels <-
+    (tmp  %>% filter(isna == T) %>% arrange(desc(pct)))$key
+  
+  percentage.plot <- tmp %>%
+    ggplot() +
+    geom_bar(aes(x = reorder(key, desc(pct)), 
+                 y = pct, fill=isna), 
+             stat = 'identity', alpha=0.8) +
+    scale_x_discrete(limits = levels) +
+    scale_fill_manual(name = "", 
+                      values = c('black', 'green'), 
+                      labels = c("Present", "Missing")) +
+    coord_flip() +
+    labs(title = paste("Percentage of missing values in", deparse(substitute(data))),          x = 'Variable', 
+         y = "% of missing values")
+  plot(percentage.plot)
+}
+
+
+```
+
+# The Data
+
+```{r load_data}
+#| echo: true
+#| message: false
+#| warning: false
+#| error: false
+
+# Load the data
+#datPvH2 <- read_sav("Merged_GMU_Baseline&FollowUp_102819.sav") # the one we want - only BL & FU1
+#datPvH <- read_sav("Merged_GMU_Baseline&FollowUp_LEVEL1&2_102819_.sav") # Jim's fucked up ds
+datPvH <- read_sav("Psychological Flexibility_Full Dataset_070822.sav") # all data
+#names(datPvH2)[2001:2513]
+```
+
+The data used here came from post-merging operation on October 28th, 2019 and contains the merged baseline and follow-up data from the GMU study. All original data available on Qualtrics. The data came in SPSS format and contains `{r} nrow(datPvH)` observations and `{r} ncol(datPvH)` variables. All variable names in the dataset (originally saved in SPSS sav format and imported into R using the haven package and `read_sav()` function) and their variable labels from the sav file are displayed at the end of this file for the sake of readability. Please see the [DATA SUMMARY] below for those details.
+
+## Data Details
+
+There were `{r} length(unique(datPvH$id))` participants in the study with an average number of repeated administrations as described below. We will use the following variables in the analysis:
+
+-   `b_shs_mean_POMP`: Baseline SHS score
+-   `fu1_shs_mean_POMP`: Follow-up 1 SHS score
+-   `fu2_shs_mean_POMP`: Follow-up 2 SHS score
+-   `b_bpurp_mean_POMP`: Baseline BPURP score
+-   `fu1_bpurp_mean_POMP`: Follow-up 1 BPURP score
+-   `fu2_bpurp_mean_POMP`: Follow-up 2 BPURP score
+
+These variables capture the two main constructs of interest in this analysis: Purpose and Happiness. We will also use the informant reports of happiness to compare with the self-reports as a validity check for at least one self-report measure in our model. Unfortunately, we did not collect informant reports of purpose.
+
+## Data Preparation
+
+We focused on the three repeated measures of both happiness (`shs`) and purpose (`bpurp`). Our initial data contain only mean scores transformed into POMP (Percent of Maximum Points - ranging from 0 to 100). These mean scores were useful for conducting the rudimentary discriminant validity tests per [@steger2007].  
+
+
+## Data Analysis
+
+Our analytic methods focused on the convergent and discriminant validity between happiness and purpose.  We included the cross-lagged predictions between happiness and purpose and tested those relationships using the cross-lagged panel model (CLPM), random-intercept CLPM, and generalizability analysis.  Each of these approaches has its strengths and weaknesses but together they offer us many different ways to assess the overall discriminant validity between happiness and purpose.  Thus, we structured our evaluation of a longitudinal dataset in the following manner:
+
+# Structured Approach
+
+1. Stability of purpose and happiness across waves: Baseline, 6 months, and 2 years later  
+   1. Measurement invariance across time for purpose and happiness.
+   2. [https://link.springer.com/article/10.1007/S10902-006-9011-8](https://link.springer.com/article/10.1007/S10902-006-9011-8) Copy p. 173 to conduct specificity tests such that the same construct should be a better predictor over time than a related, alternative dimension of well-being.  
+2. Baseline purpose and happiness as predictors of strivings, life events, and quality of days (day reconstruction)  
+   1. contrast their benefits \- test differences between purpose and happiness  
+   2. predict change   
+3. Examine reverse casual effects with strivings and life events predicting purpose and happiness
+
+```{r data_details}
+#| echo: true
+#| message: false
+#| warning: false
+#| error: false
+
+# select only the necessary variables
+
+## no POMP scores for fu2 so make 'em here
+datPvH$fu2_shs_mean_POMP <- datPvH$fu2_shs_mean/6 * 100
+datPvH$fu2_bpurp_mean_POMP <- datPvH$fu2_bpurp_mean/4 * 100
+
+## create a dataset with only the necessary variables
+datPvH_shs_bpurp <- datPvH %>% 
+  select(id, 
+         b_shs_mean_POMP, 
+         fu1_shs_mean_POMP, 
+         fu2_shs_mean_POMP, 
+         b_bpurp_mean_POMP, 
+         fu1_bpurp_mean_POMP, 
+         fu2_bpurp_mean_POMP)
+
+
+
+## create the dataset in long format
+datPvH_shs_bpurp_long <- datPvH_shs_bpurp %>% 
+  pivot_longer(cols = c(b_shs_mean_POMP, 
+                        fu1_shs_mean_POMP, 
+                        fu2_shs_mean_POMP, 
+                        b_bpurp_mean_POMP, 
+                        fu1_bpurp_mean_POMP, 
+                        fu2_bpurp_mean_POMP),
+               names_to = "Variable",
+               values_to = "POMP Score") %>% 
+  mutate(time = case_when(str_detect(Variable, "b_shs_mean_POMP") ~ "Baseline",
+                          str_detect(Variable, "fu1_shs_mean_POMP") ~ "Follow-up 1",
+                          str_detect(Variable, "fu2_shs_mean_POMP") ~ "Follow-up 2",
+                          str_detect(Variable, "b_bpurp_mean_POMP") ~ "Baseline",
+                          str_detect(Variable, "fu1_bpurp_mean_POMP") ~ "Follow-up 1",
+                          str_detect(Variable, "fu2_bpurp_mean_POMP") ~ "Follow-up 2")) %>%
+  mutate(Variable = case_when(str_detect(Variable, "b_shs_mean_POMP") ~ "Happiness",
+                              str_detect(Variable, "fu1_shs_mean_POMP") ~ "Happiness",
+                              str_detect(Variable, "fu2_shs_mean_POMP") ~ "Happiness",
+                              str_detect(Variable, "b_bpurp_mean_POMP") ~ "Purpose",
+                              str_detect(Variable, "fu1_bpurp_mean_POMP") ~ "Purpose",
+                              str_detect(Variable, "fu2_bpurp_mean_POMP") ~ "Purpose"))
+
+
+
+datPvH_shs_bpurp_long %>% 
+  ggplot(aes(x = time, y = `POMP Score`, color = Variable)) +
+  geom_boxplot() +
+  labs(title = "Purpose and Happiness Over Time",
+       x = "Purpose (POMP)",
+       y = "Happiness (POMP)")
+
+# select items from shs and bpurp measures along with id
+datPvH_shs_bpurp_items <- datPvH %>%
+  select(id,
+         b_shs_gh_a,
+         b_shs_rh_a,
+         b_shs_ch_a,
+         b_shs_ch_b_r,
+         fu1_shs_gh_a,
+         fu1_shs_rh_a,
+         fu1_shs_ch_a,
+         fu1_shs_ch_fu1_r,
+         fu2_shs_gh_a,
+         fu2_shs_rh_a,
+         fu2_shs_ch_a,
+         fu2_shs_ch_b_r,
+         b_bpurp_1,
+         b_bpurp_2,
+         b_bpurp_3,
+         b_bpurp_4,
+         fu1_bpurp_1,
+         fu1_bpurp_2,
+         fu1_bpurp_3,
+         fu1_bpurp_4,
+         fu2_bpurp_1,
+         fu2_bpurp_2,
+         fu2_bpurp_3,
+         fu2_bpurp_4
+         )
+
+```
+
+# A Comparison of Stability: Purpose vs. Happiness
+
+## Reliability Estimates
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+#| error: false
+
+ah1 <- psych::alpha(datPvH_shs_bpurp_items[,c(2:5)])
+ah2 <- psych::alpha(datPvH_shs_bpurp_items[,c(6:9)])
+ah3 <- psych::alpha(datPvH_shs_bpurp_items[,c(10:13)])
+ap1 <- psych::alpha(datPvH_shs_bpurp_items[,c(14:17)])
+ap2 <- psych::alpha(datPvH_shs_bpurp_items[,c(18:21)])
+ap3 <- psych::alpha(datPvH_shs_bpurp_items[,c(22:25)])
+
+a.out <- round(rbind(
+  ah1$total,
+  ah2$total,
+  ah3$total,
+  ap1$total,
+  ap2$total,
+  ap3$total),2)
+
+row.names(a.out) <- c("SHS_b", "SHS_fu1", "SHS_fu2", "BPURP_b", "BPURP_fu1", "BPURP_fu2")
+
+
+kable(a.out)
+
+```
+
+
+## Measurement Invariance
+
+### Purpose
+
+
+
+
+### Happiness
+
+## Specificity Tests
+
+```{r}
+
+```
+
+## Happiness
+
+```{r purpose}
+#| echo: true
+#| message: false
+#| warning: false
+#| error: false
+
+# Happiness
+datPvH_shs_bpurp %>% 
+  select(b_shs_mean_POMP, fu1_shs_mean_POMP, fu2_shs_mean_POMP) %>%
+  rename(Baseline = b_shs_mean_POMP,
+         FollowUp1 = fu1_shs_mean_POMP,
+         FollowUp2 = fu2_shs_mean_POMP) %>%
+  pairs.panels()
+
+# Purpose
+datPvH_shs_bpurp %>%
+  select(b_bpurp_mean_POMP, fu1_bpurp_mean_POMP, fu2_bpurp_mean_POMP) %>%
+  rename(Baseline = b_bpurp_mean_POMP,
+         FollowUp1 = fu1_bpurp_mean_POMP,
+         FollowUp2 = fu2_bpurp_mean_POMP) %>%
+  pairs.panels()
+  
+
+
+```
+
+# Longitudinal Changes in Purpose and Happiness
+
+```{r longitudinal_changes}
+#| echo: true
+#| message: false
+#| warning: false
+#| error: false
+
+
+# select all bpurp and shs variables in the dataset
+
+# plot the longitudinal changes in purpose and happiness
+datPvH_shs_bpurp_long %>% 
+  ggplot(aes(x = time, y = `POMP Score`, color = Variable)) +
+  geom_boxplot() +
+  labs(title = "Longitudinal Changes in Purpose and Happiness",
+       x = "Time",
+       y = "POMP Score")
+
+datPvH_shs_bpurp_long$months <- case_match(datPvH_shs_bpurp_long$time,
+                                           "Baseline" ~ 0,
+                                           "Follow-up 1" ~ 6,
+                                           "Follow-up 2" ~ 24)
+# plot the longitudinal data 
+
+
+```
+
+# How about self vs. informant reports?
+
+## Is Happiness Obvious?
+
+```{r self_vs_informant}
+#| echo: true
+#| message: false
+#| warning: false
+#| error: false
+
+# select only the necessary variables
+datPvH_self_informant <- datPvH %>% 
+  select(id, b_shs_mean_POMP, INF_SHS_mean_POMP) %>%
+  rename(Happiness = b_shs_mean_POMP,
+         Happiness_INF = INF_SHS_mean_POMP)
+
+
+cor(datPvH_self_informant[,-1], use = "pairwise.complete.obs")
+
+# plot the self vs. informant reports
+datPvH_self_informant %>% 
+  ggplot(aes(x = Happiness, y = Happiness_INF)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "Self vs. Informant Reports of Happiness",
+       x = "Self",
+       y = "Informant") +
+  geom_abline(intercept = 0, slope = 1, color = "red") +
+  xlim(0, 100) +
+  ylim(0, 100)
+
+```
+
+# THE REAL DATA ANALYSIS (START HERE)
+
+## Methods
+
+```{r SampSize}
+#| echo: true
+#| message: false
+#| warning: false
+#| error: false
+
+
+
+
+
+```
+
+
+
+# DATA SUMMARY
+
+## Variable Names and Labels
+
+```{r data_summary}
+#| echo: true
+#| message: false
+#| warning: false
+#| error: false
+
+# Exctract the varnames and labels from the spss sav file and format for display in the quarto doc
+
+#kable(getQuests(datPvH), col.names = c("Variable", "Label"))
+#kable(gQs(datPvH))#, col.names = c("Column", "Variable", "Label"))
+
+gQs2(datPvH)
+
+```
+
+# Multisample CFA with Multiple Imputation
+
+```{r MSCFA_mi}
+#| echo: true
+#| message: false
+#| warning: false
+#| error: false
+# Required packages
+library(lavaan)
+library(mice)
+library(dplyr)
+library(tidyr)
+library(stringr)
+
+# Convert haven_labelled to numeric
+datPvH_shs_bpurp_items <- as.data.frame(lapply(datPvH_shs_bpurp_items, haven::as_factor))
+datPvH_shs_bpurp_items <- as.data.frame(lapply(datPvH_shs_bpurp_items, as.numeric))
+
+# Rubin's test of MCAR
+test_MCAR <- function(data) {
+ # Create missing data pattern
+ md_pattern <- md.pattern(data, plot=FALSE)
+ 
+ # Calculate test statistic
+ n <- nrow(data)
+ patterns <- nrow(md_pattern) - 1  # Subtract 1 for summary row
+ d2 <- -2 * log(patterns/n) * n
+ df <- patterns - 1
+ 
+ # Calculate p-value
+ p_value <- 1 - pchisq(d2, df)
+ 
+ return(list(
+   d2 = d2,
+   df = df,
+   p_value = p_value,
+   patterns = patterns
+ ))
+}
+
+# Little's MCAR test function
+test_MCAR_Little <- function(data) {
+   vars <- names(data)[sapply(data, is.numeric)]
+   data_numeric <- data[vars]
+   
+   # Calculate means and covariance matrix
+   means <- colMeans(data_numeric, na.rm=TRUE)
+   cov_mat <- cov(data_numeric, use="pairwise.complete.obs")
+   
+   # Get missing patterns
+   patterns <- !is.na(data_numeric)
+   unique_patterns <- unique(patterns)
+   
+   # Initialize test statistic
+   d2 <- 0
+   df <- 0
+   
+   # Calculate d2 for each pattern
+   for(pat in 1:nrow(unique_patterns)) {
+       obs <- which(apply(patterns, 1, function(x) all(x == unique_patterns[pat,])))
+       obs_vars <- which(unique_patterns[pat,])
+       
+       if(length(obs) > 1 && length(obs_vars) > 1) {
+           obs_means <- colMeans(data_numeric[obs, obs_vars, drop=FALSE])
+           obs_cov <- cov_mat[obs_vars, obs_vars]
+           
+           # Mahalanobis distance
+           diff <- obs_means - means[obs_vars]
+           d2 <- d2 + (length(obs) - 1) * t(diff) %*% solve(obs_cov) %*% diff
+           df <- df + length(obs_vars) - 1
+       }
+   }
+   
+   # Calculate p-value
+   p_value <- 1 - pchisq(d2, df)
+   
+   return(list(
+       d2 = d2,
+       df = df,
+       p_value = p_value
+   ))
+}
+
+
+
+
+# Create long format dataset
+data_long <- bind_rows(
+ select(datPvH_shs_bpurp_items, starts_with("b_")) %>% 
+   rename_with(~str_remove(., "b_")) %>%
+   mutate(time = 1),
+ 
+ select(datPvH_shs_bpurp_items, starts_with("fu1_")) %>%
+   rename_with(~str_remove(., "fu1_")) %>%
+   mutate(time = 2),
+ 
+ select(datPvH_shs_bpurp_items, starts_with("fu2_")) %>%
+   rename_with(~str_remove(., "fu2_")) %>%
+   mutate(time = 3)
+)
+
+
+
+mcar_results <- test_MCAR(data_long)
+print(mcar_results)
+
+mcar_results2 <- test_MCAR_Little(data_long)
+print(mcar_results2)
+
+library(naniar)
+mcar_test(data_long)
+
+# Multiple imputation
+imp_long <- mice(data_long, m=20, maxit=50, seed=123, printFlag = F)
+
+# Function to fit model on single imputed dataset
+fit_cfa <- function(data, constraints = "config") {
+ model <- '
+   # Measurement models
+   shs =~ shs_gh_a + shs_rh_a + shs_ch_a + shs_ch_b_r
+   bpurp =~ bpurp_1 + bpurp_2 + bpurp_3 + bpurp_4
+   
+   # Covariances
+   shs ~~ bpurp
+ '
+ 
+ # switch between models with syntax
+ 
+ if (constraints == "config") {
+   fit <- cfa(model, data=data, group="time", estimator="MLR")
+ } 
+ 
+ if (constraints == "metric") {
+   fit <- cfa(model, data=data, group="time",
+              group.equal=c("loadings"),
+              estimator="MLR")  
+ } 
+ 
+ if (constraints == "scalar") {
+   fit <- cfa(model, 
+              data=data, 
+              group="time", 
+              group.equal=c("loadings", "intercepts"),
+              estimator="MLR")  
+ } 
+ 
+ return(fit)
+}
+
+
+# Fit model to each imputed dataset
+fits <- lapply(1:20, function(m) {
+ data_m <- complete(imp_long, m)
+ fit_cfa(data_m)
+})
+
+# Pooling function
+pool_fits <- function(fits) {
+ params <- lapply(fits, lavaan::parameterEstimates, standardized = TRUE)
+ pooled <- params[[1]]
+ 
+ for(i in 1:nrow(pooled)) {
+   estimates <- sapply(params, function(x) x$est[i])
+   ses <- sapply(params, function(x) x$se[i])
+   
+   pooled$est[i] <- mean(estimates)
+   pooled$se[i] <- sqrt(mean(ses^2) + var(estimates)*(1 + 1/length(fits)))
+   pooled$z[i] <- pooled$est[i] / pooled$se[i]
+   pooled$pvalue[i] <- 2 * (1 - pnorm(abs(pooled$z[i])))
+ }
+ 
+ return(pooled)
+}
+
+# Get results
+results <- pool_fits(fits)
+print(results)
+
+# take the results for only the path coefficients for each of the two measures ".p1. through .p8." and put them in an easy to read table
+
+# Extract path coefficients
+path_coefs <- results %>%
+ filter(grepl("\\.p[1-8]\\.", lhs)) %>%
+ select(lhs, est, se) %>%
+ mutate(
+   est = round(est, 3),
+   se = round(se, 3)
+ ) %>%
+ arrange(lhs)
+
+# Create formatted output table  
+path_table <- data.frame(
+ Parameter = path_coefs$lhs,
+ Estimate = sprintf("%.3f (%.3f)", path_coefs$est, path_coefs$se)
+)
+
+print(path_table)
+
+
+# Get fit indices
+fit_indices <- lapply(fits, fitMeasures, c("cfi", "tli", "rmsea", "srmr"))
+pooled_fit <- colMeans(do.call(rbind, fit_indices))
+print(pooled_fit)
+
+# Save results
+write.csv(results, "cfa_results.csv", row.names=FALSE)
+write.csv(data.frame(metric=names(pooled_fit), value=pooled_fit), 
+         "fit_indices.csv", row.names=FALSE)
+
+
+
+```
+
+**Sections**
+
+1. Stability of purpose and happiness across waves: Baseline, 6 months, and 2 years later  
+   1. Measurement invariance (hey, we got the tool setup and we can write about it now, why not?) across time for purpose and happiness.  BOOM\!  Easy.  
+   2. [https://link.springer.com/article/10.1007/S10902-006-9011-8](https://link.springer.com/article/10.1007/S10902-006-9011-8) Copy p. 173 to conduct specificity tests such that the same construct should be a better predictor over time than a related, alternative dimension of well-being.  
+2. Baseline purpose and happiness as predictors of strivings, life events, and quality of days (day reconstruction)  
+   1. contrast their benefits \- test differences between purpose and happiness  
+   2. predict change   
+3. Examine reverse casual effects with strivings and life events predicting purpose and happiness
+
+```{r}
+#| echo: false
+#| message: false
+
+
+```
+
+

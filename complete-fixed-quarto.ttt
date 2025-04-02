@@ -1,0 +1,184 @@
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+{\caption{{Psychometric Properties of Happiness and Purpose Measures
+Across Timepoints (POMP Scores)}{\label{tbl-descriptives}}}
+\vspace{-20pt}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2571}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0571}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0857}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0857}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0714}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0857}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1857}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Measure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Timepoint
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+N
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Mean
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+SD
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Min
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Max
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Cronbach's α
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Happiness Measure & & & & & & & \\
+Happiness & Baseline & 328 & 53.09 & 19.23 & 0.00 & 85.71 & 0.874 \\
+Happiness & Follow-up 1 & 200 & 53.73 & 20.08 & 0.00 & 85.71 & 0.887 \\
+Happiness & Follow-up 2 & 119 & 51.56 & 20.18 & 0.00 & 82.14 & 0.889 \\
+Purpose Measure & & & & & & & \\
+Purpose & Baseline & 314 & 54.17 & 17.86 & 0.00 & 80.00 & 0.844 \\
+Purpose & Follow-up 1 & 197 & 55.23 & 16.96 & 0.00 & 80.00 & 0.904 \\
+Purpose & Follow-up 2 & 119 & 54.58 & 18.13 & 0.00 & 80.00 & 0.884 \\
+\end{longtable}
+
+\end{table*}
+\efloatseparator
+ 
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+{\caption{{Standardized Correlations Between Purpose and Happiness (POMP
+Scores)}{\label{tbl-correlations}}}
+\vspace{-20pt}}
+
+\begin{longtable}[]{@{}lcc@{}}
+\toprule\noalign{}
+Timepoint & Correlation (r) & p-value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Baseline & 0.429 & 0.000 \\
+Follow-up 1 & 0.528 & 0.000 \\
+Follow-up 2 & 0.478 & 0.000 \\
+Baseline & 0.440 & 0.000 \\
+Follow-up 1 & 0.568 & 0.000 \\
+Follow-up 2 & 0.495 & 0.000 \\
+\end{longtable}
+
+\end{table*}
+\efloatseparator
+ 
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+{\caption{{Cross-Lagged Panel Model Path
+Coefficients}{\label{tbl-crosslagged}}}
+\vspace{-20pt}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0330}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.2418}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.3077}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1319}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0879}}
+  >{\centering\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0549}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Path Type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Path
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Coefficient
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Standardized
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p-value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Auto-regressive Paths & & & & & \\
+2 & Auto-regressive & Happiness (T1→T2) & 0.783 & 0.740 & \textless{}
+.001 & *** \\
+3 & Auto-regressive & Happiness (T2→T3) & 0.718 & 0.742 & \textless{}
+.001 & *** \\
+4 & Auto-regressive & Purpose (T1→T2) & 0.544 & 0.556 & \textless{} .001
+& *** \\
+5 & Auto-regressive & Purpose (T2→T3) & 0.609 & 0.582 & \textless{} .001
+& *** \\
+6 & Cross-lagged Paths & & & & & \\
+51 & Cross-lagged & Happiness→Purpose (T1→T2) & 0.168 & 0.185 & 0.002 &
+** \\
+61 & Cross-lagged & Happiness→Purpose (T2→T3) & 0.149 & 0.165 & 0.028 &
+* \\
+7 & Cross-lagged & Purpose→Happiness (T1→T2) & -0.039 & -0.035 & 0.527
+& \\
+8 & Cross-lagged & Purpose→Happiness (T2→T3) & -0.049 & -0.043 & 0.558
+& \\
+11 & Indirect Effects & & & & & \\
+9 & Indirect Effect & Purpose→Happiness→Purpose & 0.064 & --- & 0.199
+& \\
+10 & Indirect Effect & Happiness→Purpose→Happiness & -0.043 & --- &
+0.558 & \\
+\end{longtable}
+
+\end{table*}
+\efloatseparator
+ 
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+{\caption{{Quantile Regression Slopes: Happiness Regressed on
+Purpose}{\label{tbl-quantile-regression}}}
+\vspace{-20pt}}
+
+\begin{longtable}[]{@{}llcrrrc@{}}
+\toprule\noalign{}
+& Timepoint & Quantile & Slope & t-value & p-value & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Baseline & & & & & \\
+b\_purpose & Baseline & 15th & 0.40 & 3.91 & \textless{} .001 & *** \\
+b\_purpose1 & Baseline & 30th & 0.54 & 6.80 & \textless{} .001 & *** \\
+b\_purpose2 & Baseline & 50th & 0.48 & 7.39 & \textless{} .001 & *** \\
+b\_purpose3 & Baseline & 70th & 0.48 & 6.02 & \textless{} .001 & *** \\
+b\_purpose4 & Baseline & 85th & 0.40 & 6.25 & \textless{} .001 & *** \\
+11 & Follow-up 1 & & & & & \\
+fu1\_purpose & Follow-up 1 & 15th & 0.50 & 3.56 & \textless{} .001 &
+*** \\
+fu1\_purpose1 & Follow-up 1 & 30th & 0.57 & 5.62 & \textless{} .001 &
+*** \\
+fu1\_purpose2 & Follow-up 1 & 50th & 0.71 & 8.09 & \textless{} .001 &
+*** \\
+fu1\_purpose3 & Follow-up 1 & 70th & 0.71 & 6.16 & \textless{} .001 &
+*** \\
+fu1\_purpose4 & Follow-up 1 & 85th & 0.49 & 4.02 & \textless{} .001 &
+*** \\
+12 & Follow-up 2 & & & & & \\
+fu2\_purpose & Follow-up 2 & 15th & 0.41 & 2.18 & 0.032 & * \\
+fu2\_purpose1 & Follow-up 2 & 30th & 0.57 & 4.49 & \textless{} .001 &
+*** \\
+fu2\_purpose2 & Follow-up 2 & 50th & 0.55 & 4.15 & \textless{} .001 &
+*** \\
+fu2\_purpose3 & Follow-up 2 & 70th & 0.45 & 3.38 & \textless{} .001 &
+*** \\
+fu2\_purpose4 & Follow-up 2 & 85th & 0.29 & 2.17 & 0.032 & * \\
+\end{longtable}
+
+\end{table*}

@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.43">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Patrick E. McKnight">
+<meta name="author" content="Todd B. Kashdan">
+<meta name="author" content="Amie MacKay">
+<meta name="keywords" content="purpose in life, happiness, life satisfaction, well-being, values, personality">
+
+<title>Measuring Purpose and Happiness</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="quarto-code-fixes_files/libs/clipboard/clipboard.min.js"></script>
+<script src="quarto-code-fixes_files/libs/quarto-html/quarto.js"></script>
+<script src="quarto-code-fixes_files/libs/quarto-html/popper.min.js"></script>
+<script src="quarto-code-fixes_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="quarto-code-fixes_files/libs/quarto-html/anchor.min.js"></script>
+<link href="quarto-code-fixes_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="quarto-code-fixes_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="quarto-code-fixes_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="quarto-code-fixes_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="quarto-code-fixes_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="quarto-code-fixes_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="quarto-code-fixes_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#analysis-1-descriptives-and-psychometrics-comparability-of-measures" id="toc-analysis-1-descriptives-and-psychometrics-comparability-of-measures" class="nav-link active" data-scroll-target="#analysis-1-descriptives-and-psychometrics-comparability-of-measures">Analysis 1: Descriptives and Psychometrics (Comparability of Measures)</a></li>
+  <li><a href="#analysis-2-multi-sample-analysis-temporal-stability-of-relationship" id="toc-analysis-2-multi-sample-analysis-temporal-stability-of-relationship" class="nav-link" data-scroll-target="#analysis-2-multi-sample-analysis-temporal-stability-of-relationship">Analysis 2: Multi-Sample Analysis (Temporal Stability of Relationship)</a></li>
+  <li><a href="#analysis-3-cross-lagged-panel-analysis-causal-direction" id="toc-analysis-3-cross-lagged-panel-analysis-causal-direction" class="nav-link" data-scroll-target="#analysis-3-cross-lagged-panel-analysis-causal-direction">Analysis 3: Cross-lagged Panel Analysis (Causal Direction)</a></li>
+  <li><a href="#analysis-4-quantile-regression-deeper-look-into-the-relationship" id="toc-analysis-4-quantile-regression-deeper-look-into-the-relationship" class="nav-link" data-scroll-target="#analysis-4-quantile-regression-deeper-look-into-the-relationship">Analysis 4: Quantile Regression (Deeper Look into the Relationship)</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="quarto-code-fixes.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="quarto-code-fixes.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Measuring Purpose and Happiness</h1>
+<p class="subtitle lead">Psychometrics and Tests of Stability and Specificity Over Two Years</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Patrick E. McKnight <a href="mailto:pmcknigh@gmu.edu" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-9067-9066" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            George Mason University
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Todd B. Kashdan <a href="mailto:tkashdan@gmu.edu" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0001-6438-0485" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            George Mason University
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Amie MacKay </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            George Mason University
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    In the social sciences, a case has been made for distinguishing between purpose in life and happiness. That said, a surprisingly small number of direct empirical comparisons exist that test both the stability of these measures and the stability of the relationship between them over time. The following study addresses these empirical omissions and provides a benchmark for evaluating the bivariate relationship between important constructs in positive psychology. We used the best tools available to assess every aspect of these two constructs. Our findings were clear and reproducible; both purpose and happiness measures produce stable estimates over time and the correlation between them suggests that they are correlated (<span class="math inline">\(r &gt; .43\)</span>; <span class="math inline">\(p &lt; .001\)</span>). Finally, the causal direction appears to favor happiness predicting subsequent ratings of purpose rather than the alternative (<span class="math inline">\(r \approx 0.15\)</span> vs.&nbsp;<span class="math inline">\(r \approx -0.04\)</span>). We address the implications of all these findings and provide researchers with both some guidance on the use of these constructs as well as some future directions for research.
+  </div>
+</div>
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>purpose in life, happiness, life satisfaction, well-being, values, personality</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="analysis-1-descriptives-and-psychometrics-comparability-of-measures" class="level1">
+<h1>Analysis 1: Descriptives and Psychometrics (Comparability of Measures)</h1>
+<div class="cell">
+<div id="tbl-descriptives" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-descriptives-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Psychometric Properties of Happiness and Purpose Measures Across Timepoints (POMP Scores)
+</figcaption>
+<div aria-describedby="tbl-descriptives-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Measure</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Timepoint</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">N</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Mean</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">SD</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Min</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Max</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Cronbach's α</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd" data-grouplength="3">
+<td colspan="8" style="border-bottom: 1px solid"><strong>Happiness Measure</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Happiness</td>
+<td style="text-align: left;">Baseline</td>
+<td style="text-align: right;">328</td>
+<td style="text-align: right;">53.09</td>
+<td style="text-align: right;">19.23</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">85.71</td>
+<td style="text-align: right;">0.874</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Happiness</td>
+<td style="text-align: left;">Follow-up 1</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">53.73</td>
+<td style="text-align: right;">20.08</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">85.71</td>
+<td style="text-align: right;">0.887</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Happiness</td>
+<td style="text-align: left;">Follow-up 2</td>
+<td style="text-align: right;">119</td>
+<td style="text-align: right;">51.56</td>
+<td style="text-align: right;">20.18</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">82.14</td>
+<td style="text-align: right;">0.889</td>
+</tr>
+<tr class="odd" data-grouplength="3">
+<td colspan="8" style="border-bottom: 1px solid"><strong>Purpose Measure</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Purpose</td>
+<td style="text-align: left;">Baseline</td>
+<td style="text-align: right;">314</td>
+<td style="text-align: right;">54.17</td>
+<td style="text-align: right;">17.86</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">80.00</td>
+<td style="text-align: right;">0.844</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Purpose</td>
+<td style="text-align: left;">Follow-up 1</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: right;">55.23</td>
+<td style="text-align: right;">16.96</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">80.00</td>
+<td style="text-align: right;">0.904</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Purpose</td>
+<td style="text-align: left;">Follow-up 2</td>
+<td style="text-align: right;">119</td>
+<td style="text-align: right;">54.58</td>
+<td style="text-align: right;">18.13</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">80.00</td>
+<td style="text-align: right;">0.884</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="analysis-2-multi-sample-analysis-temporal-stability-of-relationship" class="level1">
+<h1>Analysis 2: Multi-Sample Analysis (Temporal Stability of Relationship)</h1>
+<div class="cell">
+<div id="tbl-correlations" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-correlations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Standardized Correlations Between Purpose and Happiness (POMP Scores)
+</figcaption>
+<div aria-describedby="tbl-correlations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Timepoint</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;">Correlation (r)</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Baseline</td>
+<td style="text-align: center;">0.429</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Follow-up 1</td>
+<td style="text-align: center;">0.528</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Follow-up 2</td>
+<td style="text-align: center;">0.478</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Baseline</td>
+<td style="text-align: center;">0.440</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Follow-up 1</td>
+<td style="text-align: center;">0.568</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Follow-up 2</td>
+<td style="text-align: center;">0.495</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="text-align: left; padding: 0;"><span style="font-style: italic;">Note.</span> <sup></sup> All correlations are significant at p &lt; .001</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-relationship" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-relationship-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Structural Relationship Between Purpose and Happiness Across Timepoints
+</figcaption>
+<div aria-describedby="fig-relationship-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="quarto-code-fixes_files/figure-html/fig-relationship-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="analysis-3-cross-lagged-panel-analysis-causal-direction" class="level1">
+<h1>Analysis 3: Cross-lagged Panel Analysis (Causal Direction)</h1>
+<div class="cell">
+<div id="tbl-crosslagged" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-crosslagged-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Cross-Lagged Panel Model Path Coefficients
+</figcaption>
+<div aria-describedby="tbl-crosslagged-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Path Type</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Path</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Coefficient</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Standardized</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">p-value</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd" data-grouplength="4">
+<td colspan="6" style="border-bottom: 1px solid"><strong>Auto-regressive Paths</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Auto-regressive</td>
+<td style="text-align: left;">Happiness (T1→T2)</td>
+<td style="text-align: right;">0.783</td>
+<td style="text-align: right;">0.740</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Auto-regressive</td>
+<td style="text-align: left;">Happiness (T2→T3)</td>
+<td style="text-align: right;">0.718</td>
+<td style="text-align: right;">0.742</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Auto-regressive</td>
+<td style="text-align: left;">Purpose (T1→T2)</td>
+<td style="text-align: right;">0.544</td>
+<td style="text-align: right;">0.556</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Auto-regressive</td>
+<td style="text-align: left;">Purpose (T2→T3)</td>
+<td style="text-align: right;">0.609</td>
+<td style="text-align: right;">0.582</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="even" data-grouplength="4">
+<td colspan="6" style="border-bottom: 1px solid"><strong>Cross-lagged Paths</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Cross-lagged</td>
+<td style="text-align: left;">Happiness→Purpose (T1→T2)</td>
+<td style="text-align: right;">0.168</td>
+<td style="text-align: right;">0.185</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: center;">**</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Cross-lagged</td>
+<td style="text-align: left;">Happiness→Purpose (T2→T3)</td>
+<td style="text-align: right;">0.149</td>
+<td style="text-align: right;">0.165</td>
+<td style="text-align: right;">0.028</td>
+<td style="text-align: center;">*</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Cross-lagged</td>
+<td style="text-align: left;">Purpose→Happiness (T1→T2)</td>
+<td style="text-align: right;">-0.039</td>
+<td style="text-align: right;">-0.035</td>
+<td style="text-align: right;">0.527</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Cross-lagged</td>
+<td style="text-align: left;">Purpose→Happiness (T2→T3)</td>
+<td style="text-align: right;">-0.049</td>
+<td style="text-align: right;">-0.043</td>
+<td style="text-align: right;">0.558</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd" data-grouplength="2">
+<td colspan="6" style="border-bottom: 1px solid"><strong>Indirect Effects</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Indirect Effect</td>
+<td style="text-align: left;">Purpose→Happiness→Purpose</td>
+<td style="text-align: right;">0.064</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">0.199</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">Indirect Effect</td>
+<td style="text-align: left;">Happiness→Purpose→Happiness</td>
+<td style="text-align: right;">-0.043</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">0.558</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody><tfoot>
+<tr class="even">
+<td style="padding: 0"><span style="font-style: italic;">Note.</span> <sup>*</sup> *p &lt; .05 <sup>†</sup> **p &lt; .01 <sup>‡</sup> ***p &lt; .001</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-clpm" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-clpm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Cross-Lagged Panel Model of Purpose and Happiness with Standardized Path Coefficients
+</figcaption>
+<div aria-describedby="fig-clpm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="quarto-code-fixes_files/figure-html/fig-clpm-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="analysis-4-quantile-regression-deeper-look-into-the-relationship" class="level1">
+<h1>Analysis 4: Quantile Regression (Deeper Look into the Relationship)</h1>
+<div class="cell">
+<div id="tbl-quantile-regression" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-quantile-regression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Quantile Regression Slopes: Happiness Regressed on Purpose
+</figcaption>
+<div aria-describedby="tbl-quantile-regression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;"></th>
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Timepoint</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;">Quantile</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Slope</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">t-value</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">p-value</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; font-weight: bold;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd" data-grouplength="5">
+<td colspan="7" style="border-bottom: 1px solid"><strong>Baseline</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">b_purpose</td>
+<td style="text-align: left;">Baseline</td>
+<td style="text-align: center;">15th</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">3.91</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">b_purpose1</td>
+<td style="text-align: left;">Baseline</td>
+<td style="text-align: center;">30th</td>
+<td style="text-align: right;">0.54</td>
+<td style="text-align: right;">6.80</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">b_purpose2</td>
+<td style="text-align: left;">Baseline</td>
+<td style="text-align: center;">50th</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">7.39</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">b_purpose3</td>
+<td style="text-align: left;">Baseline</td>
+<td style="text-align: center;">70th</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">6.02</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">b_purpose4</td>
+<td style="text-align: left;">Baseline</td>
+<td style="text-align: center;">85th</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">6.25</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="odd" data-grouplength="5">
+<td colspan="7" style="border-bottom: 1px solid"><strong>Follow-up 1</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">fu1_purpose</td>
+<td style="text-align: left;">Follow-up 1</td>
+<td style="text-align: center;">15th</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">3.56</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">fu1_purpose1</td>
+<td style="text-align: left;">Follow-up 1</td>
+<td style="text-align: center;">30th</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">5.62</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">fu1_purpose2</td>
+<td style="text-align: left;">Follow-up 1</td>
+<td style="text-align: center;">50th</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: right;">8.09</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">fu1_purpose3</td>
+<td style="text-align: left;">Follow-up 1</td>
+<td style="text-align: center;">70th</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: right;">6.16</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">fu1_purpose4</td>
+<td style="text-align: left;">Follow-up 1</td>
+<td style="text-align: center;">85th</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">4.02</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="odd" data-grouplength="5">
+<td colspan="7" style="border-bottom: 1px solid"><strong>Follow-up 2</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">fu2_purpose</td>
+<td style="text-align: left;">Follow-up 2</td>
+<td style="text-align: center;">15th</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">2.18</td>
+<td style="text-align: right;">0.032</td>
+<td style="text-align: center;">*</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">fu2_purpose1</td>
+<td style="text-align: left;">Follow-up 2</td>
+<td style="text-align: center;">30th</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">4.49</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">fu2_purpose2</td>
+<td style="text-align: left;">Follow-up 2</td>
+<td style="text-align: center;">50th</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: right;">4.15</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">fu2_purpose3</td>
+<td style="text-align: left;">Follow-up 2</td>
+<td style="text-align: center;">70th</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">3.38</td>
+<td style="text-align: right;">&lt; .001</td>
+<td style="text-align: center;">***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding-left: 2em;" data-indentlevel="1">fu2_purpose4</td>
+<td style="text-align: left;">Follow-up 2</td>
+<td style="text-align: center;">85th</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">2.17</td>
+<td style="text-align: right;">0.032</td>
+<td style="text-align: center;">*</td>
+</tr>
+</tbody><tfoot>
+<tr class="odd">
+<td style="padding: 0"><span style="font-style: italic;">Note.</span> <sup>*</sup> *p &lt; .05 <sup>†</sup> **p &lt; .01 <sup>‡</sup> ***p &lt; .001</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div id="fig-quantile" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-quantile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Quantile Regression Analysis of Purpose and Happiness
+</figcaption>
+<div aria-describedby="fig-quantile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-quantile" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-quantile-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-fig" id="fig-quantile-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Baseline: Happiness by Purpose in Life at Different Quantiles
+</figcaption>
+<div aria-describedby="fig-quantile-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="quarto-code-fixes_files/figure-html/fig-quantile-1.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-quantile">
+</div>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-quantile" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-quantile-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-fig" id="fig-quantile-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Follow-up 1: Happiness by Purpose in Life at Different Quantiles
+</figcaption>
+<div aria-describedby="fig-quantile-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="quarto-code-fixes_files/figure-html/fig-quantile-2.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-quantile">
+</div>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-quantile" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-quantile-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-fig" id="fig-quantile-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Follow-up 2: Happiness by Purpose in Life at Different Quantiles
+</figcaption>
+<div aria-describedby="fig-quantile-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="quarto-code-fixes_files/figure-html/fig-quantile-3.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-quantile">
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-comparative" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-comparative-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Comparative Analysis of Purpose-Happiness Relationship Across Timepoints
+</figcaption>
+<div aria-describedby="fig-comparative-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="quarto-code-fixes_files/figure-html/fig-comparative-1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

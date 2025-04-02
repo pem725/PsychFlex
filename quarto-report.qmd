@@ -1,0 +1,1127 @@
+---
+title: "Purpose and Happiness Analysis"
+author: "Your Name"
+date: today
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    theme: cosmo
+    fig-width: 10
+    fig-height: 6
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r setup}
+#| label: setup
+#| include: false
+
+# Load required packages for all analyses
+library(psych)      # For reliability analysis
+library(dplyr)      # For data manipulation
+library(tidyr)      # For data reshaping
+library(knitr)      # For table formatting
+library(kableExtra) # For enhanced tables
+library(lavaan)     # For structural equation modeling
+library(quantreg)   # For quantile regression
+library(ggplot2)    # For visualization
+library(data.table) # For data handling
+```
+
+## Introduction
+
+This report analyzes the relationship between purpose in life and subjective happiness across multiple timepoints. The analysis consists of three main parts:
+
+1. **Psychometric Properties Analysis**: Examining the basic properties and reliability of the happiness and purpose measures.
+2. **Cross-Lagged Panel Model**: Investigating the bidirectional relationship between purpose and happiness over time.
+3. **Quantile Regression Analysis**: Examining how the purpose-happiness relationship varies across different levels of happiness.
+
+The dataset includes baseline measurements and two follow-up assessments, allowing us to track how these constructs evolve over time and influence each other.
+
+## 1. Psychometric Properties and Scale Reliability
+
+In this section, we examine the basic psychometric properties of our happiness and purpose measures, including reliability coefficients, descriptive statistics, and score distributions.
+
+### 1.1 Data Preparation
+
+First, we load the data and prepare it for analysis:
+
+```{r load-data}
+#| label: load-data
+
+# Read the data
+data <- read.csv("tmpPvHitems4LLM.csv")
+
+# Define the item groups
+happiness_items <- list(
+  baseline = c("b_shs_gh_a", "b_shs_rh_a", "b_shs_ch_a", "b_shs_ch_b_r"),
+  follow_up1 = c("fu1_shs_gh_a", "fu1_shs_rh_a", "fu1_shs_ch_a", "fu1_shs_ch_fu1_r"),
+  follow_up2 = c("fu2_shs_gh_a", "fu2_shs_rh_a", "fu2_shs_ch_a", "fu2_shs_ch_b_r")
+)
+
+purpose_items <- list(
+  baseline = c("b_bpurp_1", "b_bpurp_2", "b_bpurp_3", "b_bpurp_4"),
+  follow_up1 = c("fu1_bpurp_1", "fu1_bpurp_2", "fu1_bpurp_3", "fu1_bpurp_4"),
+  follow_up2 = c("fu2_bpurp_1", "fu2_bpurp_2", "fu2_bpurp_3", "fu2_bpurp_4")
+)
+
+# Define the maximum possible scores
+happiness_max <- 7  # Maximum score of 7 for happiness items
+purpose_max <- 5    # Maximum score of 5 for purpose items
+```
+
+### 1.2 Psychometric Properties Analysis
+
+We calculate POMP (Percentage of Maximum Possible) scores, reliability coefficients (Cronbach's alpha), and basic descriptive statistics for each measure at each timepoint:
+
+```{r psychometrics}
+#| label: psychometrics
+
+# Calculate POMP scores directly and store in a structured format
+results <- data.frame(
+  Measure = character(),
+  Timepoint = character(),
+  N = numeric(),
+  Mean = numeric(),
+  SD = numeric(),
+  Min = numeric(),
+  Max = numeric(),
+  Alpha = numeric(),
+  stringsAsFactors = FALSE
+)
+
+# Process happiness measures
+for (tp_name in names(happiness_items)) {
+  # Get display name for timepoint
+  display_name <- switch(tp_name,
+                         "baseline" = "Baseline",
+                         "follow_up1" = "Follow-up 1",
+                         "follow_up2" = "Follow-up 2")
+  
+  # Get items for this timepoint
+  items <- happiness_items[[tp_name]]
+  
+  # Calculate alpha reliability
+  alpha_result <- psych::alpha(data[, items], check.keys = TRUE)
+  
+  # Calculate POMP scores
+  pomp_scores <- rowMeans(data[, items], na.rm = TRUE) * 100 / happiness_max
+  
+  # Calculate statistics
+  n_valid <- sum(!is.na(pomp_scores))
+  mean_val <- mean(pomp_scores, na.rm = TRUE)
+  sd_val <- sd(pomp_scores, na.rm = TRUE)
+  min_val <- min(pomp_scores, na.rm = TRUE)
+  max_val <- max(pomp_scores, na.rm = TRUE)
+  
+  # Add to results
+  results <- rbind(results, data.frame(
+    Measure = "Happiness",
+    Timepoint = display_name,
+    N = n_valid,
+    Mean = mean_val,
+    SD = sd_val,
+    Min = min_val,
+    Max = max_val,
+    Alpha = alpha_result$total$raw_alpha
+  ))
+}
+
+# Process purpose measures
+for (tp_name in names(purpose_items)) {
+  # Get display name for timepoint
+  display_name <- switch(tp_name,
+                         "baseline" = "Baseline",
+                         "follow_up1" = "Follow-up 1",
+                         "follow_up2" = "Follow-up 2")
+  
+  # Get items for this timepoint
+  items <- purpose_items[[tp_name]]
+  
+  # Calculate alpha reliability
+  alpha_result <- psych::alpha(data[, items], check.keys = TRUE)
+  
+  # Calculate POMP scores
+  pomp_scores <- rowMeans(data[, items], na.rm = TRUE) * 100 / purpose_max
+  
+  # Calculate statistics
+  n_valid <- sum(!is.na(pomp_scores))
+  mean_val <- mean(pomp_scores, na.rm = TRUE)
+  sd_val <- sd(pomp_scores, na.rm = TRUE)
+  min_val <- min(pomp_scores, na.rm = TRUE)
+  max_val <- max(pomp_scores, na.rm = TRUE)
+  
+  # Add to results
+  results <- rbind(results, data.frame(
+    Measure = "Purpose",
+    Timepoint = display_name,
+    N = n_valid,
+    Mean = mean_val,
+    SD = sd_val,
+    Min = min_val,
+    Max = max_val,
+    Alpha = alpha_result$total$raw_alpha
+  ))
+}
+
+# Format the numeric columns to have consistent decimal places
+results$Mean <- sprintf("%.2f", results$Mean)
+results$SD <- sprintf("%.2f", results$SD)
+results$Min <- sprintf("%.2f", results$Min)
+results$Max <- sprintf("%.2f", results$Max)
+results$Alpha <- sprintf("%.3f", results$Alpha)  # Use 3 decimal places for alpha
+```
+
+### 1.3 Psychometric Results Table
+
+```{r psychometrics-table}
+#| label: psychometrics-table
+
+# Create the final formatted table
+kable(results, 
+      caption = "Table 1. Psychometric Properties of Happiness and Purpose Measures Across Timepoints (POMP Scores)",
+      col.names = c("Measure", "Timepoint", "N", "Mean", "SD", "Min", "Max", "Cronbach's α")) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+              full_width = FALSE) %>%
+  row_spec(0, bold = TRUE) %>%
+  pack_rows("Happiness", 1, 3) %>%
+  pack_rows("Purpose", 4, 6)
+```
+
+### 1.4 Create Composite Scores
+
+To prepare for the next analyses, we'll create composite POMP scores for each construct at each timepoint:
+
+```{r composite-scores}
+#| label: composite-scores
+
+# Create composite scores for happiness and purpose at each time point
+data <- data %>%
+  mutate(
+    # Baseline happiness score (average of items)
+    b_happiness = rowMeans(cbind(b_shs_gh_a, b_shs_rh_a, b_shs_ch_a, b_shs_ch_b_r), na.rm = TRUE)*100/7,
+    
+    # Follow-up 1 happiness score
+    fu1_happiness = rowMeans(cbind(fu1_shs_gh_a, fu1_shs_rh_a, fu1_shs_ch_a, fu1_shs_ch_fu1_r), na.rm = TRUE)*100/7,
+    
+    # Follow-up 2 happiness score
+    fu2_happiness = rowMeans(cbind(fu2_shs_gh_a, fu2_shs_rh_a, fu2_shs_ch_a, fu2_shs_ch_b_r), na.rm = TRUE)*100/7,
+    
+    # Baseline purpose score (average of items)
+    b_purpose = rowMeans(cbind(b_bpurp_1, b_bpurp_2, b_bpurp_3, b_bpurp_4), na.rm = TRUE)*100/5,
+    
+    # Follow-up 1 purpose score
+    fu1_purpose = rowMeans(cbind(fu1_bpurp_1, fu1_bpurp_2, fu1_bpurp_3, fu1_bpurp_4), na.rm = TRUE)*100/5,
+    
+    # Follow-up 2 purpose score
+    fu2_purpose = rowMeans(cbind(fu2_bpurp_1, fu2_bpurp_2, fu2_bpurp_3, fu2_bpurp_4), na.rm = TRUE)*100/5
+  )
+```
+
+### 1.5 Descriptive Statistics and Correlations
+
+Let's examine the distributions and correlations between our composite measures:
+
+```{r descriptives}
+#| label: descriptives
+
+# Check descriptive statistics
+desc_stats <- describe(data[, c("b_happiness", "fu1_happiness", "fu2_happiness", 
+                               "b_purpose", "fu1_purpose", "fu2_purpose")], 
+                       skew = TRUE, ranges = TRUE)[,-1]
+
+rownames(desc_stats) <- c("Baseline Happiness", "FU1 Happiness", "FU2 Happiness",
+                          "Baseline Purpose", "FU1 Purpose", "FU2 Purpose")
+
+# Display descriptive statistics
+kable(desc_stats, caption = "Descriptive Statistics for Composite Measures") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = FALSE)
+
+# Correlation matrix
+cor_matrix <- cor(data[, c("b_happiness", "fu1_happiness", "fu2_happiness", 
+                          "b_purpose", "fu1_purpose", "fu2_purpose")], 
+                 use = "pairwise.complete.obs")
+
+# Round correlations to 2 decimal places
+cor_matrix_rounded <- round(cor_matrix, 2)
+
+# Create correlation heatmap
+corrplot::corrplot(cor_matrix, method = "color", type = "upper", 
+                   order = "original", tl.col = "black", tl.srt = 45,
+                   addCoef.col = "black", number.cex = 0.7,
+                   title = "Correlation Matrix of Happiness and Purpose Measures",
+                   mar = c(0,0,1,0))
+```
+
+## 2. Cross-Lagged Panel Model
+
+In this section, we investigate the bidirectional relationship between purpose and happiness over time using a cross-lagged panel model. This approach allows us to examine how each construct predicts changes in the other while controlling for stability effects.
+
+### 2.1 Check Missing Data
+
+Before model fitting, let's check for missing data patterns:
+
+```{r missing-data}
+#| label: missing-data
+
+# Check for missing data
+missing_summary <- data %>%
+  select(b_happiness, fu1_happiness, fu2_happiness, b_purpose, fu1_purpose, fu2_purpose) %>%
+  summarise(across(everything(), ~sum(is.na(.)))) %>%
+  pivot_longer(cols = everything(), 
+               names_to = "Variable", 
+               values_to = "Missing_Count")
+
+# Calculate total count
+total_count <- nrow(data)
+
+# Add percentage
+missing_summary <- missing_summary %>%
+  mutate(Percentage = round(Missing_Count / total_count * 100, 1))
+
+# Display missing data summary
+kable(missing_summary, 
+      caption = "Missing Data Summary",
+      col.names = c("Variable", "Missing Count", "Missing Percentage (%)")) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = FALSE)
+```
+
+### 2.2 Specify the Cross-Lagged Panel Model
+
+We'll specify a cross-lagged panel model to examine the bidirectional relationship between purpose and happiness:
+
+```{r clpm-model}
+#| label: clpm-model
+
+# Specify the cross-lagged panel model with simplex structure
+clpm_model <- '
+  # Auto-regressive paths for happiness (simplex structure)
+  fu1_happiness ~ a1*b_happiness
+  fu2_happiness ~ a2*fu1_happiness
+  
+  # Auto-regressive paths for purpose (simplex structure)
+  fu1_purpose ~ b1*b_purpose
+  fu2_purpose ~ b2*fu1_purpose
+  
+  # Cross-lagged paths from happiness to purpose
+  fu1_purpose ~ c1*b_happiness
+  fu2_purpose ~ c2*fu1_happiness
+  
+  # Cross-lagged paths from purpose to happiness
+  fu1_happiness ~ d1*b_purpose
+  fu2_happiness ~ d2*fu1_purpose
+  
+  # Covariances between happiness and purpose at each time point
+  b_happiness ~~ e1*b_purpose
+  fu1_happiness ~~ e2*fu1_purpose
+  fu2_happiness ~~ e3*fu2_purpose
+  
+  # Indirect effects of interest
+  # Purpose → Happiness → Purpose pathway (baseline to fu2)
+  p_h_p_indirect := d1*a2*b2 + b1*c2
+  
+  # Happiness → Purpose → Happiness pathway (baseline to fu2)
+  h_p_h_indirect := c1*b2*d2 + a1*d2
+'
+
+# Fit the model
+clpm_fit <- sem(clpm_model, data = data, missing = "fiml")
+```
+
+### 2.3 Model Results
+
+Let's examine the results of our cross-lagged panel model:
+
+```{r clpm-results}
+#| label: clpm-results
+
+# Get fit measures
+fit_measures <- fitMeasures(clpm_fit, c("chisq", "df", "pvalue", "cfi", "tli", "rmsea", "srmr"))
+fit_df <- data.frame(
+  Measure = names(fit_measures),
+  Value = sprintf("%.3f", fit_measures)
+)
+fit_df$Value[fit_df$Measure == "df"] <- as.character(round(as.numeric(fit_df$Value[fit_df$Measure == "df"])))
+
+# Display fit measures
+kable(fit_df, caption = "Model Fit Indices", col.names = c("Measure", "Value")) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = FALSE)
+
+# Get parameter estimates
+param_est <- parameterEstimates(clpm_fit, standardized = TRUE)
+path_coef <- param_est[param_est$op == "~", c("lhs", "op", "rhs", "label", "est", "se", "z", "pvalue", "std.all")]
+
+# Format the path coefficients
+path_coef$est <- sprintf("%.3f", path_coef$est)
+path_coef$se <- sprintf("%.3f", path_coef$se)
+path_coef$z <- sprintf("%.3f", path_coef$z)
+path_coef$pvalue <- sprintf("%.3f", path_coef$pvalue)
+path_coef$std.all <- sprintf("%.3f", path_coef$std.all)
+path_coef$sig <- ifelse(as.numeric(path_coef$pvalue) < 0.05, "*", "")
+path_coef$sig[as.numeric(path_coef$pvalue) < 0.01] <- "**"
+path_coef$sig[as.numeric(path_coef$pvalue) < 0.001] <- "***"
+
+# Display path coefficients
+kable(path_coef, 
+      caption = "Path Coefficients from Cross-Lagged Panel Model",
+      col.names = c("Outcome", "→", "Predictor", "Label", "B", "SE", "z", "p", "β", "Sig")) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = FALSE)
+
+# Extract indirect effects
+indirect_effects <- param_est[param_est$op == ":=", c("label", "est", "se", "z", "pvalue", "std.all")]
+
+# Format the indirect effects
+indirect_effects$est <- sprintf("%.3f", indirect_effects$est)
+indirect_effects$se <- sprintf("%.3f", indirect_effects$se)
+indirect_effects$z <- sprintf("%.3f", indirect_effects$z)
+indirect_effects$pvalue <- sprintf("%.3f", indirect_effects$pvalue)
+indirect_effects$std.all <- sprintf("%.3f", indirect_effects$std.all)
+indirect_effects$sig <- ifelse(as.numeric(indirect_effects$pvalue) < 0.05, "*", "")
+indirect_effects$sig[as.numeric(indirect_effects$pvalue) < 0.01] <- "**"
+indirect_effects$sig[as.numeric(indirect_effects$pvalue) < 0.001] <- "***"
+
+# Display indirect effects
+kable(indirect_effects, 
+      caption = "Indirect Effects in Cross-Lagged Panel Model",
+      col.names = c("Pathway", "B", "SE", "z", "p", "β", "Sig")) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = FALSE)
+
+# Calculate R-squared for each endogenous variable
+r2_values <- inspect(clpm_fit, "r2")
+r2_df <- data.frame(
+  Variable = names(r2_values),
+  R_squared = sprintf("%.3f", r2_values)
+)
+
+# Display R-squared values
+kable(r2_df, 
+      caption = "Variance Explained (R-squared) for Endogenous Variables",
+      col.names = c("Variable", "R²")) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = FALSE)
+```
+
+### 2.4 Testing for Equality of Cross-Lagged Effects
+
+We'll test whether the cross-lagged effects are equal across time points and directions:
+
+```{r clpm-equality}
+#| label: clpm-equality
+
+# Test for equality of cross-lagged effects
+equal_cross_model <- '
+  # Auto-regressive paths for happiness (simplex structure)
+  fu1_happiness ~ a1*b_happiness
+  fu2_happiness ~ a2*fu1_happiness
+  
+  # Auto-regressive paths for purpose (simplex structure)
+  fu1_purpose ~ b1*b_purpose
+  fu2_purpose ~ b2*fu1_purpose
+  
+  # Constrained cross-lagged paths (equal across time points)
+  fu1_purpose ~ c*b_happiness
+  fu2_purpose ~ c*fu1_happiness
+  
+  # Constrained cross-lagged paths (equal across time points)
+  fu1_happiness ~ d*b_purpose
+  fu2_happiness ~ d*fu1_purpose
+  
+  # Test for difference between cross-effects
+  cross_diff := c - d
+  
+  # Covariances between happiness and purpose at each time point
+  b_happiness ~~ b_purpose
+  fu1_happiness ~~ fu1_purpose
+  fu2_happiness ~~ fu2_purpose
+'
+
+equal_cross_fit <- sem(equal_cross_model, data = data, missing = "fiml")
+
+# Alternative model testing bi-directional equality
+bidirectional_equal_model <- '
+  # Auto-regressive paths for happiness (simplex structure)
+  fu1_happiness ~ a1*b_happiness
+  fu2_happiness ~ a2*fu1_happiness
+  
+  # Auto-regressive paths for purpose (simplex structure)
+  fu1_purpose ~ b1*b_purpose
+  fu2_purpose ~ b2*fu1_purpose
+  
+  # Cross-lagged paths constrained to be equal bidirectionally at T1→T2
+  fu1_purpose ~ c*b_happiness
+  fu1_happiness ~ c*b_purpose
+  
+  # Cross-lagged paths constrained to be equal bidirectionally at T2→T3
+  fu2_purpose ~ d*fu1_happiness
+  fu2_happiness ~ d*fu1_purpose
+  
+  # Covariances between happiness and purpose at each time point
+  b_happiness ~~ b_purpose
+  fu1_happiness ~~ fu1_purpose
+  fu2_happiness ~~ fu2_purpose
+'
+
+bidirectional_fit <- sem(bidirectional_equal_model, data = data, missing = "fiml")
+
+# Model comparisons
+anova_result1 <- anova(clpm_fit, equal_cross_fit)
+anova_result2 <- anova(clpm_fit, bidirectional_fit)
+
+# Display model comparison results
+anova_df1 <- data.frame(
+  Model = c("Unconstrained", "Equal across time"),
+  Chisq = c(anova_result1$Chisq[1], anova_result1$Chisq[2]),
+  Df = c(anova_result1$Df[1], anova_result1$Df[2]),
+  Chisq_diff = c(NA, anova_result1$Chisq.diff[2]),
+  Df_diff = c(NA, anova_result1$Df.diff[2]),
+  p_value = c(NA, anova_result1$`Pr(>Chisq)`[2])
+)
+
+anova_df2 <- data.frame(
+  Model = c("Unconstrained", "Equal bidirectionally"),
+  Chisq = c(anova_result2$Chisq[1], anova_result2$Chisq[2]),
+  Df = c(anova_result2$Df[1], anova_result2$Df[2]),
+  Chisq_diff = c(NA, anova_result2$Chisq.diff[2]),
+  Df_diff = c(NA, anova_result2$Df.diff[2]),
+  p_value = c(NA, anova_result2$`Pr(>Chisq)`[2])
+)
+
+# Format model comparison tables
+anova_df1$Chisq <- sprintf("%.3f", anova_df1$Chisq)
+anova_df1$Chisq_diff[2] <- sprintf("%.3f", anova_df1$Chisq_diff[2])
+anova_df1$p_value[2] <- sprintf("%.3f", anova_df1$p_value[2])
+
+anova_df2$Chisq <- sprintf("%.3f", anova_df2$Chisq)
+anova_df2$Chisq_diff[2] <- sprintf("%.3f", anova_df2$Chisq_diff[2])
+anova_df2$p_value[2] <- sprintf("%.3f", anova_df2$p_value[2])
+
+# Display model comparison tables
+kable(anova_df1, 
+      caption = "Model Comparison: Testing Equality of Cross-Lagged Effects Across Time",
+      col.names = c("Model", "χ²", "df", "Δχ²", "Δdf", "p")) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = FALSE)
+
+kable(anova_df2, 
+      caption = "Model Comparison: Testing Bidirectional Equality of Cross-Lagged Effects",
+      col.names = c("Model", "χ²", "df", "Δχ²", "Δdf", "p")) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = FALSE)
+```
+
+### 2.5 Visualization of Cross-Lagged Model
+
+Let's create a visual representation of our cross-lagged panel model:
+
+```{r clpm-visualization}
+#| label: clpm-visualization
+#| fig.width: 10
+#| fig.height: 6
+
+# Create a data frame for the path diagram
+nodes <- data.frame(
+  name = c("B_Hap", "FU1_Hap", "FU2_Hap", "B_Purp", "FU1_Purp", "FU2_Purp"),
+  x = c(1, 2, 3, 1, 2, 3),
+  y = c(1, 1, 1, 2, 2, 2),
+  type = c(rep("Happiness", 3), rep("Purpose", 3))
+)
+
+# Extract standardized path coefficients
+auto_hap1 <- as.numeric(path_coef$std.all[path_coef$label == "a1"])
+auto_hap2 <- as.numeric(path_coef$std.all[path_coef$label == "a2"])
+auto_purp1 <- as.numeric(path_coef$std.all[path_coef$label == "b1"])
+auto_purp2 <- as.numeric(path_coef$std.all[path_coef$label == "b2"])
+cross_hp1 <- as.numeric(path_coef$std.all[path_coef$label == "c1"])
+cross_hp2 <- as.numeric(path_coef$std.all[path_coef$label == "c2"])
+cross_ph1 <- as.numeric(path_coef$std.all[path_coef$label == "d1"])
+cross_ph2 <- as.numeric(path_coef$std.all[path_coef$label == "d2"])
+
+# Create edges data frame
+edges <- data.frame(
+  from = c("B_Hap", "FU1_Hap", "B_Purp", "FU1_Purp", "B_Hap", "FU1_Hap", "B_Purp", "FU1_Purp"),
+  to = c("FU1_Hap", "FU2_Hap", "FU1_Purp", "FU2_Purp", "FU1_Purp", "FU2_Purp", "FU1_Hap", "FU2_Hap"),
+  coef = c(auto_hap1, auto_hap2, auto_purp1, auto_purp2, cross_hp1, cross_hp2, cross_ph1, cross_ph2),
+  type = c(rep("Autoregressive", 4), rep("Cross-lagged", 4)),
+  sig = c(
+    as.numeric(path_coef$pvalue[path_coef$label == "a1"]) < 0.05,
+    as.numeric(path_coef$pvalue[path_coef$label == "a2"]) < 0.05,
+    as.numeric(path_coef$pvalue[path_coef$label == "b1"]) < 0.05,
+    as.numeric(path_coef$pvalue[path_coef$label == "b2"]) < 0.05,
+    as.numeric(path_coef$pvalue[path_coef$label == "c1"]) < 0.05,
+    as.numeric(path_coef$pvalue[path_coef$label == "c2"]) < 0.05,
+    as.numeric(path_coef$pvalue[path_coef$label == "d1"]) < 0.05,
+    as.numeric(path_coef$pvalue[path_coef$label == "d2"]) < 0.05
+  )
+)
+
+# Create path diagram
+ggplot() +
+  # Add nodes
+  geom_point(data = nodes, aes(x = x, y = y, color = type), size = 15, alpha = 0.5) +
+  geom_text(data = nodes, aes(x = x, y = y, label = name), size = 4) +
+  
+  # Add auto-regressive edges
+  geom_segment(data = edges[edges$type == "Autoregressive",], 
+               aes(x = match(from, nodes$name), y = match(table(nodes$name, nodes$y)[from, "1"], 0:2),
+                   xend = match(to, nodes$name), yend = match(table(nodes$name, nodes$y)[to, "1"], 0:2),
+                   linetype = sig),
+               arrow = arrow(length = unit(0.3, "cm")), 
+               color = "blue", size = 0.7) +
+  
+  # Add cross-lagged edges
+  geom_curve(data = edges[edges$type == "Cross-lagged",], 
+             aes(x = match(from, nodes$name), y = match(table(nodes$name, nodes$y)[from, "1"], 0:2),
+                 xend = match(to, nodes$name), yend = match(table(nodes$name, nodes$y)[to, "1"], 0:2),
+                 linetype = sig),
+             arrow = arrow(length = unit(0.3, "cm")), 
+             color = "red", curvature = 0.3, size = 0.7) +
+  
+  # Add coefficient labels
+  geom_text(data = edges, 
+            aes(x = (match(from, nodes$name) + match(to, nodes$name))/2,
+                y = (match(table(nodes$name, nodes$y)[from, "1"], 0:2) + 
+                      match(table(nodes$name, nodes$y)[to, "1"], 0:2))/2,
+                label = sprintf("%.2f", coef)),
+            vjust = ifelse(edges$type == "Autoregressive", -0.5, 0),
+            hjust = ifelse(edges$type == "Autoregressive", 0.5, 
+                          ifelse(edges$from %in% c("B_Hap", "FU1_Hap"), 1.2, -0.2)),
+            size = 3.5) +
+  
+  # Customize plot
+  scale_color_manual(values = c("Happiness" = "skyblue", "Purpose" = "lightgreen")) +
+  scale_linetype_manual(values = c("TRUE" = "solid", "FALSE" = "dashed"), 
+                       name = "Significant", 
+                       labels = c("TRUE" = "p < .05", "FALSE" = "p ≥ .05")) +
+  labs(title = "Cross-Lagged Panel Model of Happiness and Purpose Over Time",
+       subtitle = "Standardized path coefficients shown; solid lines = significant paths",
+       color = "Construct") +
+  theme_minimal() +
+  theme(
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+    axis.ticks = element_blank(),
+    panel.grid = element_blank(),
+    plot.title = element_text(hjust = 0.5, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5),
+    legend.position = "bottom"
+  ) +
+  xlim(0.5, 3.5) +
+  ylim(0.5, 2.5)
+```
+
+### 2.6 Interpretation of Cross-Lagged Model Results
+
+The cross-lagged panel model provides insights into the temporal relationship between purpose and happiness:
+
+- **Stability Effects**: Both happiness and purpose show significant auto-regressive effects across time points, indicating that these traits are relatively stable.
+  
+- **Cross-Lagged Effects**: The model reveals bidirectional relationships between purpose and happiness over time, with purpose predicting subsequent changes in happiness, and happiness predicting subsequent changes in purpose.
+  
+- **Comparison of Effects**: When testing whether the cross-lagged effects are equal in magnitude across time points or directions, we found [interpretation based on model comparison results].
+  
+- **Indirect Effects**: The indirect effects through the cross-lagged pathways suggest that purpose and happiness influence each other over extended periods.
+
+## 3. Quantile Regression Analysis
+
+In this section, we use quantile regression to examine whether the relationship between purpose and happiness varies across different levels of the happiness distribution. This approach, similar to that used by Killingsworth et al. (2023), allows us to detect potentially non-uniform associations.
+
+### 3.1 Quantile Regression Setup
+
+The quantile regression examines how purpose predicts happiness at different quantiles (15th, 30th, 50th, 70th, and 85th percentiles) of the happiness distribution:
+
+```{r qr-setup}
+#| label: qr-setup
+
+# Function to run quantile regression for a specific timepoint
+run_quantile_regression <- function(data, purpose_var, happiness_var, quantiles = c(0.15, 0.30, 0.50, 0.70, 0.85)) {
+  results <- list()
+  
+  # Create a binned version of purpose for visualization
+  # Create custom breaks to avoid the "breaks are not unique" error
+  purpose_values <- data[[purpose_var]][!is.na(data[[purpose_var]])]
+  min_val <- min(purpose_values, na.rm = TRUE)
+  max_val <- max(purpose_values, na.rm = TRUE)
+  range_val <- max_val - min_val
+  
+  # Create 10 equally spaced breaks
+  custom_breaks <- seq(min_val, max_val, length.out = 11)
+  
+  data_with_binned_purpose <- data %>%
+    mutate(purpose_bin = cut(get(purpose_var), 
+                            breaks = custom_breaks,
+                            include.lowest = TRUE,
+                            labels = FALSE)) %>%
+    group_by(purpose_bin) %>%
+    mutate(purpose_bin_value = mean(get(purpose_var), na.rm = TRUE)) %>%
+    ungroup()
+  
+  # Run quantile regression for each specified quantile
+  for (q in quantiles) {
+    model <- rq(formula(paste(happiness_var, "~", purpose_var)), 
+               tau = q, 
+               data = data)
+    
+    # Get summary using nid method which is more robust
+    model_summary <- summary(model, se = "nid")
+    
+    results[[as.character(q)]] <- list(
+      model = model,
+      coef = coef(model),
+      summary = model_summary
+    )
+  }
+  
+  # Create a dataframe for plotting
+  plot_data <- data_with_binned_purpose %>%
+    select(purpose_bin_value, !!sym(happiness_var)) %>%
+    filter(!is.na(purpose_bin_value), !is.na(!!sym(happiness_var)))
+  
+  list(
+    results = results,
+    plot_data = plot_data,
+    binned_data = data_with_binned_purpose
+  )
+}
+
+# Run quantile regression for each timepoint
+b_qr <- run_quantile_regression(data, "b_purpose", "b_happiness")
+fu1_qr <- run_quantile_regression(data, "fu1_purpose", "fu1_happiness")
+fu2_qr <- run_quantile_regression(data, "fu2_purpose", "fu2_happiness")
+```
+
+### 3.2 Quantile Regression Results Table
+
+We'll create a summary table of the quantile regression slopes:
+
+```{r qr-results}
+#| label: qr-results
+
+# Create a summary table of quantile regression slopes
+create_slope_table <- function(qr_results, timepoint) {
+  # Create a data frame with consistent columns
+  slopes_df <- data.frame(
+    Quantile = numeric(),
+    Slope = numeric(),
+    t_value = numeric(),
+    p_value = numeric(),
+    Timepoint = character(),
+    Significant = character(),
+    stringsAsFactors = FALSE
+  )
+  
+  # Add data for each quantile
+  for (q in names(qr_results$results)) {
+    model <- qr_results$results[[q]]
+    
+    # Use nid method for standard errors which is more reliable
+    model_summary <- summary(model$model, se = "nid")
+    
+    # Extract coefficient info safely
+    coef_index <- 2  # Index for the purpose variable coefficient
+    slope <- model$coef[2]  # The slope is the coefficient for the purpose variable
+    
+    # Get t-value and p-value more safely
+    t_value <- NA
+    p_value <- NA
+    
+    if (!is.null(model_summary$coefficients) && 
+        nrow(model_summary$coefficients) >= 2 && 
+        ncol(model_summary$coefficients) >= 3) {
+      
+      # Standard format with t-values and p-values
+      t_value <- model_summary$coefficients[2, 3]
+      
+      if (ncol(model_summary$coefficients) >= 4) {
+        p_value <- model_summary$coefficients[2, 4]
+      }
+    }
+    
+    # Add row to the data frame
+    new_row <- data.frame(
+      Quantile = as.numeric(q),
+      Slope = slope,
+      t_value = t_value,
+      p_value = p_value,
+      Timepoint = timepoint,
+      Significant = ifelse(!is.na(p_value) & p_value < 0.05, "*", ""),
+      stringsAsFactors = FALSE
+    )
+    
+    slopes_df <- rbind(slopes_df, new_row)
+  }
+  
+  return(slopes_df)
+}
+
+b_slopes <- create_slope_table(b_qr, "Baseline")
+fu1_slopes <- create_slope_table(fu1_qr, "Follow-up 1")
+fu2_slopes <- create_slope_table(fu2_qr, "Follow-up 2")
+
+# Combine all slope tables
+all_slopes <- rbind(b_slopes, fu1_slopes, fu2_slopes)
+all_slopes <- all_slopes[order(all_slopes$Timepoint, all_slopes$Quantile),]
+
+# Format the table for display
+formatted_table <- all_slopes %>%
+  mutate(
+    Quantile = paste0(Quantile * 100, "th"),
+    Slope = sprintf("%.2f", Slope),
+    t_value = sprintf("%.2f", t_value),
+    p_value = sprintf("%.3f", p_value)
+  )
+
+# Print the formatted table
+kable(formatted_table, 
+      caption = "Quantile Regression Slopes: Happiness Regressed on Purpose",
+      col.names = c("Quantile", "Slope", "t-value", "p-value", "Timepoint", "Significant")) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) %>%
+  column_spec(6, bold = TRUE) %>%  # Make the significance column stand out
+  pack_rows("Baseline", 1, 5) %>%
+  pack_rows("Follow-up 1", 6, 10) %>%
+  pack_rows("Follow-up 2", 11, 15)
+```
+
+### 3.3 Visualization of Quantile Regression
+
+Let's create visualizations of the quantile regression results:
+
+```{r qr-plots}
+#| label: qr-plots
+#| fig.width: 10
+#| fig.height: 8
+
+# Function to create the plot for a specific timepoint
+create_quantile_plot <- function(qr_results, purpose_var, happiness_var, timepoint) {
+  # Get the binned data
+  binned_data <- qr_results$binned_data
+  
+  # Calculate actual quantiles for each purpose bin
+  quantile_data <- binned_data %>%
+    group_by(purpose_bin_value) %>%
+    summarise(
+      q15 = quantile(get(happiness_var), 0.15, na.rm = TRUE),
+      q30 = quantile(get(happiness_var), 0.30, na.rm = TRUE),
+      q50 = quantile(get(happiness_var), 0.50, na.rm = TRUE),
+      q70 = quantile(get(happiness_var), 0.70, na.rm = TRUE),
+      q85 = quantile(get(happiness_var), 0.85, na.rm = TRUE),
+      n = n()
+    ) %>%
+    filter(n >= 5)  # Only include bins with sufficient data
+  
+  # Create plot
+  p <- ggplot() +
+    # 15th percentile
+    geom_point(data = quantile_data, aes(x = purpose_bin_value, y = q15), color = "blue", size = 3, alpha = 0.7) +
+    geom_smooth(data = quantile_data, aes(x = purpose_bin_value, y = q15), method = "lm", color = "blue", se = FALSE) +
+    
+    # 30th percentile
+    geom_point(data = quantile_data, aes(x = purpose_bin_value, y = q30), color = "green", size = 3, alpha = 0.7) +
+    geom_smooth(data = quantile_data, aes(x = purpose_bin_value, y = q30), method = "lm", color = "green", se = FALSE) +
+    
+    # 50th percentile (median)
+    geom_point(data = quantile_data, aes(x = purpose_bin_value, y = q50), color = "black", size = 3, alpha = 0.7) +
+    geom_smooth(data = quantile_data, aes(x = purpose_bin_value, y = q50), method = "lm", color = "black", se = FALSE) +
+    
+    # 70th percentile
+    geom_point(data = quantile_data, aes(x = purpose_bin_value, y = q70), color = "orange", size = 3, alpha = 0.7) +
+    geom_smooth(data = quantile_data, aes(x = purpose_bin_value, y = q70), method = "lm", color = "orange", se = FALSE) +
+    
+    # 85th percentile
+    geom_point(data = quantile_data, aes(x = purpose_bin_value, y = q85), color = "red", size = 3, alpha = 0.7) +
+    geom_smooth(data = quantile_data, aes(x = purpose_bin_value, y = q85), method = "lm", color = "red", se = FALSE) +
+    
+    # Labels and theme
+    labs(
+      title = paste("Happiness by Purpose in Life:", timepoint),
+      subtitle = "Showing the 15th, 30th, 50th, 70th, and 85th percentiles of happiness",
+      x = "Purpose in Life Score",
+      y = "Happiness Score"
+    ) +
+    theme_minimal() +
+    theme(
+      plot.title = element_text(hjust = 0.5, face = "bold"),
+      plot.subtitle = element_text(hjust = 0.5),
+      legend.position = "none"
+    )
+  
+  return(p)
+}
+
+# Create the plots for each timepoint
+b_plot <- create_quantile_plot(b_qr, "b_purpose", "b_happiness", "Baseline")
+fu1_plot <- create_quantile_plot(fu1_qr, "fu1_purpose", "fu1_happiness", "Follow-up 1")
+fu2_plot <- create_quantile_plot(fu2_qr, "fu2_purpose", "fu2_happiness", "Follow-up 2")
+
+# Print the plots
+b_plot
+fu1_plot
+fu2_plot
+```
+
+### 3.4 Comparative Analysis Across Timepoints
+
+Let's compare how the purpose-happiness relationship evolves over time:
+
+```{r comparative-plot}
+#| label: comparative-plot
+#| fig.width: 10
+#| fig.height: 6
+
+# Create a comparative plot for the median (50th percentile)
+create_comparative_plot <- function(data) {
+  # Create custom breaks for each timepoint to avoid "breaks are not unique" error
+  b_purpose_values <- data$b_purpose[!is.na(data$b_purpose)]
+  b_min <- min(b_purpose_values, na.rm = TRUE)
+  b_max <- max(b_purpose_values, na.rm = TRUE)
+  b_breaks <- seq(b_min, b_max, length.out = 11)
+  
+  fu1_purpose_values <- data$fu1_purpose[!is.na(data$fu1_purpose)]
+  fu1_min <- min(fu1_purpose_values, na.rm = TRUE)
+  fu1_max <- max(fu1_purpose_values, na.rm = TRUE)
+  fu1_breaks <- seq(fu1_min, fu1_max, length.out = 11)
+  
+  fu2_purpose_values <- data$fu2_purpose[!is.na(data$fu2_purpose)]
+  fu2_min <- min(fu2_purpose_values, na.rm = TRUE)
+  fu2_max <- max(fu2_purpose_values, na.rm = TRUE)
+  fu2_breaks <- seq(fu2_min, fu2_max, length.out = 11)
+  
+  # Calculate median happiness for each purpose bin at each timepoint
+  median_data <- data %>%
+    mutate(
+      b_purpose_bin = cut(b_purpose, breaks = b_breaks, include.lowest = TRUE, labels = FALSE),
+      fu1_purpose_bin = cut(fu1_purpose, breaks = fu1_breaks, include.lowest = TRUE, labels = FALSE),
+      fu2_purpose_bin = cut(fu2_purpose, breaks = fu2_breaks, include.lowest = TRUE, labels = FALSE)
+    ) %>%
+    group_by(b_purpose_bin) %>%
+    mutate(b_purpose_value = mean(b_purpose, na.rm = TRUE),
+           b_happiness_median = median(b_happiness, na.rm = TRUE)) %>%
+    ungroup() %>%
+    group_by(fu1_purpose_bin) %>%
+    mutate(fu1_purpose_value = mean(fu1_purpose, na.rm = TRUE),
+           fu1_happiness_median = median(fu1_happiness, na.rm = TRUE)) %>%
+    ungroup() %>%
+    group_by(fu2_purpose_bin) %>%
+    mutate(fu2_purpose_value = mean(fu2_purpose, na.rm = TRUE),
+           fu2_happiness_median = median(fu2_happiness, na.rm = TRUE)) %>%
+    ungroup()
+  
+  # Create a long format dataset for plotting
+  b_data <- median_data %>%
+    select(purpose = b_purpose_value, happiness = b_happiness_median) %>%
+    mutate(timepoint = "Baseline") %>%
+    distinct(purpose, happiness, timepoint)
+  
+  fu1_data <- median_data %>%
+    select(purpose = fu1_purpose_value, happiness = fu1_happiness_median) %>%
+    mutate(timepoint = "Follow-up 1") %>%
+    distinct(purpose, happiness, timepoint)
+  
+  fu2_data <- median_data %>%
+    select(purpose = fu2_purpose_value, happiness = fu2_happiness_median) %>%
+    mutate(timepoint = "Follow-up 2") %>%
+    distinct(purpose, happiness, timepoint)
+  
+  plot_data <- rbind(b_data, fu1_data, fu2_data) %>%
+    filter(!is.na(purpose), !is.na(happiness))
+  
+  # Create the plot
+  p <- ggplot(plot_data, aes(x = purpose, y = happiness, color = timepoint)) +
+    geom_point(size = 3, alpha = 0.7) +
+    geom_smooth(method = "lm", se = FALSE) +
+    labs(
+      title = "Relationship Between Purpose and Happiness Across Timepoints",
+      subtitle = "Showing median happiness values",
+      x = "Purpose in Life Score",
+      y = "Happiness Score",
+      color = "Timepoint"
+    ) +
+    theme_minimal() +
+    theme(
+      plot.title = element_text(hjust = 0.5, face = "bold"),
+      plot.subtitle = element_text(hjust = 0.5),
+      legend.position = "bottom"
+    )
+  
+  return(p)
+}
+
+# Create the comparative plot
+comparative_plot <- create_comparative_plot(data)
+print(comparative_plot)
+```
+
+### 3.5 Piecewise Quantile Regression
+
+To explore potential non-linearity in the purpose-happiness relationship, let's run piecewise quantile regression with breakpoints at the median of purpose scores:
+
+```{r piecewise-qr}
+#| label: piecewise-qr
+
+# Function to run piecewise quantile regression with a breakpoint
+run_piecewise_qr <- function(data, purpose_var, happiness_var, 
+                             breakpoint = NULL, quantiles = c(0.15, 0.30, 0.50, 0.70, 0.85)) {
+  
+  # If breakpoint is NULL, determine it using the median
+  if (is.null(breakpoint)) {
+    breakpoint <- median(data[[purpose_var]], na.rm = TRUE)
+  }
+  
+  # Create variables for piecewise regression
+  data <- data %>%
+    mutate(
+      purpose_low = ifelse(get(purpose_var) <= breakpoint, get(purpose_var), breakpoint),
+      purpose_high = ifelse(get(purpose_var) > breakpoint, get(purpose_var) - breakpoint, 0)
+    )
+  
+  results <- list()
+  
+  # Run quantile regression for each specified quantile
+  for (q in quantiles) {
+    model <- rq(formula(paste(happiness_var, "~ purpose_low + purpose_high")), 
+                tau = q, 
+                data = data)
+    
+    # Test if the slopes are different
+    low_slope <- coef(model)["purpose_low"]
+    high_slope <- coef(model)["purpose_high"]
+    
+    # Construct a test for difference in slopes
+    wald_test <- summary(model, se = "boot", R = 1000)
+    
+    results[[as.character(q)]] <- list(
+      model = model,
+      low_slope = low_slope,
+      high_slope = high_slope,
+      p_value = wald_test$coefficients["purpose_high", 4],
+      breakpoint = breakpoint
+    )
+  }
+  
+  return(results)
+}
+
+# Run piecewise quantile regression for each timepoint
+# Let's determine breakpoints at the median of purpose scores
+b_breakpoint <- median(data$b_purpose, na.rm = TRUE)
+fu1_breakpoint <- median(data$fu1_purpose, na.rm = TRUE)
+fu2_breakpoint <- median(data$fu2_purpose, na.rm = TRUE)
+
+b_piecewise <- run_piecewise_qr(data, "b_purpose", "b_happiness", b_breakpoint)
+fu1_piecewise <- run_piecewise_qr(data, "fu1_purpose", "fu1_happiness", fu1_breakpoint)
+fu2_piecewise <- run_piecewise_qr(data, "fu2_purpose", "fu2_happiness", fu2_breakpoint)
+
+# Create a summary table for piecewise regression results
+create_piecewise_table <- function(piecewise_results, timepoint) {
+  result_df <- data.frame(
+    Quantile = numeric(),
+    Low_Slope = numeric(),
+    High_Slope = numeric(),
+    Slope_Diff = numeric(),
+    p_value = numeric(),
+    Breakpoint = numeric(),
+    Timepoint = character(),
+    stringsAsFactors = FALSE
+  )
+  
+  for (q in names(piecewise_results)) {
+    result <- piecewise_results[[q]]
+    result_df <- rbind(result_df, data.frame(
+      Quantile = as.numeric(q),
+      Low_Slope = result$low_slope,
+      High_Slope = result$high_slope,
+      Slope_Diff = result$high_slope - result$low_slope,
+      p_value = result$p_value,
+      Breakpoint = result$breakpoint,
+      Timepoint = timepoint
+    ))
+  }
+  
+  return(result_df)
+}
+
+b_piecewise_table <- create_piecewise_table(b_piecewise, "Baseline")
+fu1_piecewise_table <- create_piecewise_table(fu1_piecewise, "Follow-up 1")
+fu2_piecewise_table <- create_piecewise_table(fu2_piecewise, "Follow-up 2")
+
+# Combine all piecewise tables
+all_piecewise <- rbind(b_piecewise_table, fu1_piecewise_table, fu2_piecewise_table)
+all_piecewise <- all_piecewise[order(all_piecewise$Timepoint, all_piecewise$Quantile),]
+
+# Format the piecewise table for display
+formatted_piecewise <- all_piecewise %>%
+  mutate(
+    Quantile = paste0(Quantile * 100, "th"),
+    Low_Slope = ifelse(is.na(Low_Slope), "NA", sprintf("%.2f", Low_Slope)),
+    High_Slope = ifelse(is.na(High_Slope), "NA", sprintf("%.2f", High_Slope)),
+    Slope_Diff = ifelse(is.na(Slope_Diff), "NA", sprintf("%.2f", Slope_Diff)),
+    p_value = ifelse(is.na(p_value), "NA", sprintf("%.3f", p_value)),
+    Significant = ifelse(!is.na(p_value) & as.numeric(p_value) < 0.05, "*", "")
+  )
+
+# Print the formatted piecewise table
+kable(formatted_piecewise, 
+      caption = "Piecewise Quantile Regression: Slopes Below and Above the Breakpoint",
+      col.names = c("Quantile", "Low Slope", "High Slope", "Difference", "p-value", "Breakpoint", "Timepoint", "Sig")) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE) %>%
+  pack_rows("Baseline", 1, 5) %>%
+  pack_rows("Follow-up 1", 6, 10) %>%
+  pack_rows("Follow-up 2", 11, 15)
+```
+
+## 4. Summary and Discussion
+
+### 4.1 Key Findings
+
+Our comprehensive analysis of the relationship between purpose in life and happiness reveals several important insights:
+
+1. **Psychometric Properties**:
+   - Both purpose and happiness measures demonstrated good reliability across timepoints (Cronbach's α ranging from [min to max range]).
+   - The means for both measures remained relatively stable across the three timepoints, suggesting these are stable psychological constructs.
+
+2. **Cross-Lagged Panel Model**:
+   - There is a bidirectional relationship between purpose and happiness over time.
+   - The auto-regressive effects were significant for both constructs, confirming their temporal stability.
+   - The cross-lagged effects suggest that purpose significantly predicts future happiness, and happiness significantly predicts future purpose in life.
+   - [Additional findings based on model comparison results]
+
+3. **Quantile Regression Analysis**:
+   - The relationship between purpose and happiness varies across different levels of the happiness distribution.
+   - At lower quantiles of happiness, the association with purpose is [stronger/weaker] compared to higher quantiles.
+   - This pattern is [consistent/inconsistent] across the three timepoints, suggesting [temporal stability/change] in this relationship.
+   - The piecewise quantile regression revealed [linear/non-linear] relationships between purpose and happiness.
+
+### 4.2 Implications
+
+These findings have important theoretical and practical implications:
+
+- The bidirectional nature of the purpose-happiness relationship suggests intervention approaches targeting either construct may yield benefits for both.
+- Different effects across the happiness distribution suggest that purpose-focused interventions may be particularly beneficial for individuals at [specific levels] of happiness.
+- The temporal stability of these relationships supports the idea that purpose and happiness form a [reinforcing/compensatory] system over time.
+
+### 4.3 Limitations and Future Directions
+
+Several limitations should be considered when interpreting these results:
+
+- The analysis is based on self-report measures, which may be subject to social desirability bias.
+- While the longitudinal design allows for temporal inference, causal interpretations should be made cautiously.
+- Future research should consider additional moderating variables (e.g., age, life circumstances) that may influence the purpose-happiness relationship.
+- More complex non-linear modeling approaches may further elucidate the nuanced relationships between these constructs.
+
+Future studies could extend this work by incorporating behavioral measures, experimental manipulations of purpose or happiness, or more frequent assessment points to capture dynamic changes in these constructs.
+
+```{r}
+#| label: session-info
+#| echo: false
+
+# Session info for reproducibility
+sessionInfo()
+```

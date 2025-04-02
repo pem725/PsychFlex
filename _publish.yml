@@ -1,0 +1,4 @@
+- source: purpose_vs_happiness_supplement.qmd
+  netlify:
+    - id: bdeb586a-01bf-4bec-93b1-95ec68143b62
+      url: 'https://transcendent-taiyaki-27bf4d.netlify.app'

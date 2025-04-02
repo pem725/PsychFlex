@@ -1,0 +1,16 @@
+Version: 1.0
+ProjectId: 5191ce68-2c1c-4b45-a2d1-95d20285647f
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: knitr
+LaTeX: pdfLaTeX
+
+ZoteroLibraries: "My Library","Exploratorium","OLD-Trust Measure Meta","SCM-PEM-Trust","Trust Measure Meta 2022","kashdan"

@@ -1,0 +1,95 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{fig-relationship}Structural Relationship Between Purpose
+and Happiness Across Timepoints}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{complete-fixed-quarto_files/figure-pdf/fig-relationship-1.pdf}
+
+}
+
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{fig-clpm}Cross-Lagged Panel Model of Purpose and
+Happiness with Standardized Path Coefficients}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{complete-fixed-quarto_files/figure-pdf/fig-clpm-1.pdf}
+
+}
+
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{fig-quantile}Quantile Regression Analysis of Purpose and
+Happiness}
+
+\begin{minipage}{\linewidth}
+
+\subcaption{\label{fig-quantile-1}Baseline: Happiness by Purpose in Life
+at Different Quantiles}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{complete-fixed-quarto_files/figure-pdf/fig-quantile-1.pdf}
+
+}
+
+\end{minipage}%
+\newline
+\begin{minipage}{\linewidth}
+
+\subcaption{\label{fig-quantile-2}Follow-up 1: Happiness by Purpose in
+Life at Different Quantiles}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{complete-fixed-quarto_files/figure-pdf/fig-quantile-2.pdf}
+
+}
+
+\end{minipage}%
+\newline
+\begin{minipage}{\linewidth}
+
+\subcaption{\label{fig-quantile-3}Follow-up 2: Happiness by Purpose in
+Life at Different Quantiles}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{complete-fixed-quarto_files/figure-pdf/fig-quantile-3.pdf}
+
+}
+
+\end{minipage}%
+
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{fig-comparative}Comparative Analysis of
+Purpose-Happiness Relationship Across Timepoints}
+
+\centering{
+
+\includegraphics[width=1\textwidth,height=\textheight]{complete-fixed-quarto_files/figure-pdf/fig-comparative-1.pdf}
+
+}
+
+\end{figure*}

@@ -3,6 +3,11 @@
 ##library(foreign)
 library(haven) ## WHOA!  New way to read in SPSS data - never foreign again!!!!
 dat <- read_sav("./Merged.sav")
+dat2 <- read_sav("./Merged_GMU_Baseline&FollowUp_102819.sav")
+
+nm1 <- names(dat)
+nm2 <- names(dat2)
+match(nm1,nm2)
 #datB <- read.spss("./At-home-survey.edited_JD_052819.sav",F,T)
 #datBPF <- read.spss("./BLPF.sav",F,T)
 #datFU <- read.spss("./PFFU.sav",F,T)
@@ -31,6 +36,16 @@ id <- dat$ID
 PF.B.1 <- dat[,c(7:25)]
 names(PF.B.1)
 describe(PF.B.1)
+alpha(PF.B.1, check.keys = T)
+PF.B.1.b <- dat2[,names(PF.B.1)]
+PF.B.1.b <- PF.B.1.b[,-19]
+alpha(PF.B.1.b, check.keys = T)
+
+fa(PF.B.1.b,3,n.iter = 1000)
+iclust(PF.B.1.b,3,n.iterations = 1000)
+omega(PF.B.1.b,nfactors = 3)
+
+
 PF.B.2 <- dat[,c(31:49)]
 names(PF.B.2)
 describe(PF.B.2)
@@ -40,6 +55,10 @@ describe(PF.FU.1)
 PF.FU.2 <- dat[,c(1409:1427)]
 names(PF.FU.2)
 describe(PF.FU.2)
+
+
+
+
 
 PF.B <- dat[,c(7:25,31:49)]
 PF.FU1 <- dat[,c(1385:1403,1409:1427)]
@@ -217,7 +236,6 @@ Model1.dat <- merge(Model1.dat,PHQ.B,by="id")
 Model1.dat <- merge(Model1.dat,AAQ.B,by="id")
 Model1.dat <- merge(Model1.dat,BMEAQ.B,by="id")
 write.csv(Model1.dat,"Model1Dat.csv",row.names = F)
-
 
 
 DI <- dat[,c(1,1095:1104)] 
