@@ -1,5 +1,5 @@
 ---
-title: "Does Purpose Predict Happiness?"
+title: "Purpose in Life and Happiness: A Comparison"
 author: 
   - name: Patrick E. McKnight
     orcid: 0000-0002-9067-9066
@@ -20,6 +20,10 @@ author:
     #role: "ernative corresponding author"
     corresponding: false
   - name: Amie MacKay
+    affiliation:
+      name: George Mason University
+      department: Department of Psychology
+  - name: Kerry Kelso
     affiliation:
       name: George Mason University
       department: Department of Psychology
