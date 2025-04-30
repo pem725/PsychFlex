@@ -2,3 +2,7 @@
   netlify:
     - id: bdeb586a-01bf-4bec-93b1-95ec68143b62
       url: 'https://transcendent-taiyaki-27bf4d.netlify.app'
+- source: PandHfinalDraftMKM2025.qmd
+  netlify:
+    - id: 1b878ed7-9d3c-4fd3-874d-18debf322589
+      url: 'https://chic-blini-ec86a6.netlify.app'

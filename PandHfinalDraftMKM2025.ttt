@@ -5,323 +5,62 @@
 {\caption{{}{\label{tbl-t1demos}}}
 \vspace{-20pt}}
 
-\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
-
-\global\setlength{\Oldtabcolsep}{\tabcolsep}
-
-\setlength{\tabcolsep}{2pt}
-
-\renewcommand*{\arraystretch}{1.5}
-
-
-
-\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
-
-\begin{longtable*}[c]{|p{2.28in}|p{6.17in}|p{3.25in}}
-
-
-
-\ascline{1.5pt}{666666}{1-3}
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\textbf{Variable}}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\textbf{Category}}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\textbf{Value}}}}} \\
-
-\ascline{1.5pt}{666666}{1-3}\endfirsthead
-
-\ascline{1.5pt}{666666}{1-3}
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\textbf{Variable}}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\textbf{Category}}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\textbf{Value}}}}} \\
-
-\ascline{1.5pt}{666666}{1-3}\endhead
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Age}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{M\ =\ 31.44\ (SD\ =\ 13.50),\ Range:\ 18-81}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Sex}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Man}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{102\ (29.6\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Woman}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{205\ (59.4\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Other\ (please\ specify)}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3\ (0.9\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Race/Ethnicity}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{White\ /\ Caucasian}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{146\ (42.3\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Black\ /\ African-American}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{44\ (12.8\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Latino\ /\ Hispanic}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{26\ (7.5\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Asian\ /\ Pacific\ Islander}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{62\ (18.0\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Arab\ /\ Middle-eastern}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{11\ (3.2\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Other\ (please\ specify)}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{21\ (6.1\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Education}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Some\ high\ school}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{1\ (0.3\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{High\ school\ graduate}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{46\ (13.3\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Trade/Technical/Vocational\ school\ graduate}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3\ (0.9\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Some\ College/University}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{62\ (18.0\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{2-year\ College/University\ graduate\ (i.e.,\ associate's\ degree)}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{22\ (6.4\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{4-year\ College/University\ graduate\ (i.e.,\ bachelor's\ degree)}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{85\ (24.6\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Some\ graduate/professional\ school\ (e.g.,\ Master’s\ school;\ Medical\ school)}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{21\ (6.1\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Graduate\ school/professional\ degree\ (e.g.,\ Master’s\ degree;\ Medical\ degree)}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{70\ (20.3\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Employment\ Status}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Not\ employed}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{26\ (7.5\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Part-time\ (29-\ hours\ a\ week)}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{69\ (20.0\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Full\ time\ (30+\ hours\ a\ week)}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{101\ (29.3\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Homemaker/volunteer}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{8\ (2.3\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Student\ (full-time)}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{66\ (19.1\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Retired}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{13\ (3.8\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Other\ (please\ specify)}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{27\ (7.8\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Occupation}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Management,\ professional,\ related}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{100\ (29.0\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Service}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{84\ (24.3\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Sales\ and\ office}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{31\ (9.0\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Farming,\ fishing,\ and\ forestry}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3\ (0.9\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Construction,\ extraction,\ and\ maintenance}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{4\ (1.2\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Production,\ transportation,\ and\ material\ moving}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3\ (0.9\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Government}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{20\ (5.8\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{I\ do\ not\ have\ a\ job}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{60\ (17.4\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Annual\ Household\ Income}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{Less\ than\ \$10,000}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{100\ (29.0\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\$10,001\ -\ \$20,000}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{39\ (11.3\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\$20,001\ -\ \$30,000}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{22\ (6.4\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\$30,001\ -\ \$40,000}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{18\ (5.2\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\$40,001\ -\ \$50,000}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{19\ (5.5\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\$50,001\ -\ \$60,000}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{21\ (6.1\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\$60,001\ -\ \$70,000}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{9\ (2.6\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\$70,001\ -\ \$80,000}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{16\ (4.6\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\$80,001\ -\ \$90,000}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{14\ (4.1\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\$90,001\ -\ \$100,000}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{3\ (0.9\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\$100,001\ -\ \$150,000}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{28\ (8.1\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{\$150,001\ -\ \$200,000}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{11\ (3.2\%)}}}} \\
-
-
-
-
-
-\multicolumn{1}{>{\raggedright}m{\dimexpr 2.28in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{}}}} & \multicolumn{1}{>{\raggedright}m{\dimexpr 6.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{More\ than\ \$200,000}}}} & \multicolumn{1}{>{\raggedleft}m{\dimexpr 3.25in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{DejaVu Sans}{10\ (2.9\%)}}}} \\
-
-\ascline{1.5pt}{666666}{1-3}
-
-
-
-\end{longtable*}
-
-
-
-\arrayrulecolor[HTML]{000000}
-
-\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
-
-\global\setlength{\tabcolsep}{\Oldtabcolsep}
-
-\renewcommand*{\arraystretch}{1}
+\caption*{
+{\large Table 1. Demographic Characteristics (N = 345)}
+}
+\fontsize{6.8pt}{8.1pt}\selectfont
+\begin{tabular*}{0.9\linewidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash}p{\dimexpr 135.00pt -2\tabcolsep-1.5\arrayrulewidth}>{\raggedright\arraybackslash}p{\dimexpr 135.00pt -2\tabcolsep-1.5\arrayrulewidth}>{\raggedleft\arraybackslash}p{\dimexpr 75.00pt -2\tabcolsep-1.5\arrayrulewidth}}
+\toprule
+Variable & Category & Value \\
+\midrule\addlinespace[2.5pt]
+Age &  & M = 31.44 (SD = 13.50), Range: 18-81 \\
+Sex & Man & 102 (29.6\%) \\
+ & Woman & 205 (59.4\%) \\
+ & Other (please specify) & 3 (0.9\%) \\
+Race/Ethnicity & White / Caucasian & 146 (42.3\%) \\
+ & Black / African-American & 44 (12.8\%) \\
+ & Latino / Hispanic & 26 (7.5\%) \\
+ & Asian / Pacific Islander & 62 (18.0\%) \\
+ & Arab / Middle-eastern & 11 (3.2\%) \\
+ & Other (please specify) & 21 (6.1\%) \\
+Education & Some high school & 1 (0.3\%) \\
+ & High school graduate & 46 (13.3\%) \\
+ & Trade/Technical/Vocational school graduate & 3 (0.9\%) \\
+ & Some College/University & 62 (18.0\%) \\
+ & 2-year College/University graduate (i.e., associate's degree) & 22 (6.4\%) \\
+ & 4-year College/University graduate (i.e., bachelor's degree) & 85 (24.6\%) \\
+ & Some graduate/professional school (e.g., Master’s school; Medical school) & 21 (6.1\%) \\
+ & Graduate school/professional degree (e.g., Master’s degree; Medical degree) & 70 (20.3\%) \\
+Employment Status & Not employed & 26 (7.5\%) \\
+ & Part-time (29- hours a week) & 69 (20.0\%) \\
+ & Full time (30+ hours a week) & 101 (29.3\%) \\
+ & Homemaker/volunteer & 8 (2.3\%) \\
+ & Student (full-time) & 66 (19.1\%) \\
+ & Retired & 13 (3.8\%) \\
+ & Other (please specify) & 27 (7.8\%) \\
+Occupation & Management, professional, related & 100 (29.0\%) \\
+ & Service & 84 (24.3\%) \\
+ & Sales and office & 31 (9.0\%) \\
+ & Farming, fishing, and forestry & 3 (0.9\%) \\
+ & Construction, extraction, and maintenance & 4 (1.2\%) \\
+ & Production, transportation, and material moving & 3 (0.9\%) \\
+ & Government & 20 (5.8\%) \\
+ & I do not have a job & 60 (17.4\%) \\
+Annual Household Income & Less than \$10,000 & 100 (29.0\%) \\
+ & \$10,001 - \$20,000 & 39 (11.3\%) \\
+ & \$20,001 - \$30,000 & 22 (6.4\%) \\
+ & \$30,001 - \$40,000 & 18 (5.2\%) \\
+ & \$40,001 - \$50,000 & 19 (5.5\%) \\
+ & \$50,001 - \$60,000 & 21 (6.1\%) \\
+ & \$60,001 - \$70,000 & 9 (2.6\%) \\
+ & \$70,001 - \$80,000 & 16 (4.6\%) \\
+ & \$80,001 - \$90,000 & 14 (4.1\%) \\
+ & \$90,001 - \$100,000 & 3 (0.9\%) \\
+ & \$100,001 - \$150,000 & 28 (8.1\%) \\
+ & \$150,001 - \$200,000 & 11 (3.2\%) \\
+ & More than \$200,000 & 10 (2.9\%) \\
+\bottomrule
+\end{tabular*}
 
 \end{table*}
 \efloatseparator

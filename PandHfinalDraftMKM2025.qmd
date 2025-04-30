@@ -1,5 +1,5 @@
 ---
-title: "Purpose in Life and Happiness: A Comparison"
+title: "Purpose and Happiness: A Comparison"
 author: 
   - name: Patrick E. McKnight
     orcid: 0000-0002-9067-9066
@@ -7,6 +7,7 @@ author:
     affiliation: 
       name: George Mason University
       department: Department of Psychology
+      id: GMU
     equal-contributor: true
     #role: "corresponding author"
     corresponding: true
@@ -14,65 +15,66 @@ author:
     orcid: 0000-0001-6438-0485
     email: tkashdan@gmu.edu
     affiliation: 
-      name: George Mason University
-      department: Department of Psychology
+      - ref: GMU
     equal-contributor: true
     #role: "ernative corresponding author"
     corresponding: false
   - name: Amie MacKay
+    email: amackay4@gmu.edu
     affiliation:
-      name: George Mason University
-      department: Department of Psychology
+      - ref: GMU
   - name: Kerry Kelso
+    email: kkelso@gmu.edu
     affiliation:
-      name: George Mason University
-      department: Department of Psychology
+      - ref: GMU
   - name: Madeleine Gross
     affiliation:
       name: University of California, Santa Barbara
       department: Department of Psychology
 author-note: 
   disclosures:
+    data-sharing: "The data that support the findings of this study are available from the corresponding author, PEM, upon reasonable request."	
     authorship-agreements: "The first two authors contributed equally to this work; we determined the order quasi-randomly with replacement and laughter."
-format: 
-  html:
-    toc: true
-    code-fold: true
-    fig-width: 8
-    fig-height: 6
-    fig-format: png
-    fig-dpi: 300
-    fig-cap-location: top
-    tbl-cap-location: top
-  pdf:
-    toc: true
-    colorlinks: true
-    fig-width: 6
-    fig-height: 4
-    fig-cap-location: top
-    tbl-cap-location: top
-    include-in-header: 
-      text: |
-        \usepackage{booktabs}
-        \usepackage{longtable}
-        \usepackage{array}
-        \usepackage{multirow}
-        \usepackage{wrapfig}
-        \usepackage{float}
-        \floatplacement{figure}{H}
-  docx:
-    reference-doc: "apa6.docx"
-    toc: true
-    fig-width: 6
-    fig-height: 4
-    fig-cap-location: top
-    tbl-cap-location: top
-  apaquarto-docx: default
+format:
   apaquarto-html: default
+  apaquarto-docx: default
   apaquarto-pdf: default
-  apaquarto-typst: default
+#  apaquarto-typst: default
+#  html:
+#    toc: true
+#    code-fold: true
+#    fig-width: 8
+#    fig-height: 6
+#    fig-format: png
+#    fig-dpi: 300
+#    fig-cap-location: top
+#    tbl-cap-location: top
+#  pdf:
+#    toc: true
+#    colorlinks: true
+#    fig-width: 6
+#    fig-height: 4
+#    fig-cap-location: top
+#    tbl-cap-location: top
+#    include-in-header: 
+#      text: |
+#        \usepackage{booktabs}
+#        \usepackage{longtable}
+#        \usepackage{array}
+#        \usepackage{multirow}
+#        \usepackage{wrapfig}
+#        \usepackage{float}
+#        \floatplacement{figure}{H}
+  #docx:
+  #  reference-doc: "apa6.docx"
+  #  toc: true
+  #  fig-width: 6
+  #  fig-height: 4
+  #  fig-cap-location: top
+  #  tbl-cap-location: top
+
   
-prefer-html: true
+#prefer-html: true
 
 bibliography: references.bib
 abstract: Despite widespread assumptions among social scientists about the distinct nature of purpose in life and happiness, limited empirical studies have directly compared these constructs—particularly regarding their stability and their interrelationship over time. This research study addresses these omissions and provides a benchmark for evaluating the bivariate relationship between these important constructs in positive psychology. We used psychometrically sound assessments to measure these two constructs. Our findings were clear and reproducible; both purpose and happiness measures produce stable estimates over time and maintain a consistent, moderate correlation  ($rs > .43; p < .001$). In longitudinal analyses, the causal direction favors happiness predicting subsequent ratings of purpose rather than the alternative ($r \approx 0.15$ vs. $r \approx −0.04$). We address the implications of these findings, provide researchers with guidance on improving the measurement of these fundamental dimensions of well-being, and suggest promising future research directions.
@@ -114,6 +116,7 @@ library(DiagrammeR) # For path diagrams
 library(semPlot) # For path diagrams
 library(semTools) # For CFA
 library(webshot2) # for pdf output rendering
+library(gt)
 
 # Read the data
 full.data <- read.spss("Psychological Flexibility_Full Dataset_070822.sav", use.value.labels = TRUE, to.data.frame = TRUE)
@@ -338,15 +341,37 @@ if (knitr::is_html_output()) {
                   font_size = 12,
                   full_width = FALSE)
 } else {
-  # For Word/PDF output
-  demo_table <- flextable(combined_demographics)
-  demo_table <- set_caption(demo_table, caption = paste0("Table 1. Demographic Characteristics (N = ", total_n, ")"))
-  demo_table <- bold(demo_table, part = "header")
-  demo_table <- align(demo_table, i = NULL, j = 1, align = "left", part = "body")
-  demo_table <- align(demo_table, i = NULL, j = 2, align = "left", part = "body")
-  demo_table <- align(demo_table, i = NULL, j = 3, align = "right", part = "body")
-  demo_table <- autofit(demo_table)
-  demo_table
+  # For PDF output using gt package
+  combined_demographics %>%
+    gt() %>%
+    tab_header(
+      title = paste0("Table 1. Demographic Characteristics (N = ", total_n, ")")
+    ) %>%
+    cols_label(
+      Variable = "Variable",
+      Category = "Category", 
+      Value = "Value"
+    ) %>%
+    cols_align(
+      align = "left",
+      columns = c(Variable, Category)
+    ) %>%
+    cols_align(
+      align = "right",
+      columns = Value
+    ) %>%
+    tab_options(
+      table.width = pct(90),
+      column_labels.font.weight = "bold",
+      data_row.padding = px(4),
+      table.font.size = px(9),
+      row.striping.include_table_body = TRUE
+    ) %>%
+    cols_width(
+      Variable ~ px(180),
+      Category ~ px(180),
+      Value ~ px(100)
+    )
 }
 ```
 
