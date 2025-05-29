@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -86,10 +86,10 @@ div.csl-indent {
 <script src="purpose_vs_happiness_supplement_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="purpose_vs_happiness_supplement_files/libs/quarto-html/anchor.min.js"></script>
 <link href="purpose_vs_happiness_supplement_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="purpose_vs_happiness_supplement_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="purpose_vs_happiness_supplement_files/libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="purpose_vs_happiness_supplement_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="purpose_vs_happiness_supplement_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="purpose_vs_happiness_supplement_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="purpose_vs_happiness_supplement_files/libs/bootstrap/bootstrap-fc5318960c09229002283ea887470603.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="purpose_vs_happiness_supplement_files/libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="purpose_vs_happiness_supplement_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
@@ -19034,8 +19034,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -19146,7 +19144,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
