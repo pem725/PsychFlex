@@ -82,7 +82,7 @@ abstract: TBD
 keywords: 
   - purpose in life
   - happiness
-  - well-being
+  - correlates
   - stability
   - measurement
 ---
@@ -118,6 +118,7 @@ library(semPlot) # For path diagrams
 library(semTools) # For CFA
 library(webshot2) # for pdf output rendering
 library(gt)
+library(tidyverse) # For data manipulation and visualization
 
 # Read the data
 dat <- read_sav("Psychological Flexibility_Full Dataset_070822.sav")
@@ -190,34 +191,64 @@ cols_to_extract <- c(
   2988:3007, 3511:3520
 ) -7
 
-cols_to_extract <- c(1, cols_to_extract)  # Include the first column (ID)
-
-# Add purpose and happiness columns
-cols_to_extract <- c(cols_to_extract, 
+# Add the columns for the two measures of interest
+purp_hap_cols <- c(1,
                      # purpose baseline
                      398:407, 697, 698, 735, 790, 831:838,
                      # FU1
-                     1467:1476, 1771, 1772, 1859, 1863,
+                     1467:1476, 1771, 1772, 1845, 1846, 1859, 1863,
+                     # FU2
+                     3001:3004, 3542, 3543,# 3556,
                      # happiness baseline
-                     241:244, 673, 
+                     241:245, 673, 730, 1208,
                      # fu1
-                     1419:1422, 1751, 1885,
+                     1419:1423, 1751, 1825, 1885,
                      # fu2
-                     3428, 3466, 3555
+                     2954:2957, 3428, 3466#, 3555 
 )
 
+cols_to_extract <- c(1, cols_to_extract, purp_hap_cols)  # Include the first column (ID)
 
 # Remove duplicates and sort
 cols_to_extract <- sort(unique(cols_to_extract))
 
 # Extract the specified columns from the dataframe
-dat <- dat[, cols_to_extract, drop = FALSE]
+dat_paper <- dat[, cols_to_extract, drop = FALSE]
 
+#names(dat)
+```
 
+```{r}
+#| label: helper-functions
+#| echo: false
+#| message: false
+#| error: false
+#| warning: false
+#| include: false
 
+# Function to check if variable is numeric
+is_numeric_var <- function(data, var_name) {
+  if (var_name %in% names(data)) {
+    return(is.numeric(data[[var_name]]) || is.integer(data[[var_name]]))
+  }
+  return(FALSE)
+}
+
+# Safe version of sapply that always returns logical vector
+safe_sapply_logical <- function(X, FUN, ...) {
+  result <- sapply(X, FUN, ..., USE.NAMES = FALSE, simplify = TRUE)
+  if (is.list(result)) {
+    result <- unlist(result)
+  }
+  return(as.logical(result))
+}
 
 # Create a function that will help format tables based on output format
-format_table <- function(table_data, caption = NULL, col_names = NULL, align = NULL, digits = NULL) {
+format_table <- function(table_data, 
+                         caption = NULL, 
+                         col_names = NULL, 
+                         align = NULL, 
+                         digits = NULL) {
   if (knitr::is_html_output()) {
     # For HTML output
     out_table <- kable(table_data, 
@@ -226,7 +257,10 @@ format_table <- function(table_data, caption = NULL, col_names = NULL, align = N
                        col.names = col_names,
                        align = align,
                        digits = digits) %>%
-      kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
+      kable_styling(full_width = FALSE, 
+                    position = "center", 
+                    bootstrap_options = c("striped", 
+                                          "hover"))
     
     return(out_table)
   } else {
@@ -243,11 +277,20 @@ format_table <- function(table_data, caption = NULL, col_names = NULL, align = N
       # Set alignment in flextable
       for (i in seq_along(align)) {
         if (align[i] == "c") {
-          out_table <- align(out_table, j = i, align = "center", part = "all")
+          out_table <- align(out_table, 
+                             j = i, 
+                             align = "center", 
+                             part = "all")
         } else if (align[i] == "r") {
-          out_table <- align(out_table, j = i, align = "right", part = "all")
+          out_table <- align(out_table, 
+                             j = i, 
+                             align = "right", 
+                             part = "all")
         } else {
-          out_table <- align(out_table, j = i, align = "left", part = "all")
+          out_table <- align(out_table, 
+                             j = i, 
+                             align = "left", 
+                             part = "all")
         }
       }
     }
@@ -262,13 +305,17 @@ add_group_rows <- function(table, group_data) {
     # For kable in HTML
     for (i in seq_along(group_data$group)) {
       table <- table %>% 
-        pack_rows(group_data$group[i], group_data$start[i], group_data$end[i], bold = TRUE)
+        pack_rows(group_data$group[i], 
+                  group_data$start[i], 
+                  group_data$end[i], 
+                  bold = TRUE)
     }
   } else {
     # For flextable in Word/PDF
     for (i in seq_along(group_data$group)) {
       table <- table %>%
-        add_header_row(values = group_data$group[i], colwidths = ncol(table)) %>%
+        add_header_row(values = group_data$group[i], 
+                       colwidths = ncol(table)) %>%
         bold(part = "header")
       # Move the newly added header row to the right position
       # This is a simplified approach - might need adjustment
@@ -495,7 +542,7 @@ The two measures demonstrated equivalent reliability estimates within and betwee
 #| message: false
 #| error: false
 #| warning: false
-#| label: tbl-assumption1
+#| label: tbl-psychometrics
 #| tbl-cap: "Psychometric Properties of Happiness and Purpose Measures Across Timepoints (POMP Scores)"
 
 

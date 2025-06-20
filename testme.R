@@ -1,0 +1,432 @@
+# Longitudinal Data Analysis: Clean Psychometrics, POMP Scores, and Correlations
+# Author: Generated for longitudinal study analysis
+# Date: 2025
+
+library(tidyverse)
+library(psych)
+library(corrr)
+library(knitr)
+library(kableExtra)
+
+# =============================================================================
+# 1. HELPER FUNCTIONS
+# =============================================================================
+
+# Function to check if variable is numeric
+is_numeric_var <- function(data, var_name) {
+  if (var_name %in% names(data)) {
+    return(is.numeric(data[[var_name]]) || is.integer(data[[var_name]]))
+  }
+  return(FALSE)
+}
+
+# Safe version of sapply that always returns logical vector
+safe_sapply_logical <- function(X, FUN, ...) {
+  result <- sapply(X, FUN, ..., USE.NAMES = FALSE, simplify = TRUE)
+  if (is.list(result)) {
+    result <- unlist(result)
+  }
+  return(as.logical(result))
+}
+
+# =============================================================================
+# 2. IDENTIFY CLEAN ITEM SETS (NO REDUNDANT VARIANTS)
+# =============================================================================
+
+identify_clean_item_sets <- function(data, var_lists) {
+  clean_sets <- list()
+  
+  for (time_point in names(var_lists)) {
+    clean_sets[[time_point]] <- list()
+    
+    for (measure in names(var_lists[[time_point]])) {
+      vars <- var_lists[[time_point]][[measure]]
+      
+      # Remove all computed variables (means, totals, POMP, etc.)
+      exclude_patterns <- c("_mean", "_tot", "_POMP", "_composite", "_diff", "_goals1_2", "_r$")
+      item_vars <- vars
+      for (pattern in exclude_patterns) {
+        item_vars <- item_vars[!grepl(pattern, item_vars)]
+      }
+      
+      # For scales with _nr and base versions, keep only _nr (need reverse coding)
+      # or keep base if no _nr exists
+      if (measure == "shs") {
+        # SHS: Keep the 4 main items (gh_a, rh_a, ch_a, ch_b_nr)
+        shs_items <- item_vars[grepl("(gh_a|rh_a|ch_a|ch_b_nr)$", item_vars)]
+        clean_sets[[time_point]][[measure]] <- shs_items
+        
+      } else if (measure == "bpurp") {
+        # BPURP: Keep numbered items 1-4
+        bpurp_items <- item_vars[grepl("_[1-4]$", item_vars)]
+        clean_sets[[time_point]][[measure]] <- bpurp_items
+        
+      } else if (measure == "bmpns") {
+        # BMPNS: Keep base items, prioritize _nr versions for reverse coding
+        autonomy_items <- c()
+        competence_items <- c()
+        relatedness_items <- c()
+        
+        # Get item numbers for each subscale
+        for (item_num in c(1, 7, 13)) { # Relatedness satisfaction items
+          rs_candidates <- item_vars[grepl(paste0("_rs_", item_num), item_vars)]
+          if (length(rs_candidates) > 0) relatedness_items <- c(relatedness_items, rs_candidates[1])
+        }
+        for (item_num in c(4, 10, 16)) { # Relatedness frustration items  
+          rd_candidates <- item_vars[grepl(paste0("_rd_", item_num, "_nr"), item_vars)]
+          if (length(rd_candidates) == 0) {
+            rd_candidates <- item_vars[grepl(paste0("_rd_", item_num), item_vars)]
+          }
+          if (length(rd_candidates) > 0) relatedness_items <- c(relatedness_items, rd_candidates[1])
+        }
+        
+        for (item_num in c(2, 8, 14)) { # Competence satisfaction items
+          cs_candidates <- item_vars[grepl(paste0("_cs_", item_num), item_vars)]
+          if (length(cs_candidates) > 0) competence_items <- c(competence_items, cs_candidates[1])
+        }
+        for (item_num in c(5, 11, 17)) { # Competence frustration items
+          cd_candidates <- item_vars[grepl(paste0("_cd_", item_num, "_nr"), item_vars)]
+          if (length(cd_candidates) == 0) {
+            cd_candidates <- item_vars[grepl(paste0("_cd_", item_num), item_vars)]
+          }
+          if (length(cd_candidates) > 0) competence_items <- c(competence_items, cd_candidates[1])
+        }
+        
+        for (item_num in c(3, 9, 15)) { # Autonomy satisfaction items
+          as_candidates <- item_vars[grepl(paste0("_as_", item_num), item_vars)]
+          if (length(as_candidates) > 0) autonomy_items <- c(autonomy_items, as_candidates[1])
+        }
+        for (item_num in c(6, 12, 18)) { # Autonomy frustration items
+          ad_candidates <- item_vars[grepl(paste0("_ad_", item_num, "_nr"), item_vars)]
+          if (length(ad_candidates) == 0) {
+            ad_candidates <- item_vars[grepl(paste0("_ad_", item_num), item_vars)]
+          }
+          if (length(ad_candidates) > 0) autonomy_items <- c(autonomy_items, ad_candidates[1])
+        }
+        
+        # Store subscales separately for alpha calculation
+        if (length(autonomy_items) >= 2) clean_sets[[time_point]][["bmpns_autonomy"]] <- autonomy_items
+        if (length(competence_items) >= 2) clean_sets[[time_point]][["bmpns_competence"]] <- competence_items
+        if (length(relatedness_items) >= 2) clean_sets[[time_point]][["bmpns_relatedness"]] <- relatedness_items
+        
+      } else if (measure == "vali" || measure == "valc") {
+        # Values: Keep numbered items 1-20
+        value_items <- item_vars[grepl("_[1-9]$|_1[0-9]$|_20$", item_vars)]
+        clean_sets[[time_point]][[measure]] <- value_items
+        
+      } else if (measure == "gshs") {
+        # Hope: Keep numbered items, separate pathways and agency
+        path_items <- item_vars[grepl("_path_[1-6]", item_vars)]
+        agen_items <- item_vars[grepl("_agen_[1-6]", item_vars)]
+        
+        if (length(path_items) >= 2) clean_sets[[time_point]][["gshs_pathways"]] <- path_items
+        if (length(agen_items) >= 2) clean_sets[[time_point]][["gshs_agency"]] <- agen_items
+        
+      } else if (measure == "pilea") {
+        # PIL-EA: Keep numbered items
+        pilea_items <- item_vars[grepl("_(eng_|bey_)[1-6]", item_vars)]
+        clean_sets[[time_point]][[measure]] <- pilea_items
+        
+      } else {
+        # For other measures, keep numeric items and apply basic filtering
+        numeric_items <- item_vars[grepl("_[1-9]$|_1[0-9]$|_20$", item_vars)]
+        if (length(numeric_items) >= 2) {
+          clean_sets[[time_point]][[measure]] <- numeric_items
+        }
+      }
+    }
+  }
+  
+  return(clean_sets)
+}
+
+# =============================================================================
+# 3. DETERMINE SCALE RANGES FROM BASELINE DATA
+# =============================================================================
+
+determine_scale_ranges <- function(data, clean_sets) {
+  scale_ranges <- list()
+  
+  # Focus on baseline variables to determine ranges
+  if ("b_" %in% names(clean_sets)) {
+    for (measure in names(clean_sets[["b_"]])) {
+      vars <- clean_sets[["b_"]][[measure]]
+      numeric_vars <- vars[safe_sapply_logical(vars, function(x) is_numeric_var(data, x))]
+      
+      if (length(numeric_vars) > 0) {
+        # Get the range across all items in this scale
+        all_values <- unlist(data[, numeric_vars, drop = FALSE])
+        all_values <- all_values[!is.na(all_values)]
+        
+        if (length(all_values) > 0) {
+          scale_ranges[[measure]] <- list(
+            min_val = min(all_values),
+            max_val = max(all_values),
+            variables_checked = numeric_vars
+          )
+        }
+      }
+    }
+  }
+  
+  return(scale_ranges)
+}
+
+# =============================================================================
+# 4. COMPUTE POMP SCORES
+# =============================================================================
+
+compute_pomp_scores <- function(data, scale_ranges, clean_sets) {
+  pomp_data <- data
+  
+  for (time_point in names(clean_sets)) {
+    for (measure in names(clean_sets[[time_point]])) {
+      # Get scale range info
+      base_measure <- gsub("_(autonomy|competence|relatedness|pathways|agency)$", "", measure)
+      
+      if (base_measure %in% names(scale_ranges)) {
+        range_info <- scale_ranges[[base_measure]]
+        vars <- clean_sets[[time_point]][[measure]]
+        numeric_vars <- vars[safe_sapply_logical(vars, function(x) is_numeric_var(data, x))]
+        
+        if (length(numeric_vars) >= 2) {
+          # Calculate mean of items first
+          mean_score <- rowMeans(data[, numeric_vars, drop = FALSE], na.rm = TRUE)
+          
+          # Convert to POMP (0-100 scale)
+          pomp_score <- ((mean_score - range_info$min_val) / 
+                           (range_info$max_val - range_info$min_val)) * 100
+          
+          # Create POMP variable name
+          pomp_name <- paste0(time_point, measure, "_POMP")
+          pomp_data[[pomp_name]] <- pomp_score
+          
+          cat("Created POMP score:", pomp_name, 
+              "from", length(numeric_vars), "items",
+              "(range:", range_info$min_val, "-", range_info$max_val, ")\n")
+        }
+      }
+    }
+  }
+  
+  return(pomp_data)
+}
+
+# =============================================================================
+# 5. EXECUTE CLEANING AND POMP CREATION
+# =============================================================================
+
+# Identify clean item sets
+clean_item_sets <- identify_clean_item_sets(dat_processed, measure_vars)
+
+cat("=== CLEAN ITEM SETS IDENTIFIED ===\n")
+for (time_point in names(clean_item_sets)) {
+  cat("\n", time_point, ":\n")
+  for (measure in names(clean_item_sets[[time_point]])) {
+    items <- clean_item_sets[[time_point]][[measure]]
+    cat("  ", measure, ":", length(items), "items\n")
+  }
+}
+
+# Determine scale ranges from baseline
+scale_ranges <- determine_scale_ranges(dat_processed, clean_item_sets)
+
+cat("\n=== SCALE RANGES (from baseline) ===\n")
+for (measure in names(scale_ranges)) {
+  range_info <- scale_ranges[[measure]]
+  cat(measure, ": ", range_info$min_val, " to ", range_info$max_val, 
+      " (from ", length(range_info$variables_checked), " variables)\n")
+}
+
+# Compute POMP scores
+dat_with_pomp <- compute_pomp_scores(dat_processed, scale_ranges, clean_item_sets)
+
+# =============================================================================
+# 6. CLEAN PSYCHOMETRIC ANALYSIS
+# =============================================================================
+
+calculate_clean_alphas <- function(data, clean_sets) {
+  alpha_results <- list()
+  
+  for (time_point in names(clean_sets)) {
+    alpha_results[[time_point]] <- list()
+    
+    for (measure in names(clean_sets[[time_point]])) {
+      vars <- clean_sets[[time_point]][[measure]]
+      numeric_vars <- vars[safe_sapply_logical(vars, function(x) is_numeric_var(data, x))]
+      
+      if (length(numeric_vars) >= 2) {
+        scale_data <- data[, numeric_vars, drop = FALSE]
+        scale_data <- scale_data[rowSums(!is.na(scale_data)) > 0, , drop = FALSE]
+        scale_data <- scale_data[, colSums(!is.na(scale_data)) > 0, drop = FALSE]
+        
+        if (nrow(scale_data) > 10 && ncol(scale_data) >= 2) {
+          tryCatch({
+            suppressWarnings({
+              alpha_result <- psych::alpha(scale_data, check.keys = TRUE, warnings = FALSE)
+            })
+            alpha_results[[time_point]][[measure]] <- list(
+              alpha = alpha_result$total$std.alpha,
+              raw_alpha = alpha_result$total$raw_alpha,
+              n_items = ncol(scale_data),
+              n_cases = nrow(scale_data[complete.cases(scale_data), ]),
+              variables = numeric_vars,
+              reliability = ifelse(alpha_result$total$std.alpha >= 0.70, "Good", 
+                                   ifelse(alpha_result$total$std.alpha >= 0.60, "Acceptable", "Poor"))
+            )
+          }, error = function(e) {
+            cat("Error calculating alpha for", time_point, measure, ":", e$message, "\n")
+          })
+        }
+      }
+    }
+  }
+  return(alpha_results)
+}
+
+# Calculate clean alphas
+alpha_results <- calculate_clean_alphas(dat_with_pomp, clean_item_sets)
+
+# Create alpha table
+create_alpha_table <- function(alpha_results) {
+  alpha_df <- data.frame()
+  
+  for (time_point in names(alpha_results)) {
+    for (measure in names(alpha_results[[time_point]])) {
+      result <- alpha_results[[time_point]][[measure]]
+      alpha_df <- rbind(alpha_df, data.frame(
+        Time_Point = gsub("_$", "", time_point),
+        Measure = toupper(measure),
+        Alpha = round(result$alpha, 3),
+        Raw_Alpha = round(result$raw_alpha, 3),
+        N_Items = result$n_items,
+        N_Cases = result$n_cases,
+        Reliability = result$reliability,
+        stringsAsFactors = FALSE
+      ))
+    }
+  }
+  return(alpha_df)
+}
+
+if (length(alpha_results) > 0) {
+  alpha_table <- create_alpha_table(alpha_results)
+  cat("\n=== CRONBACH'S ALPHA RESULTS (Clean Item Sets) ===\n")
+  print(kable(alpha_table, format = "pipe", align = c("l", "l", "r", "r", "r", "r", "l")))
+} else {
+  cat("No alpha results to display\n")
+}
+
+# =============================================================================
+# 7. CORRELATION ANALYSIS WITH POMP SCORES
+# =============================================================================
+
+# Extract key variables for correlation (prioritize POMP scores)
+extract_correlation_vars <- function(data) {
+  outcome_vars <- list()
+  correlate_vars <- list()
+  
+  # Look for POMP versions of happiness and purpose
+  for (time in c("b_", "fu1_", "fu2_")) {
+    time_label <- gsub("_$", "", time)
+    
+    # Happiness (SHS)
+    shs_pomp <- grep(paste0("^", time, "shs.*_POMP$"), names(data), value = TRUE)
+    shs_mean <- grep(paste0("^", time, "shs_mean$"), names(data), value = TRUE)
+    
+    if (length(shs_pomp) > 0) {
+      outcome_vars[[paste0(time_label, "_happiness")]] <- shs_pomp[1]
+    } else if (length(shs_mean) > 0) {
+      outcome_vars[[paste0(time_label, "_happiness")]] <- shs_mean[1]
+    }
+    
+    # Purpose (BPURP)
+    bpurp_pomp <- grep(paste0("^", time, "bpurp.*_POMP$"), names(data), value = TRUE)
+    bpurp_mean <- grep(paste0("^", time, "bpurp_mean$"), names(data), value = TRUE)
+    
+    if (length(bpurp_pomp) > 0) {
+      outcome_vars[[paste0(time_label, "_purpose")]] <- bpurp_pomp[1]
+    } else if (length(bpurp_mean) > 0) {
+      outcome_vars[[paste0(time_label, "_purpose")]] <- bpurp_mean[1]
+    }
+    
+    # Correlates (prioritize POMP scores)
+    for (measure in c("bmpns_autonomy", "bmpns_competence", "bmpns_relatedness", 
+                      "vali", "valc", "gshs_pathways", "gshs_agency", "pilea")) {
+      pomp_vars <- grep(paste0("^", time, measure, ".*_POMP$"), names(data), value = TRUE)
+      mean_vars <- grep(paste0("^", time, ".*", gsub("_.*", "", measure), ".*mean$"), names(data), value = TRUE)
+      
+      if (length(pomp_vars) > 0) {
+        correlate_vars[[paste0(time_label, "_", measure)]] <- pomp_vars[1]
+      } else if (length(mean_vars) > 0) {
+        correlate_vars[[paste0(time_label, "_", measure)]] <- mean_vars[1]
+      }
+    }
+  }
+  
+  return(list(outcomes = outcome_vars, correlates = correlate_vars))
+}
+
+# Get variables for correlation
+cor_vars <- extract_correlation_vars(dat_with_pomp)
+
+cat("\n=== VARIABLES FOR CORRELATION ANALYSIS ===\n")
+cat("Outcomes:\n")
+for (i in 1:length(cor_vars$outcomes)) {
+  cat("  ", names(cor_vars$outcomes)[i], ":", cor_vars$outcomes[[i]], "\n")
+}
+
+cat("\nCorrelates:\n")
+for (i in 1:length(cor_vars$correlates)) {
+  cat("  ", names(cor_vars$correlates)[i], ":", cor_vars$correlates[[i]], "\n")
+}
+
+# Calculate correlations
+create_correlation_table <- function(data, outcome_vars, correlate_vars) {
+  all_vars <- c(unlist(outcome_vars), unlist(correlate_vars))
+  numeric_check <- safe_sapply_logical(all_vars, function(x) is_numeric_var(data, x))
+  existing_vars <- all_vars[numeric_check]
+  
+  if (length(existing_vars) < 2) {
+    cat("Insufficient variables for correlation\n")
+    return(NULL)
+  }
+  
+  cor_data <- data[, existing_vars, drop = FALSE]
+  cor_matrix <- cor(cor_data, use = "pairwise.complete.obs")
+  
+  outcome_names <- unlist(outcome_vars)
+  outcome_names <- outcome_names[outcome_names %in% colnames(cor_matrix)]
+  
+  correlate_names <- unlist(correlate_vars)
+  correlate_names <- correlate_names[correlate_names %in% rownames(cor_matrix)]
+  
+  if (length(outcome_names) > 0 && length(correlate_names) > 0) {
+    return(cor_matrix[correlate_names, outcome_names, drop = FALSE])
+  }
+  
+  return(cor_matrix)
+}
+
+correlation_results <- create_correlation_table(dat_with_pomp, cor_vars$outcomes, cor_vars$correlates)
+
+if (!is.null(correlation_results)) {
+  cat("\n=== CORRELATION RESULTS (POMP Scores When Available) ===\n")
+  print(kable(round(correlation_results, 3), format = "pipe"))
+}
+
+# =============================================================================
+# 8. SUMMARY
+# =============================================================================
+
+cat("\n=== ANALYSIS SUMMARY ===\n")
+cat("- Identified clean item sets without redundant variants\n")
+cat("- Computed POMP scores for", length(scale_ranges), "measures\n")
+cat("- Calculated reliability for", length(unlist(alpha_results)), "clean scales\n")
+cat("- Generated correlation matrix using POMP scores when available\n")
+
+# Optional: Save results
+# write.csv(alpha_table, "clean_reliability_analysis.csv", row.names = FALSE)
+# write.csv(correlation_results, "pomp_correlation_matrix.csv", row.names = TRUE)
+
+cat("\nAnalysis complete! POMP scores created and clean psychometrics calculated.\n")

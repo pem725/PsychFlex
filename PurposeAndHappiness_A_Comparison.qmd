@@ -943,8 +943,9 @@ run_measurement_invariance <- function(data) {
                       legend = FALSE,
                       edge.color = edge_colors,
                       residuals = FALSE,  # Explicitly disable residuals
-                      bifactor = FALSE)   # Disable bifactor structure
-                      
+                      bifactor = FALSE, #)  # Disable bifactor structure
+                      filetype = "pdf",
+                      filename = "JoPP-Figure1.pdf")
   }
   
   return(list(
@@ -957,10 +958,12 @@ run_measurement_invariance <- function(data) {
   ))
 }
 
+
 # Run the analysis with your data
 results <- run_measurement_invariance(data)
-
 ```
+
+
 
 ```{r}
 #| echo: false
