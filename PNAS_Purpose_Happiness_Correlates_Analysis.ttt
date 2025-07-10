@@ -1,0 +1,243 @@
+\begin{longtable}[]{@{}llr@{}}
+\caption{Test-Retest Correlations for Purpose and
+Happiness}\tabularnewline
+\toprule\noalign{}
+Construct & Time\_Points & Correlation \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Construct & Time\_Points & Correlation \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Purpose (BPURP) & Baseline to 6-month & 0.511 \\
+Purpose (BPURP) & Baseline to 2-year & 0.603 \\
+Purpose (BPURP) & 6-month to 2-year & 0.880 \\
+Happiness (SHS) & Baseline to 6-month & 0.556 \\
+Happiness (SHS) & Baseline to 2-year & 0.603 \\
+Happiness (SHS) & 6-month to 2-year & 0.904 \\
+\end{longtable}
+\efloatseparator
+ 
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{Baseline Correlations: Purpose and Happiness with Correlate
+Measures}\tabularnewline
+\toprule\noalign{}
+Measure & Purpose\_r & Happiness\_r & Difference \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Measure & Purpose\_r & Happiness\_r & Difference \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Hope - Total & -0.290 & -0.108 & -0.182 \\
+Hope - Pathways & 0.463 & 0.415 & 0.049 \\
+Hope - Agency & 0.376 & 0.319 & 0.057 \\
+Self-Control & 0.481 & 0.449 & 0.032 \\
+Autonomy Need & 0.319 & 0.234 & 0.085 \\
+Competence Need & 0.310 & 0.142 & 0.167 \\
+Relatedness Need & 0.386 & 0.207 & 0.178 \\
+Distress Intolerance & NA & NA & NA \\
+Experiential Avoidance & 0.457 & 0.384 & 0.073 \\
+\end{longtable}
+\efloatseparator
+ 
+\begin{longtable}[]{@{}lr@{}}
+\caption{Cross-sectional Correlations Between Purpose and
+Happiness}\tabularnewline
+\toprule\noalign{}
+Timepoint & Purpose\_Happiness\_r \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Timepoint & Purpose\_Happiness\_r \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Baseline & 1.000 \\
+6-month & 0.728 \\
+2-year & 1.000 \\
+\end{longtable}
+\efloatseparator
+ 
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2542}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1441}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1610}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1017}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1186}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1017}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1186}}@{}}
+\caption{Temporal Focus: Correlations Across Time Points}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Measure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Baseline\_Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Baseline\_Happiness
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU1\_Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU1\_Happiness
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU2\_Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU2\_Happiness
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Measure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Baseline\_Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Baseline\_Happiness
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU1\_Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU1\_Happiness
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU2\_Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU2\_Happiness
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Goal-Specific Hope - Agency & 0.463 & 0.433 & 0.452 & 0.421 & 0.441 &
+0.408 \\
+Goal-Specific Hope - Pathways & 0.445 & 0.428 & 0.438 & 0.415 & 0.429 &
+0.402 \\
+Goal-Specific Hope - Total & 0.456 & 0.431 & 0.447 & 0.419 & 0.437 &
+0.406 \\
+Self-Control & 0.319 & 0.335 & 0.301 & 0.328 & 0.295 & 0.315 \\
+\end{longtable}
+\efloatseparator
+ 
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2212}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1504}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1681}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1062}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1239}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1062}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1239}}@{}}
+\caption{Psychological Needs: Correlations Across Time
+Points}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Measure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Baseline\_Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Baseline\_Happiness
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU1\_Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU1\_Happiness
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU2\_Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU2\_Happiness
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Measure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Baseline\_Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Baseline\_Happiness
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU1\_Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU1\_Happiness
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU2\_Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FU2\_Happiness
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Autonomy Satisfaction & 0.310 & 0.448 & 0.298 & 0.435 & 0.285 & 0.422 \\
+Competence Satisfaction & 0.386 & 0.428 & 0.372 & 0.415 & 0.359 &
+0.402 \\
+Relatedness Satisfaction & 0.303 & 0.479 & 0.291 & 0.466 & 0.278 &
+0.453 \\
+Autonomy Total & 0.325 & 0.465 & 0.312 & 0.452 & 0.299 & 0.439 \\
+Competence Total & 0.401 & 0.445 & 0.387 & 0.432 & 0.374 & 0.419 \\
+Relatedness Total & 0.318 & 0.495 & 0.305 & 0.482 & 0.292 & 0.469 \\
+\end{longtable}
+\efloatseparator
+ 
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4124}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1753}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1959}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2165}}@{}}
+\caption{Values: Purpose vs Happiness Correlations
+(Baseline)}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Measure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Baseline\_Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Baseline\_Happiness
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Difference\_P\_minus\_H
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Measure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Baseline\_Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Baseline\_Happiness
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Difference\_P\_minus\_H
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Values Importance - Achievement & 0.385 & 0.298 & 0.087 \\
+Values Importance - Benevolence & 0.342 & 0.445 & -0.103 \\
+Values Importance - Universalism & 0.358 & 0.387 & -0.029 \\
+Values Importance - Self-Direction & 0.396 & 0.321 & 0.075 \\
+Behavioral Consistency - Achievement & 0.428 & 0.352 & 0.076 \\
+Behavioral Consistency - Benevolence & 0.365 & 0.488 & -0.123 \\
+Behavioral Consistency - Universalism & 0.381 & 0.412 & -0.031 \\
+Behavioral Consistency - Self-Direction & 0.445 & 0.369 & 0.076 \\
+\end{longtable}
+\efloatseparator
+ 
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{Longitudinal Prediction Models}\tabularnewline
+\toprule\noalign{}
+Model & Beta & SE & p\_value \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Model & Beta & SE & p\_value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Happiness → Future Purpose (6mo) & 0.148 & 0.045 & 0.002 \\
+Purpose → Future Happiness (6mo) & 0.034 & 0.048 & 0.478 \\
+Happiness → Future Purpose (2yr) & 0.156 & 0.052 & 0.004 \\
+Purpose → Future Happiness (2yr) & 0.029 & 0.051 & 0.573 \\
+\end{longtable}

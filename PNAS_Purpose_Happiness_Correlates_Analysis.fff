@@ -1,0 +1,46 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{fig-stability}Temporal Stability of Purpose and
+Happiness Over Two Years}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{PNAS_Purpose_Happiness_Correlates_Analysis_files/figure-pdf/fig-stability-1.pdf}}
+
+}
+
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{fig-correlation-comparison}Differential Correlations:
+Purpose vs Happiness with Key Correlates}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{PNAS_Purpose_Happiness_Correlates_Analysis_files/figure-pdf/fig-correlation-comparison-1.pdf}}
+
+}
+
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+
+\caption{\label{fig-prediction}Cross-lagged Relationships Between
+Purpose and Happiness}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{PNAS_Purpose_Happiness_Correlates_Analysis_files/figure-pdf/fig-prediction-1.pdf}}
+
+}
+
+\end{figure*}

@@ -356,14 +356,6 @@ display: none;
 <h1>CLAUDE.md</h1>
 <p>This file provides guidance to Claude Code (claude.ai/code) when
 working with code in this repository.</p>
-<div id="project-overview" class="section level2">
-<h2>Project Overview</h2>
-<p>This is a psychological research project analyzing the longitudinal
-relationship between purpose in life (BPURP) and happiness (SHS) using
-structural equation modeling, cross-lagged panel models, and measurement
-invariance testing. The project produces academic manuscripts for
-publication in psychology journals.</p>
-</div>
 <div id="run-commands" class="section level2">
 <h2>Run Commands</h2>
 <ul>
@@ -372,107 +364,8 @@ publication in psychology journals.</p>
 <code>Rscript purpose-happiness-minimal.r</code></li>
 <li>Run full analysis:
 <code>Rscript purpose-happiness-analysis.r</code></li>
-<li>Run cross-lagged panel model:
-<code>Rscript cross-lagged-panel-model.r</code></li>
 <li>Render Quarto document: <code>quarto render filename.qmd</code></li>
-<li>Render specific formats:
-<code>quarto render filename.qmd --to pdf</code> or
-<code>--to html</code> or <code>--to docx</code></li>
 </ul>
-</div>
-<div id="data-architecture" class="section level2">
-<h2>Data Architecture</h2>
-<div id="data-sources" class="section level3">
-<h3>Data Sources</h3>
-<ul>
-<li>Primary longitudinal dataset: <code>tmpPvHitems4LLM.csv</code>
-(processed from SPSS .sav files)</li>
-<li>Multiple SPSS data files (.sav) containing raw survey data from
-baseline, 6-month, and 2-year follow-ups</li>
-<li>Key measures: Subjective Happiness Scale (SHS) and Brief Purpose
-(BPURP) at three timepoints</li>
-</ul>
-</div>
-<div id="data-structure" class="section level3">
-<h3>Data Structure</h3>
-<ul>
-<li>Variables follow naming convention:
-<code>{timepoint}_{scale}_{item}</code> (e.g., <code>b_shs_gh_a</code>,
-<code>fu1_bpurp_2</code>)</li>
-<li>Timepoints: <code>b</code> (baseline), <code>fu1</code> (6-month
-follow-up), <code>fu2</code> (2-year follow-up)</li>
-<li>Composite scores created via <code>compute_scale_scores()</code>
-function using <code>rowMeans()</code> with
-<code>na.rm = TRUE</code></li>
-</ul>
-</div>
-</div>
-<div id="core-analysis-framework" class="section level2">
-<h2>Core Analysis Framework</h2>
-<div id="primary-scripts" class="section level3">
-<h3>Primary Scripts</h3>
-<ul>
-<li><code>purpose-happiness-analysis.r</code>: Main analysis functions
-for measurement invariance, stability, correlations</li>
-<li><code>purpose-happiness-minimal.r</code>: Streamlined analysis
-focusing on core functionality</li>
-<li><code>cross-lagged-panel-model.r</code>: Implements cross-lagged
-panel models using lavaan</li>
-<li><code>purpose-happiness-quantile-regression.r</code>: Quantile
-regression analyses</li>
-</ul>
-</div>
-<div id="analysis-pipeline" class="section level3">
-<h3>Analysis Pipeline</h3>
-<ol style="list-style-type: decimal">
-<li><strong>Data Preparation</strong>: Use
-<code>compute_scale_scores()</code> to create composite measures</li>
-<li><strong>Measurement Invariance</strong>: Test configural, metric,
-and scalar invariance using
-<code>run_measurement_invariance()</code></li>
-<li><strong>Stability Analysis</strong>: Compute test-retest
-correlations via <code>run_stability_analysis()</code></li>
-<li><strong>Cross-Lagged Models</strong>: Examine bidirectional
-relationships over time</li>
-<li><strong>Correlational Analysis</strong>: Compare purpose vs
-happiness correlates using <code>run_correlate_analysis()</code></li>
-</ol>
-</div>
-<div id="statistical-methods" class="section level3">
-<h3>Statistical Methods</h3>
-<ul>
-<li>Confirmatory Factor Analysis (CFA) using lavaan package</li>
-<li>Structural Equation Modeling (SEM) for longitudinal models</li>
-<li>Measurement invariance testing (configural → metric → scalar)</li>
-<li>Cross-lagged panel models to test causal precedence</li>
-<li>Quantile regression for distributional analyses</li>
-</ul>
-</div>
-</div>
-<div id="document-generation" class="section level2">
-<h2>Document Generation</h2>
-<div id="quarto-documents" class="section level3">
-<h3>Quarto Documents</h3>
-<ul>
-<li>Use APA Quarto extension (<code>apaquarto-*</code> formats) for
-academic manuscripts</li>
-<li>Main manuscripts: <code>Purpose-Happiness-JOPP.qmd</code>,
-<code>Paper1_measuring_purpose_happiness.qmd</code></li>
-<li>Supplementary materials:
-<code>purpose_vs_happiness_supplement.qmd</code></li>
-</ul>
-</div>
-<div id="output-management" class="section level3">
-<h3>Output Management</h3>
-<ul>
-<li>Figures automatically generated in <code>*_files/figure-*</code>
-directories</li>
-<li>Tables stored in <code>output_tables/</code> directory as HTML and
-TXT files</li>
-<li>Results objects saved as <code>.RData</code> files for
-reproducibility</li>
-</ul>
-</div>
 </div>
 <div id="code-style-guidelines" class="section level2">
 <h2>Code Style Guidelines</h2>
@@ -491,54 +384,6 @@ dplyr/tidyr</li>
 <li>Avoid hardcoded paths; use relative paths</li>
 <li>R version: Code is compatible with R 4.0+</li>
 </ul>
-</div>
-<div id="key-dependencies" class="section level2">
-<h2>Key Dependencies</h2>
-<div id="required-r-packages" class="section level3">
-<h3>Required R Packages</h3>
-<ul>
-<li><code>lavaan</code>: Structural equation modeling and CFA</li>
-<li><code>dplyr</code>/<code>tidyr</code>: Data manipulation and
-reshaping<br />
-</li>
-<li><code>ggplot2</code>: Visualization</li>
-<li><code>psych</code>: Psychometric analysis and descriptives</li>
-<li><code>knitr</code>/<code>kableExtra</code>: Table formatting</li>
-<li><code>foreign</code>: Reading SPSS .sav files</li>
-<li><code>semTools</code>: Additional SEM utilities</li>
-<li><code>corrplot</code>: Correlation visualization</li>
-</ul>
-</div>
-<div id="quarto-extensions" class="section level3">
-<h3>Quarto Extensions</h3>
-<ul>
-<li><code>wjschne/apaquarto</code>: APA 7th edition formatting for
-academic manuscripts</li>
-<li>Supports PDF, HTML, DOCX, and Typst output formats</li>
-</ul>
-</div>
-</div>
-<div id="important-file-patterns" class="section level2">
-<h2>Important File Patterns</h2>
-<ul>
-<li>Analysis scripts: <code>*analysis*.r</code>,
-<code>*model*.r</code></li>
-<li>Manuscript files: <code>*.qmd</code> (Quarto documents)</li>
-<li>Data files: <code>*.sav</code> (SPSS), <code>*.csv</code> (processed
-data)</li>
-<li>Results: <code>*.RData</code>, <code>output_tables/*</code></li>
-<li>Bibliography: <code>references.bib</code>,
-<code>bibliography.bib</code></li>
-</ul>
-</div>
-<div id="research-context" class="section level2">
-<h2>Research Context</h2>
-<p>This project examines whether purpose and happiness are distinct
-constructs by analyzing: - Temporal stability differences between
-constructs - Differential correlational patterns with psychological
-variables - Bidirectional longitudinal relationships using cross-lagged
-panel models - The central finding: happiness predicts future purpose
-more than purpose predicts happiness</p>
 </div>
 </div>
 

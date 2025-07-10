@@ -20,7 +20,7 @@ author:
     equal-contributor: true
     #role: "corresponding author"
     corresponding: false
-    - name: Amie MacKay
+  - name: Amie MacKay
     email: amackay4@gmu.edu
     affiliation:
       - ref: GMU
