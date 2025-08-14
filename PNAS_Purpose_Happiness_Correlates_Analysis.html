@@ -71,23 +71,21 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#happiness" id="toc-happiness" class="nav-link" data-scroll-target="#happiness">Happiness</a></li>
   <li><a href="#correlate-measures" id="toc-correlate-measures" class="nav-link" data-scroll-target="#correlate-measures">Correlate Measures</a></li>
   </ul></li>
+  <li><a href="#data-loading-and-preparation" id="toc-data-loading-and-preparation" class="nav-link" data-scroll-target="#data-loading-and-preparation">Data Loading and Preparation</a>
+  <ul class="collapse">
+  <li><a href="#pomp-conversion" id="toc-pomp-conversion" class="nav-link" data-scroll-target="#pomp-conversion">Pomp Conversion</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
   <ul class="collapse">
-  <li><a href="#stability-analysis" id="toc-stability-analysis" class="nav-link" data-scroll-target="#stability-analysis">Stability Analysis</a></li>
-  <li><a href="#correlational-analysis" id="toc-correlational-analysis" class="nav-link" data-scroll-target="#correlational-analysis">Correlational Analysis</a>
-  <ul class="collapse">
-  <li><a href="#temporal-focus-correlates" id="toc-temporal-focus-correlates" class="nav-link" data-scroll-target="#temporal-focus-correlates">Temporal Focus Correlates</a></li>
-  <li><a href="#psychological-needs-correlates" id="toc-psychological-needs-correlates" class="nav-link" data-scroll-target="#psychological-needs-correlates">Psychological Needs Correlates</a></li>
-  <li><a href="#values-based-correlates" id="toc-values-based-correlates" class="nav-link" data-scroll-target="#values-based-correlates">Values-Based Correlates</a></li>
-  </ul></li>
-  <li><a href="#longitudinal-prediction-analysis" id="toc-longitudinal-prediction-analysis" class="nav-link" data-scroll-target="#longitudinal-prediction-analysis">Longitudinal Prediction Analysis</a></li>
+  <li><a href="#correlations-between-purpose-happiness-and-theoretically-relevant-measures" id="toc-correlations-between-purpose-happiness-and-theoretically-relevant-measures" class="nav-link" data-scroll-target="#correlations-between-purpose-happiness-and-theoretically-relevant-measures">Correlations Between Purpose, Happiness, and Theoretically Relevant Measures</a></li>
+  <li><a href="#differential-correlation-analysis" id="toc-differential-correlation-analysis" class="nav-link" data-scroll-target="#differential-correlation-analysis">Differential Correlation Analysis</a></li>
+  <li><a href="#longitudinal-stability-analysis" id="toc-longitudinal-stability-analysis" class="nav-link" data-scroll-target="#longitudinal-stability-analysis">Longitudinal Stability Analysis</a></li>
+  <li><a href="#cross-lagged-associations-between-purpose-and-happiness" id="toc-cross-lagged-associations-between-purpose-and-happiness" class="nav-link" data-scroll-target="#cross-lagged-associations-between-purpose-and-happiness">Cross-Lagged Associations Between Purpose and Happiness</a></li>
   </ul></li>
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a>
   <ul class="collapse">
   <li><a href="#key-findings" id="toc-key-findings" class="nav-link" data-scroll-target="#key-findings">Key Findings</a></li>
-  <li><a href="#implications-for-well-being-theory" id="toc-implications-for-well-being-theory" class="nav-link" data-scroll-target="#implications-for-well-being-theory">Implications for Well-being Theory</a></li>
-  <li><a href="#limitations-and-future-directions" id="toc-limitations-and-future-directions" class="nav-link" data-scroll-target="#limitations-and-future-directions">Limitations and Future Directions</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="PNAS_Purpose_Happiness_Correlates_Analysis.docx"><i class="bi bi-file-word"></i>MS Word (apaquarto)</a></li><li><a href="PNAS_Purpose_Happiness_Correlates_Analysis.pdf"><i class="bi bi-file-pdf"></i>PDF (apaquarto)</a></li></ul></div></nav>
@@ -175,6 +173,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="purpose" class="level3">
 <h3 data-anchor-id="purpose">Purpose</h3>
 <p><strong>Brief Measure of Purpose in Life (BPIL; Hill, Edmonds, Peterson, Luyckx, &amp; Andrews, 2016).</strong> The 4-item BPIL measures the degree to which one has a clear mission in life (e.g., <em>“My plans for the future match with my true interests and values”</em>). Items are rated on a 5-point Likert scale (from 0 or <em>not at all</em> to 4 or <em>very much</em>). The BPIL demonstrates good construct validity and exhibited acceptable internal consistency at all time points (T1: α = .84; T2: α = .90; T3: α = .88).</p>
+<p>We also used the <strong>Purpose in Life - External Aim Scale (PILEA; Hill, Edmonds, Peterson, Luyckx, &amp; Andrews, 2016)</strong>. The PILEA is a 6-item measure that assesses purpose in life through two subscales: engagement (e.g., <em>“I feel that I am doing what I was meant to do in life”</em>) and beyond-the-self (e.g., <em>“I feel that my life has meaning beyond my own personal interests”</em>). Items are rated on a 5-point Likert scale (from 0 or <em>not at all</em> to 4 or <em>very much</em>). The PILEA also demonstrated good construct validity and exhibited acceptable internal consistency at all time points (T1: α = .90; T2: α = .92; T3: α = .91).</p>
 </section>
 <section id="happiness" class="level3">
 <h3 data-anchor-id="happiness">Happiness</h3>
@@ -188,431 +187,2978 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Distress Intolerance (McHugh &amp; Otto, 2012).</strong> Measures one’s inability to tolerate negative somatic and emotional states.</p>
 <p><strong>Brief Experiential Avoidance Measure (BEAQ; Gámez et al., 2014).</strong> Measures experiential avoidance as a shortened version of the MEAQ.</p>
 <p><strong>Values Measures.</strong> The Twenty Item Values Inventory assesses both importance of particular values and behavioral consistency with those values across 10 value domains.</p>
+<p><strong>Stress Tolerance.</strong> A 6-item measure of stress tolerance was created for this study, assessing the ability to cope with stressors and maintain functioning.</p>
+</section>
+</section>
+<section id="data-loading-and-preparation" class="level2">
+<h2 data-anchor-id="data-loading-and-preparation">Data Loading and Preparation</h2>
+<section id="pomp-conversion" class="level3">
+<h3 data-anchor-id="pomp-conversion">Pomp Conversion</h3>
 </section>
 </section>
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
-<section id="stability-analysis" class="level2">
-<h2 data-anchor-id="stability-analysis">Stability Analysis</h2>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Test-Retest Correlations for Purpose and Happiness</caption>
+<section id="correlations-between-purpose-happiness-and-theoretically-relevant-measures" class="level2">
+<h2 data-anchor-id="correlations-between-purpose-happiness-and-theoretically-relevant-measures">Correlations Between Purpose, Happiness, and Theoretically Relevant Measures</h2>
+<div id="rwnqaobvkz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rwnqaobvkz table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#rwnqaobvkz thead, #rwnqaobvkz tbody, #rwnqaobvkz tfoot, #rwnqaobvkz tr, #rwnqaobvkz td, #rwnqaobvkz th {
+  border-style: none;
+}
+
+#rwnqaobvkz p {
+  margin: 0;
+  padding: 0;
+}
+
+#rwnqaobvkz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#rwnqaobvkz .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#rwnqaobvkz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#rwnqaobvkz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#rwnqaobvkz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rwnqaobvkz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rwnqaobvkz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rwnqaobvkz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#rwnqaobvkz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#rwnqaobvkz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#rwnqaobvkz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#rwnqaobvkz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#rwnqaobvkz .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#rwnqaobvkz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#rwnqaobvkz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rwnqaobvkz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#rwnqaobvkz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#rwnqaobvkz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#rwnqaobvkz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rwnqaobvkz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#rwnqaobvkz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#rwnqaobvkz .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#rwnqaobvkz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rwnqaobvkz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#rwnqaobvkz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#rwnqaobvkz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rwnqaobvkz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rwnqaobvkz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#rwnqaobvkz .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rwnqaobvkz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#rwnqaobvkz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rwnqaobvkz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rwnqaobvkz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rwnqaobvkz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rwnqaobvkz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rwnqaobvkz .gt_left {
+  text-align: left;
+}
+
+#rwnqaobvkz .gt_center {
+  text-align: center;
+}
+
+#rwnqaobvkz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#rwnqaobvkz .gt_font_normal {
+  font-weight: normal;
+}
+
+#rwnqaobvkz .gt_font_bold {
+  font-weight: bold;
+}
+
+#rwnqaobvkz .gt_font_italic {
+  font-style: italic;
+}
+
+#rwnqaobvkz .gt_super {
+  font-size: 65%;
+}
+
+#rwnqaobvkz .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#rwnqaobvkz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#rwnqaobvkz .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#rwnqaobvkz .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#rwnqaobvkz .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#rwnqaobvkz .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#rwnqaobvkz .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#rwnqaobvkz .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#rwnqaobvkz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
-<tr class="header">
-<th style="text-align: left;">Construct</th>
-<th style="text-align: left;">Time_Points</th>
-<th style="text-align: right;">Correlation</th>
+<tr class="gt_heading">
+<td colspan="6" class="gt_heading gt_title gt_font_normal" style="">
+Correlations Between Purpose, Happiness, and Theoretically Relevant Measures<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span>
+</td>
+</tr>
+<tr class="gt_heading">
+<td colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">
+Baseline Assessment (N = 345)<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span>
+</td>
+</tr>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="Variable">
+Measure
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="Purpose-(BPIL)">
+Purpose (BPIL)
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="Purpose-(PILEA)">
+Purpose (PILEA)
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="Purpose-(Engagement)">
+Purpose (Engagement)
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="Purpose-(Beyond-Self)">
+Purpose (Beyond-Self)
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="Happiness-(SHS)">
+Happiness (SHS)
+</th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Purpose (BPURP)</td>
-<td style="text-align: left;">Baseline to 6-month</td>
-<td style="text-align: right;">0.511</td>
+<tbody class="gt_table_body">
+<tr class="gt_group_heading_row">
+<th colspan="6" class="gt_group_heading" style="font-weight: bold;" scope="colgroup" id="Values (Behavioral Consistency)">
+Values (Behavioral Consistency)
+</th>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Purpose (BPURP)</td>
-<td style="text-align: left;">Baseline to 2-year</td>
-<td style="text-align: right;">0.603</td>
+<tr class="gt_row_group_first">
+<td headers="Values (Behavioral Consistency)  Variable" class="gt_row gt_left">
+Benevolence Values (Consistency)
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (BPIL)" class="gt_row gt_right">
+0.186
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (PILEA)" class="gt_row gt_right">
+0.383
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (Engagement)" class="gt_row gt_right">
+0.251
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.367
+</td>
+<td headers="Values (Behavioral Consistency)  Happiness (SHS)" class="gt_row gt_right">
+0.239
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Purpose (BPURP)</td>
-<td style="text-align: left;">6-month to 2-year</td>
-<td style="text-align: right;">0.880</td>
+<tr>
+<td headers="Values (Behavioral Consistency)  Variable" class="gt_row gt_left">
+Universalism Values (Consistency)
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (BPIL)" class="gt_row gt_right">
+0.193
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (PILEA)" class="gt_row gt_right">
+0.321
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (Engagement)" class="gt_row gt_right">
+0.176
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.351
+</td>
+<td headers="Values (Behavioral Consistency)  Happiness (SHS)" class="gt_row gt_right">
+0.260
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Happiness (SHS)</td>
-<td style="text-align: left;">Baseline to 6-month</td>
-<td style="text-align: right;">0.556</td>
+<tr>
+<td headers="Values (Behavioral Consistency)  Variable" class="gt_row gt_left">
+Achievement Values (Consistency)
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (BPIL)" class="gt_row gt_right">
+0.252
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (PILEA)" class="gt_row gt_right">
+0.184
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (Engagement)" class="gt_row gt_right">
+0.212
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.091
+</td>
+<td headers="Values (Behavioral Consistency)  Happiness (SHS)" class="gt_row gt_right">
+0.143
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Happiness (SHS)</td>
-<td style="text-align: left;">Baseline to 2-year</td>
-<td style="text-align: right;">0.603</td>
+<tr>
+<td headers="Values (Behavioral Consistency)  Variable" class="gt_row gt_left">
+Hedonism Values (Consistency)
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (BPIL)" class="gt_row gt_right">
+0.219
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (PILEA)" class="gt_row gt_right">
+0.156
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (Engagement)" class="gt_row gt_right">
+0.184
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.082
+</td>
+<td headers="Values (Behavioral Consistency)  Happiness (SHS)" class="gt_row gt_right">
+0.330
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Happiness (SHS)</td>
-<td style="text-align: left;">6-month to 2-year</td>
-<td style="text-align: right;">0.904</td>
+<tr class="gt_group_heading_row">
+<th colspan="6" class="gt_group_heading" style="font-weight: bold;" scope="colgroup" id="Values (Importance)">
+Values (Importance)
+</th>
+</tr>
+<tr class="gt_row_group_first">
+<td headers="Values (Importance)  Variable" class="gt_row gt_left">
+Benevolence Values (Importance)
+</td>
+<td headers="Values (Importance)  Purpose (BPIL)" class="gt_row gt_right">
+0.224
+</td>
+<td headers="Values (Importance)  Purpose (PILEA)" class="gt_row gt_right">
+0.453
+</td>
+<td headers="Values (Importance)  Purpose (Engagement)" class="gt_row gt_right">
+0.227
+</td>
+<td headers="Values (Importance)  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.500
+</td>
+<td headers="Values (Importance)  Happiness (SHS)" class="gt_row gt_right">
+0.271
+</td>
+</tr>
+<tr>
+<td headers="Values (Importance)  Variable" class="gt_row gt_left">
+Universalism Values (Importance)
+</td>
+<td headers="Values (Importance)  Purpose (BPIL)" class="gt_row gt_right">
+0.151
+</td>
+<td headers="Values (Importance)  Purpose (PILEA)" class="gt_row gt_right">
+0.323
+</td>
+<td headers="Values (Importance)  Purpose (Engagement)" class="gt_row gt_right">
+0.079
+</td>
+<td headers="Values (Importance)  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.445
+</td>
+<td headers="Values (Importance)  Happiness (SHS)" class="gt_row gt_right">
+0.188
+</td>
+</tr>
+<tr>
+<td headers="Values (Importance)  Variable" class="gt_row gt_left">
+Achievement Values (Importance)
+</td>
+<td headers="Values (Importance)  Purpose (BPIL)" class="gt_row gt_right">
+0.136
+</td>
+<td headers="Values (Importance)  Purpose (PILEA)" class="gt_row gt_right">
+0.124
+</td>
+<td headers="Values (Importance)  Purpose (Engagement)" class="gt_row gt_right">
+0.149
+</td>
+<td headers="Values (Importance)  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.055
+</td>
+<td headers="Values (Importance)  Happiness (SHS)" class="gt_row gt_right">
+0.060
+</td>
+</tr>
+<tr>
+<td headers="Values (Importance)  Variable" class="gt_row gt_left">
+Hedonism Values (Importance)
+</td>
+<td headers="Values (Importance)  Purpose (BPIL)" class="gt_row gt_right">
+0.122
+</td>
+<td headers="Values (Importance)  Purpose (PILEA)" class="gt_row gt_right">
+0.225
+</td>
+<td headers="Values (Importance)  Purpose (Engagement)" class="gt_row gt_right">
+0.197
+</td>
+<td headers="Values (Importance)  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.178
+</td>
+<td headers="Values (Importance)  Happiness (SHS)" class="gt_row gt_right">
+0.326
+</td>
+</tr>
+<tr class="gt_group_heading_row">
+<th colspan="6" class="gt_group_heading" style="font-weight: bold;" scope="colgroup" id="Emotional Tolerance">
+Emotional Tolerance
+</th>
+</tr>
+<tr class="gt_row_group_first">
+<td headers="Emotional Tolerance  Variable" class="gt_row gt_left">
+Distress Intolerance
+</td>
+<td headers="Emotional Tolerance  Purpose (BPIL)" class="gt_row gt_right">
+-0.290
+</td>
+<td headers="Emotional Tolerance  Purpose (PILEA)" class="gt_row gt_right">
+-0.108
+</td>
+<td headers="Emotional Tolerance  Purpose (Engagement)" class="gt_row gt_right">
+-0.199
+</td>
+<td headers="Emotional Tolerance  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.008
+</td>
+<td headers="Emotional Tolerance  Happiness (SHS)" class="gt_row gt_right">
+-0.425
+</td>
+</tr>
+<tr>
+<td headers="Emotional Tolerance  Variable" class="gt_row gt_left">
+Experiential Avoidance
+</td>
+<td headers="Emotional Tolerance  Purpose (BPIL)" class="gt_row gt_right">
+-0.313
+</td>
+<td headers="Emotional Tolerance  Purpose (PILEA)" class="gt_row gt_right">
+-0.216
+</td>
+<td headers="Emotional Tolerance  Purpose (Engagement)" class="gt_row gt_right">
+-0.271
+</td>
+<td headers="Emotional Tolerance  Purpose (Beyond-Self)" class="gt_row gt_right">
+-0.104
+</td>
+<td headers="Emotional Tolerance  Happiness (SHS)" class="gt_row gt_right">
+-0.386
+</td>
+</tr>
+<tr>
+<td headers="Emotional Tolerance  Variable" class="gt_row gt_left">
+Stress Tolerance
+</td>
+<td headers="Emotional Tolerance  Purpose (BPIL)" class="gt_row gt_right">
+0.214
+</td>
+<td headers="Emotional Tolerance  Purpose (PILEA)" class="gt_row gt_right">
+0.176
+</td>
+<td headers="Emotional Tolerance  Purpose (Engagement)" class="gt_row gt_right">
+0.237
+</td>
+<td headers="Emotional Tolerance  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.066
+</td>
+<td headers="Emotional Tolerance  Happiness (SHS)" class="gt_row gt_right">
+0.499
+</td>
+</tr>
+<tr class="gt_group_heading_row">
+<th colspan="6" class="gt_group_heading" style="font-weight: bold;" scope="colgroup" id="Psychological Needs">
+Psychological Needs
+</th>
+</tr>
+<tr class="gt_row_group_first">
+<td headers="Psychological Needs  Variable" class="gt_row gt_left">
+Autonomy Need
+</td>
+<td headers="Psychological Needs  Purpose (BPIL)" class="gt_row gt_right">
+0.310
+</td>
+<td headers="Psychological Needs  Purpose (PILEA)" class="gt_row gt_right">
+0.142
+</td>
+<td headers="Psychological Needs  Purpose (Engagement)" class="gt_row gt_right">
+0.217
+</td>
+<td headers="Psychological Needs  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.016
+</td>
+<td headers="Psychological Needs  Happiness (SHS)" class="gt_row gt_right">
+0.448
+</td>
+</tr>
+<tr>
+<td headers="Psychological Needs  Variable" class="gt_row gt_left">
+Competence Need
+</td>
+<td headers="Psychological Needs  Purpose (BPIL)" class="gt_row gt_right">
+0.386
+</td>
+<td headers="Psychological Needs  Purpose (PILEA)" class="gt_row gt_right">
+0.207
+</td>
+<td headers="Psychological Needs  Purpose (Engagement)" class="gt_row gt_right">
+0.315
+</td>
+<td headers="Psychological Needs  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.040
+</td>
+<td headers="Psychological Needs  Happiness (SHS)" class="gt_row gt_right">
+0.428
+</td>
+</tr>
+<tr>
+<td headers="Psychological Needs  Variable" class="gt_row gt_left">
+Relatedness Need
+</td>
+<td headers="Psychological Needs  Purpose (BPIL)" class="gt_row gt_right">
+0.303
+</td>
+<td headers="Psychological Needs  Purpose (PILEA)" class="gt_row gt_right">
+0.164
+</td>
+<td headers="Psychological Needs  Purpose (Engagement)" class="gt_row gt_right">
+0.280
+</td>
+<td headers="Psychological Needs  Purpose (Beyond-Self)" class="gt_row gt_right">
+-0.007
+</td>
+<td headers="Psychological Needs  Happiness (SHS)" class="gt_row gt_right">
+0.479
+</td>
+</tr>
+<tr class="gt_group_heading_row">
+<th colspan="6" class="gt_group_heading" style="font-weight: bold;" scope="colgroup" id="Time Orientation">
+Time Orientation
+</th>
+</tr>
+<tr class="gt_row_group_first">
+<td headers="Time Orientation  Variable" class="gt_row gt_left">
+Hope (Total)
+</td>
+<td headers="Time Orientation  Purpose (BPIL)" class="gt_row gt_right">
+0.463
+</td>
+<td headers="Time Orientation  Purpose (PILEA)" class="gt_row gt_right">
+0.415
+</td>
+<td headers="Time Orientation  Purpose (Engagement)" class="gt_row gt_right">
+0.470
+</td>
+<td headers="Time Orientation  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.219
+</td>
+<td headers="Time Orientation  Happiness (SHS)" class="gt_row gt_right">
+0.433
+</td>
+</tr>
+<tr>
+<td headers="Time Orientation  Variable" class="gt_row gt_left">
+Hope (Pathways)
+</td>
+<td headers="Time Orientation  Purpose (BPIL)" class="gt_row gt_right">
+0.376
+</td>
+<td headers="Time Orientation  Purpose (PILEA)" class="gt_row gt_right">
+0.319
+</td>
+<td headers="Time Orientation  Purpose (Engagement)" class="gt_row gt_right">
+0.367
+</td>
+<td headers="Time Orientation  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.165
+</td>
+<td headers="Time Orientation  Happiness (SHS)" class="gt_row gt_right">
+0.379
+</td>
+</tr>
+<tr>
+<td headers="Time Orientation  Variable" class="gt_row gt_left">
+Hope (Agency)
+</td>
+<td headers="Time Orientation  Purpose (BPIL)" class="gt_row gt_right">
+0.481
+</td>
+<td headers="Time Orientation  Purpose (PILEA)" class="gt_row gt_right">
+0.449
+</td>
+<td headers="Time Orientation  Purpose (Engagement)" class="gt_row gt_right">
+0.504
+</td>
+<td headers="Time Orientation  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.241
+</td>
+<td headers="Time Orientation  Happiness (SHS)" class="gt_row gt_right">
+0.421
+</td>
+</tr>
+<tr>
+<td headers="Time Orientation  Variable" class="gt_row gt_left">
+Self-Control
+</td>
+<td headers="Time Orientation  Purpose (BPIL)" class="gt_row gt_right">
+0.319
+</td>
+<td headers="Time Orientation  Purpose (PILEA)" class="gt_row gt_right">
+0.234
+</td>
+<td headers="Time Orientation  Purpose (Engagement)" class="gt_row gt_right">
+0.279
+</td>
+<td headers="Time Orientation  Purpose (Beyond-Self)" class="gt_row gt_right">
+0.109
+</td>
+<td headers="Time Orientation  Happiness (SHS)" class="gt_row gt_right">
+0.335
+</td>
 </tr>
 </tbody>
+<tfoot class="gt_footnotes">
+<tr>
+<td class="gt_footnote" colspan="6">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> All correlations based on POMP-standardized scores (0-100 scale). BPIL = Brief Purpose in Life Scale; PILEA = Purpose in Life External Aim Scale; SHS = Subjective Happiness Scale.
+</td>
+</tr>
+</tfoot>
 </table>
-</div>
 </div>
 </section>
-<section id="correlational-analysis" class="level2">
-<h2 data-anchor-id="correlational-analysis">Correlational Analysis</h2>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Baseline Correlations: Purpose and Happiness with Correlate Measures</caption>
+<section id="differential-correlation-analysis" class="level2">
+<h2 data-anchor-id="differential-correlation-analysis">Differential Correlation Analysis</h2>
+Sample size for correlation analysis: 264
+<div id="rchgnsheam" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rchgnsheam table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#rchgnsheam thead, #rchgnsheam tbody, #rchgnsheam tfoot, #rchgnsheam tr, #rchgnsheam td, #rchgnsheam th {
+  border-style: none;
+}
+
+#rchgnsheam p {
+  margin: 0;
+  padding: 0;
+}
+
+#rchgnsheam .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#rchgnsheam .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#rchgnsheam .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#rchgnsheam .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#rchgnsheam .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rchgnsheam .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rchgnsheam .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rchgnsheam .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#rchgnsheam .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#rchgnsheam .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#rchgnsheam .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#rchgnsheam .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#rchgnsheam .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#rchgnsheam .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#rchgnsheam .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rchgnsheam .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#rchgnsheam .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#rchgnsheam .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#rchgnsheam .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rchgnsheam .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#rchgnsheam .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#rchgnsheam .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#rchgnsheam .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rchgnsheam .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#rchgnsheam .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#rchgnsheam .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rchgnsheam .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rchgnsheam .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#rchgnsheam .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rchgnsheam .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#rchgnsheam .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rchgnsheam .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rchgnsheam .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rchgnsheam .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rchgnsheam .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rchgnsheam .gt_left {
+  text-align: left;
+}
+
+#rchgnsheam .gt_center {
+  text-align: center;
+}
+
+#rchgnsheam .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#rchgnsheam .gt_font_normal {
+  font-weight: normal;
+}
+
+#rchgnsheam .gt_font_bold {
+  font-weight: bold;
+}
+
+#rchgnsheam .gt_font_italic {
+  font-style: italic;
+}
+
+#rchgnsheam .gt_super {
+  font-size: 65%;
+}
+
+#rchgnsheam .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#rchgnsheam .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#rchgnsheam .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#rchgnsheam .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#rchgnsheam .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#rchgnsheam .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#rchgnsheam .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#rchgnsheam .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#rchgnsheam div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
-<tr class="header">
-<th style="text-align: left;">Measure</th>
-<th style="text-align: right;">Purpose_r</th>
-<th style="text-align: right;">Happiness_r</th>
-<th style="text-align: right;">Difference</th>
+<tr class="gt_heading">
+<td colspan="7" class="gt_heading gt_title gt_font_normal" style="">
+Differential Correlations: Purpose vs.&nbsp;Happiness<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span>
+</td>
+</tr>
+<tr class="gt_heading">
+<td colspan="7" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">
+Statistical Tests of Correlation Differences (Baseline)<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span>
+</td>
+</tr>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="Measure">
+Measure
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="Purpose_r">
+Purpose (BPIL)
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="Happiness_r">
+Happiness (SHS)
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="Difference">
+Difference
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="z_stat">
+z-statistic
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="p_value">
+p-value
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="Significance">
+</th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Hope - Total</td>
-<td style="text-align: right;">-0.290</td>
-<td style="text-align: right;">-0.108</td>
-<td style="text-align: right;">-0.182</td>
+<tbody class="gt_table_body">
+<tr class="gt_group_heading_row">
+<th colspan="7" class="gt_group_heading" style="font-weight: bold;" scope="colgroup" id="Values (Behavioral Consistency)">
+Values (Behavioral Consistency)
+</th>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Hope - Pathways</td>
-<td style="text-align: right;">0.463</td>
-<td style="text-align: right;">0.415</td>
-<td style="text-align: right;">0.049</td>
+<tr class="gt_row_group_first">
+<td headers="Values (Behavioral Consistency)  Measure" class="gt_row gt_left">
+Benevolence Values (Consistency)
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose_r" class="gt_row gt_right">
+0.186
+</td>
+<td headers="Values (Behavioral Consistency)  Happiness_r" class="gt_row gt_right">
+0.239
+</td>
+<td headers="Values (Behavioral Consistency)  Difference" class="gt_row gt_right">
+-0.053
+</td>
+<td headers="Values (Behavioral Consistency)  z_stat" class="gt_row gt_right">
+-0.63
+</td>
+<td headers="Values (Behavioral Consistency)  p_value" class="gt_row gt_left">
+0.526
+</td>
+<td headers="Values (Behavioral Consistency)  Significance" class="gt_row gt_right">
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Hope - Agency</td>
-<td style="text-align: right;">0.376</td>
-<td style="text-align: right;">0.319</td>
-<td style="text-align: right;">0.057</td>
+<tr>
+<td headers="Values (Behavioral Consistency)  Measure" class="gt_row gt_left">
+Universalism Values (Consistency)
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose_r" class="gt_row gt_right">
+0.193
+</td>
+<td headers="Values (Behavioral Consistency)  Happiness_r" class="gt_row gt_right">
+0.260
+</td>
+<td headers="Values (Behavioral Consistency)  Difference" class="gt_row gt_right">
+-0.067
+</td>
+<td headers="Values (Behavioral Consistency)  z_stat" class="gt_row gt_right">
+-0.81
+</td>
+<td headers="Values (Behavioral Consistency)  p_value" class="gt_row gt_left">
+0.420
+</td>
+<td headers="Values (Behavioral Consistency)  Significance" class="gt_row gt_right">
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Self-Control</td>
-<td style="text-align: right;">0.481</td>
-<td style="text-align: right;">0.449</td>
-<td style="text-align: right;">0.032</td>
+<tr>
+<td headers="Values (Behavioral Consistency)  Measure" class="gt_row gt_left">
+Achievement Values (Consistency)
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose_r" class="gt_row gt_right">
+0.252
+</td>
+<td headers="Values (Behavioral Consistency)  Happiness_r" class="gt_row gt_right">
+0.143
+</td>
+<td headers="Values (Behavioral Consistency)  Difference" class="gt_row gt_right">
+0.109
+</td>
+<td headers="Values (Behavioral Consistency)  z_stat" class="gt_row gt_right">
+1.30
+</td>
+<td headers="Values (Behavioral Consistency)  p_value" class="gt_row gt_left">
+0.195
+</td>
+<td headers="Values (Behavioral Consistency)  Significance" class="gt_row gt_right">
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Autonomy Need</td>
-<td style="text-align: right;">0.319</td>
-<td style="text-align: right;">0.234</td>
-<td style="text-align: right;">0.085</td>
+<tr>
+<td headers="Values (Behavioral Consistency)  Measure" class="gt_row gt_left">
+Hedonism Values (Consistency)
+</td>
+<td headers="Values (Behavioral Consistency)  Purpose_r" class="gt_row gt_right">
+0.219
+</td>
+<td headers="Values (Behavioral Consistency)  Happiness_r" class="gt_row gt_right">
+0.330
+</td>
+<td headers="Values (Behavioral Consistency)  Difference" class="gt_row gt_right">
+-0.111
+</td>
+<td headers="Values (Behavioral Consistency)  z_stat" class="gt_row gt_right">
+-1.37
+</td>
+<td headers="Values (Behavioral Consistency)  p_value" class="gt_row gt_left">
+0.170
+</td>
+<td headers="Values (Behavioral Consistency)  Significance" class="gt_row gt_right">
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Competence Need</td>
-<td style="text-align: right;">0.310</td>
-<td style="text-align: right;">0.142</td>
-<td style="text-align: right;">0.167</td>
+<tr class="gt_group_heading_row">
+<th colspan="7" class="gt_group_heading" style="font-weight: bold;" scope="colgroup" id="Values (Importance)">
+Values (Importance)
+</th>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Relatedness Need</td>
-<td style="text-align: right;">0.386</td>
-<td style="text-align: right;">0.207</td>
-<td style="text-align: right;">0.178</td>
+<tr class="gt_row_group_first">
+<td headers="Values (Importance)  Measure" class="gt_row gt_left">
+Benevolence Values (Importance)
+</td>
+<td headers="Values (Importance)  Purpose_r" class="gt_row gt_right">
+0.224
+</td>
+<td headers="Values (Importance)  Happiness_r" class="gt_row gt_right">
+0.271
+</td>
+<td headers="Values (Importance)  Difference" class="gt_row gt_right">
+-0.047
+</td>
+<td headers="Values (Importance)  z_stat" class="gt_row gt_right">
+-0.57
+</td>
+<td headers="Values (Importance)  p_value" class="gt_row gt_left">
+0.567
+</td>
+<td headers="Values (Importance)  Significance" class="gt_row gt_right">
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Distress Intolerance</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<tr>
+<td headers="Values (Importance)  Measure" class="gt_row gt_left">
+Universalism Values (Importance)
+</td>
+<td headers="Values (Importance)  Purpose_r" class="gt_row gt_right">
+0.151
+</td>
+<td headers="Values (Importance)  Happiness_r" class="gt_row gt_right">
+0.188
+</td>
+<td headers="Values (Importance)  Difference" class="gt_row gt_right">
+-0.037
+</td>
+<td headers="Values (Importance)  z_stat" class="gt_row gt_right">
+-0.44
+</td>
+<td headers="Values (Importance)  p_value" class="gt_row gt_left">
+0.663
+</td>
+<td headers="Values (Importance)  Significance" class="gt_row gt_right">
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Experiential Avoidance</td>
-<td style="text-align: right;">0.457</td>
-<td style="text-align: right;">0.384</td>
-<td style="text-align: right;">0.073</td>
+<tr>
+<td headers="Values (Importance)  Measure" class="gt_row gt_left">
+Achievement Values (Importance)
+</td>
+<td headers="Values (Importance)  Purpose_r" class="gt_row gt_right">
+0.136
+</td>
+<td headers="Values (Importance)  Happiness_r" class="gt_row gt_right">
+0.060
+</td>
+<td headers="Values (Importance)  Difference" class="gt_row gt_right">
+0.076
+</td>
+<td headers="Values (Importance)  z_stat" class="gt_row gt_right">
+0.88
+</td>
+<td headers="Values (Importance)  p_value" class="gt_row gt_left">
+0.380
+</td>
+<td headers="Values (Importance)  Significance" class="gt_row gt_right">
+</td>
+</tr>
+<tr>
+<td headers="Values (Importance)  Measure" class="gt_row gt_left">
+Hedonism Values (Importance)
+</td>
+<td headers="Values (Importance)  Purpose_r" class="gt_row gt_right">
+0.122
+</td>
+<td headers="Values (Importance)  Happiness_r" class="gt_row gt_right">
+0.326
+</td>
+<td headers="Values (Importance)  Difference" class="gt_row gt_right">
+-0.204
+</td>
+<td headers="Values (Importance)  z_stat" class="gt_row gt_right">
+-2.46
+</td>
+<td headers="Values (Importance)  p_value" class="gt_row gt_left">
+0.014
+</td>
+<td headers="Values (Importance)  Significance" class="gt_row gt_right" style="background-color: rgba(173,216,230,0.3);">
+*
+</td>
+</tr>
+<tr class="gt_group_heading_row">
+<th colspan="7" class="gt_group_heading" style="font-weight: bold;" scope="colgroup" id="Emotional Tolerance">
+Emotional Tolerance
+</th>
+</tr>
+<tr class="gt_row_group_first">
+<td headers="Emotional Tolerance  Measure" class="gt_row gt_left">
+Distress Intolerance
+</td>
+<td headers="Emotional Tolerance  Purpose_r" class="gt_row gt_right">
+-0.290
+</td>
+<td headers="Emotional Tolerance  Happiness_r" class="gt_row gt_right">
+-0.425
+</td>
+<td headers="Emotional Tolerance  Difference" class="gt_row gt_right">
+0.135
+</td>
+<td headers="Emotional Tolerance  z_stat" class="gt_row gt_right">
+1.77
+</td>
+<td headers="Emotional Tolerance  p_value" class="gt_row gt_left">
+0.076
+</td>
+<td headers="Emotional Tolerance  Significance" class="gt_row gt_right">
+</td>
+</tr>
+<tr>
+<td headers="Emotional Tolerance  Measure" class="gt_row gt_left">
+Experiential Avoidance
+</td>
+<td headers="Emotional Tolerance  Purpose_r" class="gt_row gt_right">
+-0.313
+</td>
+<td headers="Emotional Tolerance  Happiness_r" class="gt_row gt_right">
+-0.386
+</td>
+<td headers="Emotional Tolerance  Difference" class="gt_row gt_right">
+0.073
+</td>
+<td headers="Emotional Tolerance  z_stat" class="gt_row gt_right">
+0.95
+</td>
+<td headers="Emotional Tolerance  p_value" class="gt_row gt_left">
+0.342
+</td>
+<td headers="Emotional Tolerance  Significance" class="gt_row gt_right">
+</td>
+</tr>
+<tr>
+<td headers="Emotional Tolerance  Measure" class="gt_row gt_left">
+Stress Tolerance
+</td>
+<td headers="Emotional Tolerance  Purpose_r" class="gt_row gt_right">
+0.214
+</td>
+<td headers="Emotional Tolerance  Happiness_r" class="gt_row gt_right">
+0.499
+</td>
+<td headers="Emotional Tolerance  Difference" class="gt_row gt_right">
+-0.285
+</td>
+<td headers="Emotional Tolerance  z_stat" class="gt_row gt_right">
+-3.78
+</td>
+<td headers="Emotional Tolerance  p_value" class="gt_row gt_left">
+&lt; .001
+</td>
+<td headers="Emotional Tolerance  Significance" class="gt_row gt_right" style="background-color: rgba(173,216,230,0.3);">
+***
+</td>
+</tr>
+<tr class="gt_group_heading_row">
+<th colspan="7" class="gt_group_heading" style="font-weight: bold;" scope="colgroup" id="Psychological Needs">
+Psychological Needs
+</th>
+</tr>
+<tr class="gt_row_group_first">
+<td headers="Psychological Needs  Measure" class="gt_row gt_left">
+Autonomy Need
+</td>
+<td headers="Psychological Needs  Purpose_r" class="gt_row gt_right">
+0.310
+</td>
+<td headers="Psychological Needs  Happiness_r" class="gt_row gt_right">
+0.448
+</td>
+<td headers="Psychological Needs  Difference" class="gt_row gt_right">
+-0.138
+</td>
+<td headers="Psychological Needs  z_stat" class="gt_row gt_right">
+-1.85
+</td>
+<td headers="Psychological Needs  p_value" class="gt_row gt_left">
+0.065
+</td>
+<td headers="Psychological Needs  Significance" class="gt_row gt_right">
+</td>
+</tr>
+<tr>
+<td headers="Psychological Needs  Measure" class="gt_row gt_left">
+Competence Need
+</td>
+<td headers="Psychological Needs  Purpose_r" class="gt_row gt_right">
+0.386
+</td>
+<td headers="Psychological Needs  Happiness_r" class="gt_row gt_right">
+0.428
+</td>
+<td headers="Psychological Needs  Difference" class="gt_row gt_right">
+-0.042
+</td>
+<td headers="Psychological Needs  z_stat" class="gt_row gt_right">
+-0.58
+</td>
+<td headers="Psychological Needs  p_value" class="gt_row gt_left">
+0.565
+</td>
+<td headers="Psychological Needs  Significance" class="gt_row gt_right">
+</td>
+</tr>
+<tr>
+<td headers="Psychological Needs  Measure" class="gt_row gt_left">
+Relatedness Need
+</td>
+<td headers="Psychological Needs  Purpose_r" class="gt_row gt_right">
+0.303
+</td>
+<td headers="Psychological Needs  Happiness_r" class="gt_row gt_right">
+0.479
+</td>
+<td headers="Psychological Needs  Difference" class="gt_row gt_right">
+-0.176
+</td>
+<td headers="Psychological Needs  z_stat" class="gt_row gt_right">
+-2.39
+</td>
+<td headers="Psychological Needs  p_value" class="gt_row gt_left">
+0.017
+</td>
+<td headers="Psychological Needs  Significance" class="gt_row gt_right" style="background-color: rgba(173,216,230,0.3);">
+*
+</td>
+</tr>
+<tr class="gt_group_heading_row">
+<th colspan="7" class="gt_group_heading" style="font-weight: bold;" scope="colgroup" id="Time Orientation">
+Time Orientation
+</th>
+</tr>
+<tr class="gt_row_group_first">
+<td headers="Time Orientation  Measure" class="gt_row gt_left">
+Hope (Total)
+</td>
+<td headers="Time Orientation  Purpose_r" class="gt_row gt_right">
+0.463
+</td>
+<td headers="Time Orientation  Happiness_r" class="gt_row gt_right">
+0.433
+</td>
+<td headers="Time Orientation  Difference" class="gt_row gt_right">
+0.030
+</td>
+<td headers="Time Orientation  z_stat" class="gt_row gt_right">
+0.43
+</td>
+<td headers="Time Orientation  p_value" class="gt_row gt_left">
+0.668
+</td>
+<td headers="Time Orientation  Significance" class="gt_row gt_right">
+</td>
+</tr>
+<tr>
+<td headers="Time Orientation  Measure" class="gt_row gt_left">
+Hope (Pathways)
+</td>
+<td headers="Time Orientation  Purpose_r" class="gt_row gt_right">
+0.376
+</td>
+<td headers="Time Orientation  Happiness_r" class="gt_row gt_right">
+0.379
+</td>
+<td headers="Time Orientation  Difference" class="gt_row gt_right">
+-0.003
+</td>
+<td headers="Time Orientation  z_stat" class="gt_row gt_right">
+-0.04
+</td>
+<td headers="Time Orientation  p_value" class="gt_row gt_left">
+0.968
+</td>
+<td headers="Time Orientation  Significance" class="gt_row gt_right">
+</td>
+</tr>
+<tr>
+<td headers="Time Orientation  Measure" class="gt_row gt_left">
+Hope (Agency)
+</td>
+<td headers="Time Orientation  Purpose_r" class="gt_row gt_right">
+0.481
+</td>
+<td headers="Time Orientation  Happiness_r" class="gt_row gt_right">
+0.421
+</td>
+<td headers="Time Orientation  Difference" class="gt_row gt_right">
+0.060
+</td>
+<td headers="Time Orientation  z_stat" class="gt_row gt_right">
+0.86
+</td>
+<td headers="Time Orientation  p_value" class="gt_row gt_left">
+0.389
+</td>
+<td headers="Time Orientation  Significance" class="gt_row gt_right">
+</td>
+</tr>
+<tr>
+<td headers="Time Orientation  Measure" class="gt_row gt_left">
+Self-Control
+</td>
+<td headers="Time Orientation  Purpose_r" class="gt_row gt_right">
+0.319
+</td>
+<td headers="Time Orientation  Happiness_r" class="gt_row gt_right">
+0.335
+</td>
+<td headers="Time Orientation  Difference" class="gt_row gt_right">
+-0.016
+</td>
+<td headers="Time Orientation  z_stat" class="gt_row gt_right">
+-0.20
+</td>
+<td headers="Time Orientation  p_value" class="gt_row gt_left">
+0.838
+</td>
+<td headers="Time Orientation  Significance" class="gt_row gt_right">
+</td>
 </tr>
 </tbody>
+<tfoot class="gt_footnotes">
+<tr>
+<td class="gt_footnote" colspan="7">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> * p &lt; .05, ** p &lt; .01, *** p &lt; .001. Positive differences indicate stronger correlation with purpose than happiness.
+</td>
+</tr>
+</tfoot>
 </table>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Cross-sectional Correlations Between Purpose and Happiness</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Timepoint</th>
-<th style="text-align: right;">Purpose_Happiness_r</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Baseline</td>
-<td style="text-align: right;">1.000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">6-month</td>
-<td style="text-align: right;">0.728</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2-year</td>
-<td style="text-align: right;">1.000</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<section id="temporal-focus-correlates" class="level3">
-<h3 data-anchor-id="temporal-focus-correlates">Temporal Focus Correlates</h3>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Temporal Focus: Correlations Across Time Points</caption>
-<colgroup>
-<col style="width: 25%">
-<col style="width: 14%">
-<col style="width: 16%">
-<col style="width: 10%">
-<col style="width: 11%">
-<col style="width: 10%">
-<col style="width: 11%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Measure</th>
-<th style="text-align: right;">Baseline_Purpose</th>
-<th style="text-align: right;">Baseline_Happiness</th>
-<th style="text-align: right;">FU1_Purpose</th>
-<th style="text-align: right;">FU1_Happiness</th>
-<th style="text-align: right;">FU2_Purpose</th>
-<th style="text-align: right;">FU2_Happiness</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Goal-Specific Hope - Agency</td>
-<td style="text-align: right;">0.463</td>
-<td style="text-align: right;">0.433</td>
-<td style="text-align: right;">0.452</td>
-<td style="text-align: right;">0.421</td>
-<td style="text-align: right;">0.441</td>
-<td style="text-align: right;">0.408</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Goal-Specific Hope - Pathways</td>
-<td style="text-align: right;">0.445</td>
-<td style="text-align: right;">0.428</td>
-<td style="text-align: right;">0.438</td>
-<td style="text-align: right;">0.415</td>
-<td style="text-align: right;">0.429</td>
-<td style="text-align: right;">0.402</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Goal-Specific Hope - Total</td>
-<td style="text-align: right;">0.456</td>
-<td style="text-align: right;">0.431</td>
-<td style="text-align: right;">0.447</td>
-<td style="text-align: right;">0.419</td>
-<td style="text-align: right;">0.437</td>
-<td style="text-align: right;">0.406</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Self-Control</td>
-<td style="text-align: right;">0.319</td>
-<td style="text-align: right;">0.335</td>
-<td style="text-align: right;">0.301</td>
-<td style="text-align: right;">0.328</td>
-<td style="text-align: right;">0.295</td>
-<td style="text-align: right;">0.315</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </section>
-<section id="psychological-needs-correlates" class="level3">
-<h3 data-anchor-id="psychological-needs-correlates">Psychological Needs Correlates</h3>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Psychological Needs: Correlations Across Time Points</caption>
-<colgroup>
-<col style="width: 22%">
-<col style="width: 15%">
-<col style="width: 16%">
-<col style="width: 10%">
-<col style="width: 12%">
-<col style="width: 10%">
-<col style="width: 12%">
-</colgroup>
+<section id="longitudinal-stability-analysis" class="level2">
+<h2 data-anchor-id="longitudinal-stability-analysis">Longitudinal Stability Analysis</h2>
+<div id="ejbypnhqnj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ejbypnhqnj table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ejbypnhqnj thead, #ejbypnhqnj tbody, #ejbypnhqnj tfoot, #ejbypnhqnj tr, #ejbypnhqnj td, #ejbypnhqnj th {
+  border-style: none;
+}
+
+#ejbypnhqnj p {
+  margin: 0;
+  padding: 0;
+}
+
+#ejbypnhqnj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ejbypnhqnj .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ejbypnhqnj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ejbypnhqnj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ejbypnhqnj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ejbypnhqnj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ejbypnhqnj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ejbypnhqnj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ejbypnhqnj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ejbypnhqnj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ejbypnhqnj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ejbypnhqnj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ejbypnhqnj .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ejbypnhqnj .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ejbypnhqnj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ejbypnhqnj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ejbypnhqnj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ejbypnhqnj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ejbypnhqnj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ejbypnhqnj .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ejbypnhqnj .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ejbypnhqnj .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ejbypnhqnj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ejbypnhqnj .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ejbypnhqnj .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ejbypnhqnj .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ejbypnhqnj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ejbypnhqnj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ejbypnhqnj .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ejbypnhqnj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ejbypnhqnj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ejbypnhqnj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ejbypnhqnj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ejbypnhqnj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ejbypnhqnj .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ejbypnhqnj .gt_left {
+  text-align: left;
+}
+
+#ejbypnhqnj .gt_center {
+  text-align: center;
+}
+
+#ejbypnhqnj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ejbypnhqnj .gt_font_normal {
+  font-weight: normal;
+}
+
+#ejbypnhqnj .gt_font_bold {
+  font-weight: bold;
+}
+
+#ejbypnhqnj .gt_font_italic {
+  font-style: italic;
+}
+
+#ejbypnhqnj .gt_super {
+  font-size: 65%;
+}
+
+#ejbypnhqnj .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ejbypnhqnj .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ejbypnhqnj .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ejbypnhqnj .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ejbypnhqnj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ejbypnhqnj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ejbypnhqnj .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ejbypnhqnj .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ejbypnhqnj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
-<tr class="header">
-<th style="text-align: left;">Measure</th>
-<th style="text-align: right;">Baseline_Purpose</th>
-<th style="text-align: right;">Baseline_Happiness</th>
-<th style="text-align: right;">FU1_Purpose</th>
-<th style="text-align: right;">FU1_Happiness</th>
-<th style="text-align: right;">FU2_Purpose</th>
-<th style="text-align: right;">FU2_Happiness</th>
+<tr class="gt_heading">
+<td colspan="4" class="gt_heading gt_title gt_font_normal" style="">
+Temporal Stability of Purpose, Happiness, and Key Correlates<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span>
+</td>
+</tr>
+<tr class="gt_heading">
+<td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">
+Test-Retest Correlations Across Three Time Points<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span>
+</td>
+</tr>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Measure">
+Measure
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="T1-T2">
+Baseline - 6 months
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="T1-T3">
+Baseline - 2 years
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="T2-T3">
+6 months - 2 years
+</th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Autonomy Satisfaction</td>
-<td style="text-align: right;">0.310</td>
-<td style="text-align: right;">0.448</td>
-<td style="text-align: right;">0.298</td>
-<td style="text-align: right;">0.435</td>
-<td style="text-align: right;">0.285</td>
-<td style="text-align: right;">0.422</td>
+<tbody class="gt_table_body">
+<tr>
+<td headers="Measure" class="gt_row gt_left" style="font-weight: bold;">
+Purpose (BPIL)
+</td>
+<td headers="T1-T2" class="gt_row gt_right" style="font-weight: bold;">
+0.603
+</td>
+<td headers="T1-T3" class="gt_row gt_right" style="font-weight: bold;">
+0.506
+</td>
+<td headers="T2-T3" class="gt_row gt_right" style="font-weight: bold;">
+0.636
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Competence Satisfaction</td>
-<td style="text-align: right;">0.386</td>
-<td style="text-align: right;">0.428</td>
-<td style="text-align: right;">0.372</td>
-<td style="text-align: right;">0.415</td>
-<td style="text-align: right;">0.359</td>
-<td style="text-align: right;">0.402</td>
+<tr>
+<td headers="Measure" class="gt_row gt_left" style="font-weight: bold;">
+Purpose (PILEA)
+</td>
+<td headers="T1-T2" class="gt_row gt_right" style="font-weight: bold;">
+0.528
+</td>
+<td headers="T1-T3" class="gt_row gt_right" style="font-weight: bold;">
+0.699
+</td>
+<td headers="T2-T3" class="gt_row gt_right" style="font-weight: bold;">
+0.508
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Relatedness Satisfaction</td>
-<td style="text-align: right;">0.303</td>
-<td style="text-align: right;">0.479</td>
-<td style="text-align: right;">0.291</td>
-<td style="text-align: right;">0.466</td>
-<td style="text-align: right;">0.278</td>
-<td style="text-align: right;">0.453</td>
+<tr>
+<td headers="Measure" class="gt_row gt_left" style="font-weight: bold;">
+Happiness
+</td>
+<td headers="T1-T2" class="gt_row gt_right" style="font-weight: bold;">
+0.714
+</td>
+<td headers="T1-T3" class="gt_row gt_right" style="font-weight: bold;">
+0.722
+</td>
+<td headers="T2-T3" class="gt_row gt_right" style="font-weight: bold;">
+0.730
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Autonomy Total</td>
-<td style="text-align: right;">0.325</td>
-<td style="text-align: right;">0.465</td>
-<td style="text-align: right;">0.312</td>
-<td style="text-align: right;">0.452</td>
-<td style="text-align: right;">0.299</td>
-<td style="text-align: right;">0.439</td>
+<tr>
+<td headers="Measure" class="gt_row gt_left">
+Hope
+</td>
+<td headers="T1-T2" class="gt_row gt_right">
+0.413
+</td>
+<td headers="T1-T3" class="gt_row gt_right">
+0.385
+</td>
+<td headers="T2-T3" class="gt_row gt_right">
+0.508
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Competence Total</td>
-<td style="text-align: right;">0.401</td>
-<td style="text-align: right;">0.445</td>
-<td style="text-align: right;">0.387</td>
-<td style="text-align: right;">0.432</td>
-<td style="text-align: right;">0.374</td>
-<td style="text-align: right;">0.419</td>
+<tr>
+<td headers="Measure" class="gt_row gt_left">
+Autonomy
+</td>
+<td headers="T1-T2" class="gt_row gt_right">
+0.497
+</td>
+<td headers="T1-T3" class="gt_row gt_right">
+0.520
+</td>
+<td headers="T2-T3" class="gt_row gt_right">
+0.553
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Relatedness Total</td>
-<td style="text-align: right;">0.318</td>
-<td style="text-align: right;">0.495</td>
-<td style="text-align: right;">0.305</td>
-<td style="text-align: right;">0.482</td>
-<td style="text-align: right;">0.292</td>
-<td style="text-align: right;">0.469</td>
+<tr>
+<td headers="Measure" class="gt_row gt_left">
+Competence
+</td>
+<td headers="T1-T2" class="gt_row gt_right">
+0.502
+</td>
+<td headers="T1-T3" class="gt_row gt_right">
+0.482
+</td>
+<td headers="T2-T3" class="gt_row gt_right">
+0.557
+</td>
+</tr>
+<tr>
+<td headers="Measure" class="gt_row gt_left">
+Relatedness
+</td>
+<td headers="T1-T2" class="gt_row gt_right">
+0.503
+</td>
+<td headers="T1-T3" class="gt_row gt_right">
+0.522
+</td>
+<td headers="T2-T3" class="gt_row gt_right">
+0.578
+</td>
+</tr>
+<tr>
+<td headers="Measure" class="gt_row gt_left">
+Stress Tolerance
+</td>
+<td headers="T1-T2" class="gt_row gt_right">
+0.689
+</td>
+<td headers="T1-T3" class="gt_row gt_right">
+0.575
+</td>
+<td headers="T2-T3" class="gt_row gt_right">
+0.437
+</td>
+</tr>
+</tbody>
+<tfoot class="gt_footnotes">
+<tr>
+<td class="gt_footnote" colspan="4">
+<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> T1 = Baseline, T2 = 6-month follow-up, T3 = 2-year follow-up. Bold rows indicate primary constructs of interest.
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</section>
+<section id="cross-lagged-associations-between-purpose-and-happiness" class="level2">
+<h2 data-anchor-id="cross-lagged-associations-between-purpose-and-happiness">Cross-Lagged Associations Between Purpose and Happiness</h2>
+<div id="zwxgirxgdw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zwxgirxgdw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#zwxgirxgdw thead, #zwxgirxgdw tbody, #zwxgirxgdw tfoot, #zwxgirxgdw tr, #zwxgirxgdw td, #zwxgirxgdw th {
+  border-style: none;
+}
+
+#zwxgirxgdw p {
+  margin: 0;
+  padding: 0;
+}
+
+#zwxgirxgdw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zwxgirxgdw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#zwxgirxgdw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zwxgirxgdw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zwxgirxgdw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zwxgirxgdw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zwxgirxgdw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zwxgirxgdw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zwxgirxgdw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zwxgirxgdw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zwxgirxgdw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zwxgirxgdw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zwxgirxgdw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#zwxgirxgdw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#zwxgirxgdw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zwxgirxgdw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zwxgirxgdw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zwxgirxgdw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zwxgirxgdw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zwxgirxgdw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#zwxgirxgdw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#zwxgirxgdw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#zwxgirxgdw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zwxgirxgdw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#zwxgirxgdw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#zwxgirxgdw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zwxgirxgdw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zwxgirxgdw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zwxgirxgdw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zwxgirxgdw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zwxgirxgdw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zwxgirxgdw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zwxgirxgdw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zwxgirxgdw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zwxgirxgdw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zwxgirxgdw .gt_left {
+  text-align: left;
+}
+
+#zwxgirxgdw .gt_center {
+  text-align: center;
+}
+
+#zwxgirxgdw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zwxgirxgdw .gt_font_normal {
+  font-weight: normal;
+}
+
+#zwxgirxgdw .gt_font_bold {
+  font-weight: bold;
+}
+
+#zwxgirxgdw .gt_font_italic {
+  font-style: italic;
+}
+
+#zwxgirxgdw .gt_super {
+  font-size: 65%;
+}
+
+#zwxgirxgdw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#zwxgirxgdw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#zwxgirxgdw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#zwxgirxgdw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#zwxgirxgdw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#zwxgirxgdw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#zwxgirxgdw .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#zwxgirxgdw .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#zwxgirxgdw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading">
+<td colspan="3" class="gt_heading gt_title gt_font_normal" style="">
+Cross-Lagged Associations Between Purpose and Happiness
+</td>
+</tr>
+<tr class="gt_heading">
+<td colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="">
+Longitudinal Predictive Relationships
+</td>
+</tr>
+<tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="Predictor">
+Predictor
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="Outcome">
+Outcome
+</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-weight: bold;" scope="col" id="Correlation">
+Correlation
+</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="gt_group_heading_row">
+<th colspan="3" class="gt_group_heading" style="font-weight: bold;" scope="colgroup" id="2-Year Predictions">
+2-Year Predictions
+</th>
+</tr>
+<tr class="gt_row_group_first">
+<td headers="2-Year Predictions  Predictor" class="gt_row gt_left">
+Baseline Purpose (BPIL)
+</td>
+<td headers="2-Year Predictions  Outcome" class="gt_row gt_left">
+2-year Happiness
+</td>
+<td headers="2-Year Predictions  Correlation" class="gt_row gt_right">
+0.288
+</td>
+</tr>
+<tr>
+<td headers="2-Year Predictions  Predictor" class="gt_row gt_left">
+Baseline Purpose (PILEA)
+</td>
+<td headers="2-Year Predictions  Outcome" class="gt_row gt_left">
+2-year Happiness
+</td>
+<td headers="2-Year Predictions  Correlation" class="gt_row gt_right">
+0.242
+</td>
+</tr>
+<tr>
+<td headers="2-Year Predictions  Predictor" class="gt_row gt_left">
+Baseline Happiness
+</td>
+<td headers="2-Year Predictions  Outcome" class="gt_row gt_left">
+2-year Purpose (BPIL)
+</td>
+<td headers="2-Year Predictions  Correlation" class="gt_row gt_right">
+0.483
+</td>
+</tr>
+<tr class="gt_group_heading_row">
+<th colspan="3" class="gt_group_heading" style="font-weight: bold;" scope="colgroup" id="6-Month Predictions">
+6-Month Predictions
+</th>
+</tr>
+<tr class="gt_row_group_first">
+<td headers="6-Month Predictions  Predictor" class="gt_row gt_left">
+Baseline Purpose (BPIL)
+</td>
+<td headers="6-Month Predictions  Outcome" class="gt_row gt_left">
+6-month Happiness
+</td>
+<td headers="6-Month Predictions  Correlation" class="gt_row gt_right">
+0.263
+</td>
+</tr>
+<tr>
+<td headers="6-Month Predictions  Predictor" class="gt_row gt_left">
+Baseline Purpose (PILEA)
+</td>
+<td headers="6-Month Predictions  Outcome" class="gt_row gt_left">
+6-month Happiness
+</td>
+<td headers="6-Month Predictions  Correlation" class="gt_row gt_right">
+0.199
+</td>
+</tr>
+<tr>
+<td headers="6-Month Predictions  Predictor" class="gt_row gt_left">
+Baseline Happiness
+</td>
+<td headers="6-Month Predictions  Outcome" class="gt_row gt_left">
+6-month Purpose (BPIL)
+</td>
+<td headers="6-Month Predictions  Correlation" class="gt_row gt_right">
+0.373
+</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</section>
-<section id="values-based-correlates" class="level3">
-<h3 data-anchor-id="values-based-correlates">Values-Based Correlates</h3>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Values: Purpose vs Happiness Correlations (Baseline)</caption>
-<colgroup>
-<col style="width: 41%">
-<col style="width: 17%">
-<col style="width: 19%">
-<col style="width: 21%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Measure</th>
-<th style="text-align: right;">Baseline_Purpose</th>
-<th style="text-align: right;">Baseline_Happiness</th>
-<th style="text-align: right;">Difference_P_minus_H</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Values Importance - Achievement</td>
-<td style="text-align: right;">0.385</td>
-<td style="text-align: right;">0.298</td>
-<td style="text-align: right;">0.087</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Values Importance - Benevolence</td>
-<td style="text-align: right;">0.342</td>
-<td style="text-align: right;">0.445</td>
-<td style="text-align: right;">-0.103</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Values Importance - Universalism</td>
-<td style="text-align: right;">0.358</td>
-<td style="text-align: right;">0.387</td>
-<td style="text-align: right;">-0.029</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Values Importance - Self-Direction</td>
-<td style="text-align: right;">0.396</td>
-<td style="text-align: right;">0.321</td>
-<td style="text-align: right;">0.075</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Behavioral Consistency - Achievement</td>
-<td style="text-align: right;">0.428</td>
-<td style="text-align: right;">0.352</td>
-<td style="text-align: right;">0.076</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Behavioral Consistency - Benevolence</td>
-<td style="text-align: right;">0.365</td>
-<td style="text-align: right;">0.488</td>
-<td style="text-align: right;">-0.123</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Behavioral Consistency - Universalism</td>
-<td style="text-align: right;">0.381</td>
-<td style="text-align: right;">0.412</td>
-<td style="text-align: right;">-0.031</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Behavioral Consistency - Self-Direction</td>
-<td style="text-align: right;">0.445</td>
-<td style="text-align: right;">0.369</td>
-<td style="text-align: right;">0.076</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-</section>
-<section id="longitudinal-prediction-analysis" class="level2">
-<h2 data-anchor-id="longitudinal-prediction-analysis">Longitudinal Prediction Analysis</h2>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Longitudinal Prediction Models</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Model</th>
-<th style="text-align: right;">Beta</th>
-<th style="text-align: right;">SE</th>
-<th style="text-align: right;">p_value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Happiness → Future Purpose (6mo)</td>
-<td style="text-align: right;">0.148</td>
-<td style="text-align: right;">0.045</td>
-<td style="text-align: right;">0.002</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Purpose → Future Happiness (6mo)</td>
-<td style="text-align: right;">0.034</td>
-<td style="text-align: right;">0.048</td>
-<td style="text-align: right;">0.478</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Happiness → Future Purpose (2yr)</td>
-<td style="text-align: right;">0.156</td>
-<td style="text-align: right;">0.052</td>
-<td style="text-align: right;">0.004</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Purpose → Future Happiness (2yr)</td>
-<td style="text-align: right;">0.029</td>
-<td style="text-align: right;">0.051</td>
-<td style="text-align: right;">0.573</td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 </section>
 </section>
@@ -621,83 +3167,6 @@ ul.task-list li input[type="checkbox"] {
 <p>The results from this comprehensive longitudinal analysis reveal important distinctions between purpose in life and happiness. Both constructs demonstrate strong temporal stability, with happiness showing slightly higher test-retest correlations across all timepoints. This suggests that while both constructs are relatively stable trait-like characteristics, happiness may be somewhat more consistent over time.</p>
 <section id="key-findings" class="level2">
 <h2 data-anchor-id="key-findings">Key Findings</h2>
-<ol type="1">
-<li><p><strong>Temporal Stability</strong>: Both purpose and happiness show strong stability over 6 months and 2 years, with correlations ranging from .50 to .73. Happiness demonstrated slightly higher stability coefficients than purpose.</p></li>
-<li><p><strong>Cross-sectional Relationships</strong>: Purpose and happiness are moderately to strongly correlated at each timepoint (r = .43 to .58), confirming their conceptual overlap while maintaining distinctiveness.</p></li>
-<li><p><strong>Longitudinal Prediction</strong>: The cross-lagged panel analysis suggests differential patterns of influence between the constructs over time, with some evidence for happiness predicting future purpose more strongly than purpose predicting future happiness.</p></li>
-</ol>
-</section>
-<section id="implications-for-well-being-theory" class="level2">
-<h2 data-anchor-id="implications-for-well-being-theory">Implications for Well-being Theory</h2>
-<p>These findings contribute to our understanding of the eudaimonic-hedonic distinction in well-being research. The moderate stability and cross-lagged relationships between purpose and happiness suggest they represent related but distinct pathways to well-being, each with unique temporal dynamics and potentially different roles in predicting future outcomes.</p>
-</section>
-<section id="limitations-and-future-directions" class="level2">
-<h2 data-anchor-id="limitations-and-future-directions">Limitations and Future Directions</h2>
-<p>This analysis represents an initial examination of the comprehensive dataset. Future analyses should incorporate the full range of correlate measures (hope, self-control, psychological needs, emotional tolerance, and values) to provide a complete picture of how purpose and happiness differ in their nomological networks.</p>
-<p>Baumeister, R. F., Vohs, K. D., Aaker, J. L., &amp; Garbinsky, E. N. (2013). Some key differences between a happy life and a meaningful life. <em>Journal of Positive Psychology, 8</em>, 505–516.</p>
-<p>Bronk, K. C. (2014). <em>Purpose in life: A critical component of optimal youth development</em>. Springer.</p>
-<p>Deci, E. L., &amp; Ryan, R. M. (2000). The “what” and “why” of goal pursuits: Human needs and the self-determination of behavior. <em>Psychological Inquiry</em>, <em>11</em>, 227-268.</p>
-<p>Hill, P. L., Edmonds, G. W., Peterson, M., Luyckx, K., &amp; Andrews, J. A. (2016). Purpose in life in emerging adulthood: Development and validation of a new brief measure. <em>Journal of Positive Psychology</em>, <em>11</em>, 237-245.</p>
-<p>Lyubomirsky, S., &amp; Lepper, H. S. (1999). A measure of subjective happiness: Preliminary reliability and construct validation. <em>Social Indicators Research, 46</em>, 137-155.</p>
-<p>McKnight, P. E., &amp; Kashdan, T. B. (2009). Purpose in life as a system that creates and sustains health and well-being: An integrative, testable theory. <em>Review of General Psychology</em>, <em>13</em>, 242-251.</p>
-<p>Snyder, C. R., Harris, C., Anderson, J. R., Holleran, S. A., Irving, L. M., Sigmon, S. T., … &amp; Harney, P. (1991). The will and the ways: Development and validation of an individual-differences measure of hope. <em>Journal of Personality and Social Psychology</em>, <em>60</em>, 570-585.</p>
-<div class="cell FigureWithoutNote" data-custom-style="FigureWithoutNote">
-<div class="cell-output-display">
-<div id="fig-stability" class="quarto-float quarto-figure quarto-figure-center" prefix="" data-fignum="1">
-<figure class="quarto-float quarto-float-fig figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-stability-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="FigureTitle" data-custom-style="FigureTitle">
-<p>Figure&nbsp;1</p>
-</div>
-<div class="Caption" data-custom-style="Caption">
-<p>Temporal Stability of Purpose and Happiness Over Two Years</p>
-</div>
-</figcaption>
-<div aria-describedby="fig-stability-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="PNAS_Purpose_Happiness_Correlates_Analysis_files/figure-html/fig-stability-1.svg" class="img-fluid figure-img" width="624">
-</div>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell FigureWithoutNote" data-custom-style="FigureWithoutNote">
-<div class="cell-output-display">
-<div id="fig-correlation-comparison" class="quarto-float quarto-figure quarto-figure-center" prefix="" data-fignum="2">
-<figure class="quarto-float quarto-float-fig figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-correlation-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="FigureTitle" data-custom-style="FigureTitle">
-<p>Figure&nbsp;2</p>
-</div>
-<div class="Caption" data-custom-style="Caption">
-<p>Differential Correlations: Purpose vs Happiness with Key Correlates</p>
-</div>
-</figcaption>
-<div aria-describedby="fig-correlation-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="PNAS_Purpose_Happiness_Correlates_Analysis_files/figure-html/fig-correlation-comparison-1.svg" class="img-fluid figure-img" width="624">
-</div>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell FigureWithoutNote" data-custom-style="FigureWithoutNote">
-<div class="cell-output-display">
-<div id="fig-prediction" class="quarto-float quarto-figure quarto-figure-center" prefix="" data-fignum="3">
-<figure class="quarto-float quarto-float-fig figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-prediction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="FigureTitle" data-custom-style="FigureTitle">
-<p>Figure&nbsp;3</p>
-</div>
-<div class="Caption" data-custom-style="Caption">
-<p>Cross-lagged Relationships Between Purpose and Happiness</p>
-</div>
-</figcaption>
-<div aria-describedby="fig-prediction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="PNAS_Purpose_Happiness_Correlates_Analysis_files/figure-html/fig-prediction-1.svg" class="img-fluid figure-img" width="624">
-</div>
-</figure>
-</div>
-</div>
-</div>
 </section>
 </section>
 

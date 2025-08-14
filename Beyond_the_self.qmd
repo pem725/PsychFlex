@@ -1,0 +1,8 @@
+---
+title: "Beyond the Self"
+author: "Todd Kashdan and Patrick McKnight"
+format: html
+---
+
+data from the psyflex dataset includes data for pilea beyond the self subscales to test the proportion of people with and without purpose but also what percent are those that actually are thinking beyond themselves?  We hold that the beyond the self aspect is not essential.  Analyze the data here and write up a paper.
+

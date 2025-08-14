@@ -115,6 +115,8 @@ Community adults were recruited from the DC/Maryland/Virginia region through loc
 
 **Brief Measure of Purpose in Life (BPIL; Hill, Edmonds, Peterson, Luyckx, & Andrews, 2016).** The 4-item BPIL measures the degree to which one has a clear mission in life (e.g., *"My plans for the future match with my true interests and values"*). Items are rated on a 5-point Likert scale (from 0 or *not at all* to 4 or *very much*). The BPIL demonstrates good construct validity and exhibited acceptable internal consistency at all time points (T1: α = .84; T2: α = .90; T3: α = .88).
 
+We also used the **Purpose in Life - External Aim Scale (PILEA; Hill, Edmonds, Peterson, Luyckx, & Andrews, 2016)**. The PILEA is a 6-item measure that assesses purpose in life through two subscales: engagement (e.g., *"I feel that I am doing what I was meant to do in life"*) and beyond-the-self (e.g., *"I feel that my life has meaning beyond my own personal interests"*). Items are rated on a 5-point Likert scale (from 0 or *not at all* to 4 or *very much*). The PILEA also demonstrated good construct validity and exhibited acceptable internal consistency at all time points (T1: α = .90; T2: α = .92; T3: α = .91).
+
 ### Happiness
 
 **Subjective Happiness Scale (SHS; Lyubomirsky & Lepper, 1999).** The 4-item SHS assesses global subjective happiness using a 7-point Likert scale with different anchors based on individual items. The SHS demonstrates acceptable internal consistency in the present study (T1: α = .87; T2: α = .89; T3: α = .89).
@@ -133,6 +135,11 @@ Community adults were recruited from the DC/Maryland/Virginia region through loc
 
 **Values Measures.** The Twenty Item Values Inventory assesses both importance of particular values and behavioral consistency with those values across 10 value domains.
 
+**Stress Tolerance.** A 6-item measure of stress tolerance was created for this study, assessing the ability to cope with stressors and maintain functioning.
+
+## Data Loading and Preparation
+
+
 ```{r}
 #| label: data-loading
 #| echo: false
@@ -140,7 +147,8 @@ Community adults were recruited from the DC/Maryland/Virginia region through loc
 #| warning: false
 
 # Read the data
-dat <- read_sav("Psychological Flexibility_Full Dataset_070822.sav")
+#dat <- read_sav("Psychological Flexibility_Full Dataset_070822.sav")
+dat <- read.csv("alldatPvH4LLM.csv")[, -1]
 
 # Define column ranges for key variables based on the specification document
 # Purpose and Happiness variables
@@ -150,11 +158,17 @@ purp_hap_cols <- c(
   # Purpose (BPURP) - baseline, FU1, FU2  
   398:401, 697, 735,  # baseline items and means
   1467:1470, 1771, 1845,  # FU1 items and means
-  2976:2979, 3495,  # FU2 items and means
+  3001:3004, 3542, 3556,  # FU2 items and means
+  
+  # Purpose in Life - External Aim Scale (PILEA) - baseline, FU1, FU2
+  402:407, 698, 1888, 1889, # baseline items and means
+  1471:1476, 1772, 1846, 1892, 1893, # FU1 items and means & POMP
+  3005:3010, 3543, 3544, 3545, # FU2 items and means
+  
   # Happiness (SHS) - baseline, FU1, FU2
-  402:405, 698, 736,  # baseline items and means  
-  1471:1474, 1772, 1846,  # FU1 items and means
-  2980:2983, 3496  # FU2 items and means
+  241:243, 245, 673, 730, # baseline:  excludes non-reverse scored items, mean & POMP scores
+  1419:1421, 1423, 1751, 1825,  # FU1 items and means 
+  2954:2956, 3428, 3466, 3555  # FU2 items and means
 )
 
 # Extract basic purpose and happiness data
@@ -167,41 +181,49 @@ comprehensive_cols <- c(
   
   # TEMPORAL FOCUS - Goal Specific Hope Scale (GSHS)
   # Baseline: columns 447, 448-451, 449-453, 709-711 (adjusted for 0-indexing)
-  440, 441:444, 442:446, 702:704,
+  441, 442, 444, 442, 445, 446, 702:704, 702:704, # NOTE: no POMP scores - divide means by 7 for the second set of 702:704 so that it matches the rest
   # FU1: 1477, 1479, 1480 path, 1478, 1481, 1482 agen items; 1773 mean, 1774 path mean, 1775 agen mean
-  1477:1482, 1773:1775,
+  1477, 1479, 1480, 1478, 1481, 1482, 1773:1775, 1847:1849,
   # FU2: multiple goal items and means
-  3011:3022, 3479:3487,
+  3011, 3013, 3014, 3012, 3015, 3016, 3479:3481, 3479:3481, # NOTE no POMP scores so divide means by 7 for the second set of 3479:3481
   
   # Self-control (SCS) 
-  # Baseline: 480:489 (raw items); 709:715 reverse scored items; 716 mean
-  480:489, 709:716,
+  # Baseline: 480:489 (raw items I omitted); 709:715 reverse scored items; 716 mean
+  709:716,
   
   # NEEDS - Basic Psychological Needs Scale (BMPNS)
   # Baseline items and means
-  246:272, 674:685, 731:733,
+  246:248, 264:266, 252:254, 267:269, 258:260, 270:272, 674:685, 731:733,
   # FU1 items and means  
-  1424:1441, 1730:1750, 1822:1824,
+  1424:1426, 1739:1741, 1430:1432, 1742:1744, 1436:1438, 1745:1750, 1822:1824,
   # FU2 items and means
-  2958:2975, 3434:3442, 3492:3503,
+  2958:2960, 3434:3436, 2964:2966, 3437:3439, 2970:2972, 3440:3442, 3492:3503,
   
   # EMOTIONS - Distress intolerance, experiential avoidance, etc.
-  430:439,  # Distress intolerance baseline
-  408:422, 627, 699, 738,  # Experiential avoidance 
-  468:471, 628:629, 705,  # Implicit beliefs about emotions
+  430:439, 701, # Distress intolerance baseline
+  408:412, 627, 414:422, 699, 738,  # Experiential avoidance 
+  468:469, 628:629, 705,  # Implicit beliefs about emotions
   
   # VALUES - Importance and behavioral consistency
-  278:297,  # Baseline importance
-  526:545, 637:646,  # Baseline behavioral consistency
-  1447:1466, 1753:1762, 1827:1836,  # FU1 importance  
-  1483:1502,  # FU1 behavioral consistency
+  278:297, 687:696,  # Baseline importance no POMP scores
+  526:545, 637:646,  # Baseline behavioral consistency no POMP scores
+  1447:1466, 1753:1762, 1827:1836,  # FU1 importance with POMP scores
+  1483:1502,  # FU1 behavioral consistency with no means and no POMP scores
   2981:3000, 3504:3513,  # FU2 importance
-  3023:3042, 3514:3523   # FU2 behavioral consistency
+  3023:3042, 3514:3523,   # FU2 behavioral consistency
+  
+  # Stress Tolerance
+  185:190, # baseline stress tolerance items with mean
+  1899:1904, # FU1 stress tolerance items with mean
+  3429:3433, 3472 # FU2 stress tolerance items with mean
+  
 )
 
 # Extract comprehensive dataset (adjust for R's 1-based indexing)
 comprehensive_dat <- dat[, comprehensive_cols]
 ```
+
+### Pomp Conversion
 
 ```{r}
 #| label: pomp-conversion
@@ -216,550 +238,713 @@ convert_to_pomp <- function(x, min_val, max_val) {
 
 # Convert key measures to POMP scores
 # Purpose (BPURP): 0-4 scale
-basic_dat$b_purpose_pomp <- convert_to_pomp(basic_dat[[6]], 0, 4)
-basic_dat$fu1_purpose_pomp <- convert_to_pomp(basic_dat[[9]], 0, 4)  
-basic_dat$fu2_purpose_pomp <- convert_to_pomp(basic_dat[[12]], 0, 4)
+basic_dat$b_purpose_pomp <- convert_to_pomp(basic_dat$b_bpurp_mean, 0, 4)
+basic_dat$fu1_purpose_pomp <- convert_to_pomp(basic_dat$fu1_bpurp_mean, 0, 4)  
+basic_dat$fu2_purpose_pomp <- convert_to_pomp(basic_dat$fu2_bpurp_mean, 0, 4)
 
-# Happiness (SHS): 1-7 scale  
-basic_dat$b_happiness_pomp <- convert_to_pomp(basic_dat[[7]], 1, 7)
-basic_dat$fu1_happiness_pomp <- convert_to_pomp(basic_dat[[10]], 1, 7)
-basic_dat$fu2_happiness_pomp <- convert_to_pomp(basic_dat[[13]], 1, 7)
+# Purpose in Life - External Aim Scale (PILEA): 0-4 scale
+basic_dat$b_pilea_pomp <- convert_to_pomp(basic_dat$b_pilea_mean, 0, 4)
+basic_dat$b_pilea_eng_pomp <- convert_to_pomp(basic_dat$b_pilea_eng_mean, 0, 4)
+basic_dat$b_pilea_bey_pomp <- convert_to_pomp(basic_dat$b_pilea_bey_mean, 0, 4)
+basic_dat$fu1_pilea_pomp <- convert_to_pomp(basic_dat$fu1_pilea_mean, 0, 4)
+basic_dat$fu1_pilea_eng_pomp <- convert_to_pomp(basic_dat$fu1_pilea_eng_mean, 0, 4)
+basic_dat$fu1_pilea_bey_pomp <- convert_to_pomp(basic_dat$fu1_pilea_bey_mean, 0, 4)
+basic_dat$fu2_pilea_pomp <- convert_to_pomp(basic_dat$fu2_pilea_mean, 0, 4)
+basic_dat$fu2_pilea_eng_pomp <- convert_to_pomp(basic_dat$fu2_pilea_eng_mean, 0, 4)
+basic_dat$fu2_pilea_bey_pomp <- convert_to_pomp(basic_dat$fu2_pilea_bey_mean, 0, 4)
 
-# Remove rows with all missing data
-basic_dat <- basic_dat[rowSums(is.na(basic_dat[,6:13])) < 8, ]
+# Happiness (SHS): 0-6 scale  
+basic_dat$b_happiness_pomp <- convert_to_pomp(basic_dat$b_shs_mean, 0, 6)
+basic_dat$fu1_happiness_pomp <- convert_to_pomp(basic_dat[[30]], 0, 6)
+basic_dat$fu2_happiness_pomp <- convert_to_pomp(basic_dat[[36]], 0, 6)
+
+# select only the variables with mean in the name from comprehensive_dat
+comprehensive_dat_means <- comprehensive_dat %>%
+  select(1, contains("mean"), contains("tot"), contains("fu1_valc"))
+
+# convert GSHS to POMP scores in comprehensvive_dat_means
+comprehensive_dat_means <- comprehensive_dat_means %>%
+  mutate(
+    b_gshs_mean_pomp = convert_to_pomp(b_gshs_mean, 0, 7),
+    b_gshs_path_pomp = convert_to_pomp(b_gshs_path_mean, 0, 7),
+    b_gshs_agen_pomp = convert_to_pomp(b_gshs__agen_mean, 0, 7),
+    fu1_gshs_mean_pomp = convert_to_pomp(fu1_gshs_mean, 0, 7),
+    fu1_gshs_path_pomp = convert_to_pomp(fu1_gshs_path_mean, 0, 7),
+    fu1_gshs_agen_pomp = convert_to_pomp(fu1_gshs_agen_mean, 0, 7),
+    fu2_gshs_mean_pomp = convert_to_pomp(fu2_gshs1_mean, 0, 7),
+    fu2_gshs_path_pomp = convert_to_pomp(fu2_gshs1_path_mean, 0, 7),
+    fu2_gshs_agen_pomp = convert_to_pomp(fu2_gshs1_agen_mean, 0, 7)
+  )
+
+# convert SCS to POMP scores in comprehensive_dat_means
+comprehensive_dat_means <- comprehensive_dat_means %>%
+  mutate(
+    b_self_control_pomp = convert_to_pomp(b_scs_mean, 0, 3) # self-control
+  )
+# convert BMPNS to POMP scores in comprehensive_dat_means
+comprehensive_dat_means <- comprehensive_dat_means %>%
+  mutate(
+    b_autonomy_pomp = convert_to_pomp(b_bmpns_A_tot, 0, 4), # autonomy
+    b_competence_pomp = convert_to_pomp(b_bmpns_C_tot, 0, 4), # competence
+    b_relatedness_pomp = convert_to_pomp(b_bmpns_R_tot, 0, 4), # relatedness
+    fu1_autonomy_pomp = convert_to_pomp(fu1_bmpns_A_tot, 0, 4),
+    fu1_competence_pomp = convert_to_pomp(fu1_bmpns_C_tot, 0, 4),
+    fu1_relatedness_pomp = convert_to_pomp(fu1_bmpns_R_tot, 0, 4),
+    fu2_autonomy_pomp = convert_to_pomp(fu2_bmpns_A_tot, 0, 4),
+    fu2_competence_pomp = convert_to_pomp(fu2_bmpns_C_tot, 0, 4),
+    fu2_relatedness_pomp = convert_to_pomp(fu2_bmpns_R_tot, 0, 4)
+  )
+
+# convert Distress Intolerance to POMP scores in comprehensive_dat_means
+comprehensive_dat_means <- comprehensive_dat_means %>%
+  mutate(
+    b_distress_intolerance_pomp = convert_to_pomp(b_di_mean, 0, 5)
+  )
+
+# convert experiential avoidance (BMEAQ) and implicit beliefs about emotions to POMP scores in comprehensive_dat_means
+comprehensive_dat_means <- comprehensive_dat_means %>%
+  mutate(
+    b_experiential_avoidance_pomp = convert_to_pomp(b_bmeaq_mean, 0, 6),
+    b_implicit_beliefs_emotions_pomp = convert_to_pomp(b_ibaes_mean, 0, 6)
+  )
+
+# compute means for fu1_valc 
+comprehensive_dat_means <- comprehensive_dat_means %>%
+  mutate(
+    fu1_valc_con_mean = rowMeans(select(comprehensive_dat_means, starts_with("fu1_valc_con")), na.rm = TRUE),
+    fu1_valc_trad_mean = rowMeans(select(comprehensive_dat_means, starts_with("fu1_valc_trad")), na.rm = TRUE),
+    fu1_valc_ben_mean = rowMeans(select(comprehensive_dat_means, starts_with("fu1_valc_ben")), na.rm = TRUE),
+    fu1_valc_univ_mean = rowMeans(select(comprehensive_dat_means, starts_with("fu1_valc_univ")), na.rm = TRUE),
+    fu1_valc_sd_mean = rowMeans(select(comprehensive_dat_means, starts_with("fu1_valc_sd")), na.rm = TRUE),
+    fu1_valc_stim_mean = rowMeans(select(comprehensive_dat_means, starts_with("fu1_valc_stim")), na.rm = TRUE),
+    fu1_valc_hed_mean = rowMeans(select(comprehensive_dat_means, starts_with("fu1_valc_hed")), na.rm = TRUE),
+    fu1_valc_ach_mean = rowMeans(select(comprehensive_dat_means, starts_with("fu1_valc_ach")), na.rm = TRUE),
+    fu1_valc_pow_mean = rowMeans(select(comprehensive_dat_means, starts_with("fu1_valc_pow")), na.rm = TRUE),
+    fu1_valc_sec_mean = rowMeans(select(comprehensive_dat_means, starts_with("fu1_valc_sec")), na.rm = TRUE)
+  )
+
+# convert Values Behavioral Consistency to POMP scores in comprehensive_dat_means
+comprehensive_dat_means <- comprehensive_dat_means %>%
+  mutate(
+    b_vali_con_pomp = convert_to_pomp(b_vali_con_mean, 0, 6),
+    b_vali_trad_pomp = convert_to_pomp(b_vali_trad_mean, 0, 6),
+    b_vali_ben_pomp = convert_to_pomp(b_vali_ben_mean, 0, 6),
+    b_vali_univ_pomp = convert_to_pomp(b_vali_univ_mean, 0, 6),
+    b_vali_sd_pomp = convert_to_pomp(b_vali_sd_mean, 0, 6),
+    b_vali_stim_pomp = convert_to_pomp(b_vali_stim_mean, 0, 6),
+    b_vali_hed_pomp = convert_to_pomp(b_vali_hed_mean, 0, 6),
+    b_vali_ach_pomp = convert_to_pomp(b_vali_ach_mean, 0, 6),
+    b_vali_pow_pomp = convert_to_pomp(b_vali_pow_mean, 0, 6),
+    b_vali_sec_pomp = convert_to_pomp(b_vali_sec_mean, 0, 6),
+    
+    b_valc_con_pomp = convert_to_pomp(b_valc_con_mean, 0, 6),
+    b_valc_trad_pomp = convert_to_pomp(b_valc_trad_mean, 0, 6),
+    b_valc_ben_pomp = convert_to_pomp(b_valc_ben_mean, 0, 6),
+    b_valc_univ_pomp = convert_to_pomp(b_valc_univ_mean, 0, 6),
+    b_valc_sd_pomp = convert_to_pomp(b_valc_sd_mean, 0, 6),
+    b_valc_stim_pomp = convert_to_pomp(b_valc_stim_mean, 0, 6),
+    b_valc_hed_pomp = convert_to_pomp(b_valc_hed_mean, 0, 6),
+    b_valc_ach_pomp = convert_to_pomp(b_valc_ach_mean, 0, 6),
+    b_valc_pow_pomp = convert_to_pomp(b_valc_pow_mean, 0, 6),
+    b_valc_sec_pomp = convert_to_pomp(b_valc_sec_mean, 0, 6),
+    
+    fu1_vali_con_pomp = convert_to_pomp(fu1_vali_con_mean, 0, 6),
+    fu1_vali_trad_pomp = convert_to_pomp(fu1_vali_trad_mean, 0, 6),
+    fu1_vali_ben_pomp = convert_to_pomp(fu1_vali_ben_mean, 0, 6),
+    fu1_vali_univ_pomp = convert_to_pomp(fu1_vali_univ_mean, 0, 6),
+    fu1_vali_sd_pomp = convert_to_pomp(fu1_vali_sd_mean, 0, 6),
+    fu1_vali_stim_pomp = convert_to_pomp(fu1_vali_stim_mean, 0, 6),
+    fu1_vali_hed_pomp = convert_to_pomp(fu1_vali_hed_mean, 0, 6),
+    fu1_vali_ach_pomp = convert_to_pomp(fu1_vali_ach_mean, 0, 6),
+    fu1_vali_pow_pomp = convert_to_pomp(fu1_vali_pow_mean, 0, 6),
+    fu1_vali_sec_pomp = convert_to_pomp(fu1_vali_sec_mean, 0, 6),
+    
+    fu1_valc_con_pomp = convert_to_pomp(fu1_valc_con_mean, 0, 6),
+    fu1_valc_trad_pomp = convert_to_pomp(fu1_valc_trad_mean, 0, 6),
+    fu1_valc_ben_pomp = convert_to_pomp(fu1_valc_ben_mean, 0, 6),
+    fu1_valc_univ_pomp = convert_to_pomp(fu1_valc_univ_mean, 0, 6),
+    fu1_valc_sd_pomp = convert_to_pomp(fu1_valc_sd_mean, 0, 6),
+    fu1_valc_stim_pomp = convert_to_pomp(fu1_valc_stim_mean, 0, 6),
+    fu1_valc_hed_pomp = convert_to_pomp(fu1_valc_hed_mean, 0, 6),
+    fu1_valc_ach_pomp = convert_to_pomp(fu1_valc_ach_mean, 0, 6),
+    fu1_valc_pow_pomp = convert_to_pomp(fu1_valc_pow_mean, 0, 6),
+    fu1_valc_sec_pomp = convert_to_pomp(fu1_valc_sec_mean, 0, 6),
+    
+    fu2_vali_con_pomp = convert_to_pomp(fu2_vali_con_mean, 0, 6),
+    fu2_vali_trad_pomp = convert_to_pomp(fu2_vali_tra_mean, 0, 6),
+    fu2_vali_ben_pomp = convert_to_pomp(fu2_vali_ben_mean, 0, 6),
+    fu2_vali_univ_pomp = convert_to_pomp(fu2_vali_uni_mean, 0, 6),
+    fu2_vali_sd_pomp = convert_to_pomp(fu2_vali_sd_mean, 0, 6),
+    fu2_vali_stim_pomp = convert_to_pomp(fu2_vali_stim_mean, 0, 6),
+    fu2_vali_hed_pomp = convert_to_pomp(fu2_vali_hed_mean, 0, 6),
+    fu2_vali_ach_pomp = convert_to_pomp(fu2_vali_ach_mean, 0, 6),
+    fu2_vali_pow_pomp = convert_to_pomp(fu2_vali_pow_mean, 0, 6),
+    fu2_vali_sec_pomp = convert_to_pomp(fu2_vali_sec_mean, 0, 6), 
+    
+    fu2_valc_con_pomp = convert_to_pomp(fu2_valc_con_mean, 0, 6),
+    fu2_valc_trad_pomp = convert_to_pomp(fu2_valc_tra_mean, 0, 6),
+    fu2_valc_ben_pomp = convert_to_pomp(fu2_valc_ben_mean, 0, 6),
+    fu2_valc_univ_pomp = convert_to_pomp(fu2_valc_uni_mean, 0, 6),
+    fu2_valc_sd_pomp = convert_to_pomp(fu2_valc_sd_mean, 0, 6),
+    fu2_valc_stim_pomp = convert_to_pomp(fu2_valc_stim_mean, 0, 6),
+    fu2_valc_hed_pomp = convert_to_pomp(fu2_valc_hed_mean, 0, 6),
+    fu2_valc_ach_pomp = convert_to_pomp(fu2_valc_ach_mean, 0, 6),
+    fu2_valc_pow_pomp = convert_to_pomp(fu2_valc_pow_mean, 0, 6),
+    fu2_valc_sec_pomp = convert_to_pomp(fu2_valc_sec_mean, 0, 6)
+)
+  
+
+# convert Stress Tolerance to POMP scores in comprehensive_dat_means
+comprehensive_dat_means <- comprehensive_dat_means %>%
+  mutate(
+    b_stress_tolerance_pomp = convert_to_pomp(b_5dc_st_mean, 0, 6),
+    fu1_stress_tolerance_pomp = convert_to_pomp(fu1_5dc_st_mean, 0, 6),
+    fu2_stress_tolerance_pomp = convert_to_pomp(fu2_5dc_st_mean, 0, 6)
+  )
+
+# Select only the POMP converted columns for further analysis
+comprehensive_dat_pomp <- comprehensive_dat_means %>%
+  select(
+    1, # ID
+    contains("pomp") # Select all columns with "pomp" in their name
+  )
+
+datFinal <- basic_dat %>%
+  left_join(comprehensive_dat_pomp, by = "id") %>%
+  select(-contains("mean"), -contains("tot"), contains("pomp")) # Remove mean and total columns to avoid redundancy
+
+# Save the final dataset for further analysis
+write.csv(datFinal, "datFinal_pomp.csv", row.names = FALSE)
+
+# create a new dataset (by Claude) for correlation analysis
+
+correlation_dat <- dat %>%
+  mutate(
+    # Purpose measures (0-4 scale converted to POMP)
+    purpose_bpurp_b = convert_to_pomp(b_bpurp_mean, 0, 4),
+    purpose_bpurp_fu1 = convert_to_pomp(fu1_bpurp_mean, 0, 4),
+    purpose_bpurp_fu2 = convert_to_pomp(fu2_bpurp_mean, 0, 4),
+    
+    purpose_pilea_total_b = convert_to_pomp(b_pilea_mean, 0, 4),
+    purpose_pilea_total_fu1 = convert_to_pomp(fu1_pilea_mean, 0, 4),
+    purpose_pilea_total_fu2 = convert_to_pomp(fu2_pilea_mean, 0, 4),
+    
+    purpose_pilea_eng_b = convert_to_pomp(b_pilea_eng_mean, 0, 4),
+    purpose_pilea_eng_fu1 = convert_to_pomp(fu1_pilea_eng_mean, 0, 4),
+    purpose_pilea_eng_fu2 = convert_to_pomp(fu2_pilea_eng_mean, 0, 4),
+    
+    purpose_pilea_bey_b = convert_to_pomp(b_pilea_bey_mean, 0, 4),
+    purpose_pilea_bey_fu1 = convert_to_pomp(fu1_pilea_bey_mean, 0, 4),
+    purpose_pilea_bey_fu2 = convert_to_pomp(fu2_pilea_bey_mean, 0, 4),
+    
+    # Happiness (1-7 scale converted to POMP)
+    happiness_b = convert_to_pomp(b_shs_mean, 1, 7),
+    happiness_fu1 = convert_to_pomp(fu1_shs_mean, 1, 7),
+    happiness_fu2 = convert_to_pomp(fu2_shs_mean, 1, 7),
+    
+    # Time Orientation measures
+    hope_total_b = convert_to_pomp(b_gshs_mean, 1, 8),
+    hope_total_fu1 = convert_to_pomp(fu1_gshs_mean, 1, 8),
+    hope_total_fu2 = convert_to_pomp(fu2_gshs_mean, 1, 8),
+    
+    hope_pathways_b = convert_to_pomp(b_gshs_path_mean, 1, 8),
+    hope_pathways_fu1 = convert_to_pomp(fu1_gshs_path_mean, 1, 8),
+    hope_pathways_fu2 = convert_to_pomp(fu2_gshs_path_mean, 1, 8),
+    
+    hope_agency_b = convert_to_pomp(b_gshs__agen_mean, 1, 8),
+    hope_agency_fu1 = convert_to_pomp(fu1_gshs_agen_mean, 1, 8),
+    hope_agency_fu2 = convert_to_pomp(fu2_gshs_agen_mean, 1, 8),
+    
+    # Self-control (1-4 scale)
+    self_control_b = convert_to_pomp(b_scs_mean, 1, 4),
+    
+    # Psychological Needs (1-5 scale converted to POMP)
+    autonomy_b = convert_to_pomp(b_bmpns_A_tot, 1, 5),
+    autonomy_fu1 = convert_to_pomp(fu1_bmpns_A_tot, 1, 5),
+    autonomy_fu2 = convert_to_pomp(fu2_bmpns_A_tot, 1, 5),
+    
+    competence_b = convert_to_pomp(b_bmpns_C_tot, 1, 5),
+    competence_fu1 = convert_to_pomp(fu1_bmpns_C_tot, 1, 5),
+    competence_fu2 = convert_to_pomp(fu2_bmpns_C_tot, 1, 5),
+    
+    relatedness_b = convert_to_pomp(b_bmpns_R_tot, 1, 5),
+    relatedness_fu1 = convert_to_pomp(fu1_bmpns_R_tot, 1, 5),
+    relatedness_fu2 = convert_to_pomp(fu2_bmpns_R_tot, 1, 5),
+    
+    # Emotional Tolerance measures
+    distress_intolerance_b = convert_to_pomp(b_di_mean, 1, 5),
+    experiential_avoidance_b = convert_to_pomp(b_bmeaq_mean, 1, 6),
+    stress_tolerance_b = convert_to_pomp(b_5dc_st_mean, 1, 6),
+    stress_tolerance_fu1 = convert_to_pomp(fu1_5dc_st_mean, 1, 6),
+    stress_tolerance_fu2 = convert_to_pomp(fu2_5dc_st_mean, 1, 6),
+    
+    # Values measures (1-7 scale converted to POMP)
+    # Self-transcendent values (beyond the self)
+    values_benevolence_imp_b = convert_to_pomp(b_vali_ben_mean, 1, 7),
+    values_universalism_imp_b = convert_to_pomp(b_vali_univ_mean, 1, 7),
+    values_benevolence_cons_b = convert_to_pomp(b_valc_ben_mean, 1, 7),
+    values_universalism_cons_b = convert_to_pomp(b_valc_univ_mean, 1, 7),
+    
+    # Self-enhancement values (personal focus)  
+    values_achievement_imp_b = convert_to_pomp(b_vali_ach_mean, 1, 7),
+    values_hedonism_imp_b = convert_to_pomp(b_vali_hed_mean, 1, 7),
+    values_achievement_cons_b = convert_to_pomp(b_valc_ach_mean, 1, 7),
+    values_hedonism_cons_b = convert_to_pomp(b_valc_hed_mean, 1, 7)
+  ) %>%
+  select(id, starts_with("purpose_"), starts_with("happiness_"), 
+         starts_with("hope_"), starts_with("self_control"), 
+         starts_with("autonomy_"), starts_with("competence_"), starts_with("relatedness_"),
+         starts_with("distress_"), starts_with("experiential_"), starts_with("stress_"),
+         starts_with("values_"))
+
+# Create baseline correlations table (most complete data)
+baseline_vars <- correlation_dat %>%
+  select(
+    # Purpose measures
+    purpose_bpurp_b, purpose_pilea_total_b, purpose_pilea_eng_b, purpose_pilea_bey_b,
+    # Happiness
+    happiness_b,
+    # Correlates
+    hope_total_b, hope_pathways_b, hope_agency_b, self_control_b,
+    autonomy_b, competence_b, relatedness_b,
+    distress_intolerance_b, experiential_avoidance_b, stress_tolerance_b,
+    values_benevolence_imp_b, values_universalism_imp_b, 
+    values_achievement_imp_b, values_hedonism_imp_b,
+    values_benevolence_cons_b, values_universalism_cons_b,
+    values_achievement_cons_b, values_hedonism_cons_b
+  )
+
+
+
+
 ```
+
 
 # Results
 
-## Stability Analysis
+## Correlations Between Purpose, Happiness, and Theoretically Relevant Measures
 
 ```{r}
-#| label: stability-analysis
+#| label: correlation-analysis
 #| echo: false
 #| message: false
 #| warning: false
+#| include: true
+#| results: 'asis'
 
-# Calculate test-retest correlations
-stability_results <- data.frame(
-  Construct = c(rep("Purpose (BPURP)", 3), rep("Happiness (SHS)", 3)),
-  Time_Points = rep(c("Baseline to 6-month", "Baseline to 2-year", "6-month to 2-year"), 2),
-  Correlation = c(
-    cor(basic_dat$b_purpose_pomp, basic_dat$fu1_purpose_pomp, use = "complete.obs"),
-    cor(basic_dat$b_purpose_pomp, basic_dat$fu2_purpose_pomp, use = "complete.obs"),
-    cor(basic_dat$fu1_purpose_pomp, basic_dat$fu2_purpose_pomp, use = "complete.obs"),
-    cor(basic_dat$b_happiness_pomp, basic_dat$fu1_happiness_pomp, use = "complete.obs"),
-    cor(basic_dat$b_happiness_pomp, basic_dat$fu2_happiness_pomp, use = "complete.obs"),
-    cor(basic_dat$fu1_happiness_pomp, basic_dat$fu2_happiness_pomp, use = "complete.obs")
-  )
-)
+#source('purpose_happiness_correlations.r')
 
-# Display stability results
-kable(stability_results, digits = 3, caption = "Test-Retest Correlations for Purpose and Happiness")
-```
+cor_matrix <- cor(baseline_vars, use = "pairwise.complete.obs")
 
-```{r}
-#| label: fig-stability
-#| echo: false
-#| message: false
-#| warning: false
-#| fig-cap: "Temporal Stability of Purpose and Happiness Over Two Years"
+# Extract correlations with purpose and happiness measures
+purpose_happiness_cors <- cor_matrix[6:23, 1:5] # Correlates with purpose/happiness vars
 
-# Fix the time interval labels
-stability_results_fixed <- stability_results %>%
-  mutate(
-    Time_Intervals = case_when(
-      Time_Points == "Baseline to 6-month" ~ "Baseline to 6-month",
-      Time_Points == "Baseline to 2-year" ~ "Baseline to 2-year", 
-      Time_Points == "6-month to 2-year" ~ "6-month to 2-year"
-    ),
-    Time_Intervals = factor(Time_Intervals, levels = c("Baseline to 6-month", "6-month to 2-year", "Baseline to 2-year"))
-  )
-
-# Create stability visualization with proper x-axis
-ggplot(stability_results_fixed, aes(x = Time_Intervals, y = Correlation, color = Construct, group = Construct)) +
-  geom_point(size = 4) +
-  geom_line(linewidth = 1.2) +
-  labs(
-    title = "Temporal Stability of Purpose vs. Happiness",
-    x = "Time Intervals",
-    y = "Test-Retest Correlation",
-    color = "Construct"
-  ) +
-  theme_minimal() +
-  theme(
-    axis.text.x = element_text(angle = 45, hjust = 1),
-    legend.position = "bottom"
-  ) +
-  scale_color_manual(values = c("Purpose (BPURP)" = "darkgreen", "Happiness (SHS)" = "royalblue")) +
-  ylim(0.4, 0.8)
-```
-
-## Correlational Analysis
-
-```{r}
-#| label: correlational-analysis
-#| echo: false
-#| message: false
-#| warning: false
-
-# Extract comprehensive correlate variables based on the document specifications
-# Load the full dataset and extract relevant variables
-
-# Function to safely calculate correlations with NA handling
-safe_cor <- function(x, y) {
-  tryCatch({
-    cor(x, y, use = "complete.obs")
-  }, error = function(e) NA)
+# Create a formatted correlation table
+create_correlation_table <- function(cor_matrix, title = "Correlations") {
+  cor_df <- as.data.frame(cor_matrix) %>%
+    rownames_to_column("Variable") %>%
+    mutate(
+      Variable = case_when(
+        Variable == "hope_total_b" ~ "Hope (Total)",
+        Variable == "hope_pathways_b" ~ "Hope (Pathways)", 
+        Variable == "hope_agency_b" ~ "Hope (Agency)",
+        Variable == "self_control_b" ~ "Self-Control",
+        Variable == "autonomy_b" ~ "Autonomy Need",
+        Variable == "competence_b" ~ "Competence Need",
+        Variable == "relatedness_b" ~ "Relatedness Need",
+        Variable == "distress_intolerance_b" ~ "Distress Intolerance",
+        Variable == "experiential_avoidance_b" ~ "Experiential Avoidance",
+        Variable == "stress_tolerance_b" ~ "Stress Tolerance",
+        Variable == "values_benevolence_imp_b" ~ "Benevolence Values (Importance)",
+        Variable == "values_universalism_imp_b" ~ "Universalism Values (Importance)",
+        Variable == "values_achievement_imp_b" ~ "Achievement Values (Importance)",
+        Variable == "values_hedonism_imp_b" ~ "Hedonism Values (Importance)",
+        Variable == "values_benevolence_cons_b" ~ "Benevolence Values (Consistency)",
+        Variable == "values_universalism_cons_b" ~ "Universalism Values (Consistency)",
+        Variable == "values_achievement_cons_b" ~ "Achievement Values (Consistency)",
+        Variable == "values_hedonism_cons_b" ~ "Hedonism Values (Consistency)",
+        TRUE ~ Variable
+      )
+    )
+  
+  # Rename columns
+  names(cor_df)[2:6] <- c("Purpose (BPIL)", "Purpose (PILEA)", "Purpose (Engagement)", 
+                          "Purpose (Beyond-Self)", "Happiness (SHS)")
+  
+  # Format to 3 decimal places
+  cor_df[, 2:6] <- lapply(cor_df[, 2:6], function(x) sprintf("%.3f", x))
+  
+  return(cor_df)
 }
 
-# Create comprehensive correlation analysis
-# First, let's identify all available variables in the dataset
-available_vars <- colnames(dat)
+# Create the correlation table
+correlation_table <- create_correlation_table(purpose_happiness_cors)
 
-# Extract key baseline variables based on column specifications from docx.md
-baseline_correlates <- dat %>%
+# Display the table using kable
+#print("Table 1: Correlations Between Purpose, Happiness, and Theoretically Relevant Measures")
+#knitr::kable(correlation_table, 
+#             caption = "Correlations Between Purpose, Happiness, and Theoretically Relevant Measures (Baseline)",
+#             booktabs = TRUE) %>%
+#  kable_styling(latex_options = c("striped", "hold_position")) %>%
+#  group_rows("Time Orientation", 1, 4) %>%
+#  group_rows("Psychological Needs", 5, 7) %>%
+#  group_rows("Emotional Tolerance", 8, 10) %>%
+#  group_rows("Values (Importance)", 11, 14) %>%
+#  group_rows("Values (Behavioral Consistency)", 15, 18)
+
+# Alternative GT table formatting (more publication-ready)
+gt_table <- correlation_table %>%
+  gt() %>%
+  tab_header(
+    title = "Correlations Between Purpose, Happiness, and Theoretically Relevant Measures",
+    subtitle = "Baseline Assessment (N = 345)"
+  ) %>%
+  tab_row_group(
+    label = "Time Orientation",
+    rows = 1:4
+  ) %>%
+  tab_row_group(
+    label = "Psychological Needs", 
+    rows = 5:7
+  ) %>%
+  tab_row_group(
+    label = "Emotional Tolerance",
+    rows = 8:10
+  ) %>%
+  tab_row_group(
+    label = "Values (Importance)",
+    rows = 11:14
+  ) %>%
+  tab_row_group(
+    label = "Values (Behavioral Consistency)",
+    rows = 15:18
+  ) %>%
+  fmt_number(
+    columns = 2:6,
+    decimals = 3
+  ) %>%
+  cols_label(
+    Variable = "Measure"
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_row_groups()
+  ) %>%
+  tab_footnote(
+    footnote = "All correlations based on POMP-standardized scores (0-100 scale). BPIL = Brief Purpose in Life Scale; PILEA = Purpose in Life External Aim Scale; SHS = Subjective Happiness Scale.",
+    locations = cells_title()
+  )
+
+print(gt_table)
+```
+
+## Differential Correlation Analysis
+
+```{r}
+#| label: differential-correlation-analysis
+#| echo: false
+#| message: false
+#| warning: false
+#| include: true
+#| results: 'asis'
+
+# Create differential correlation analysis
+# Test for significant differences using Fisher's z-transformation
+test_correlation_difference <- function(r1, r2, n) {
+  # Fisher z-transformation
+  z1 <- 0.5 * log((1 + r1) / (1 - r1))
+  z2 <- 0.5 * log((1 + r2) / (1 - r2))
+  
+  # Standard error
+  se <- sqrt(1/(n-3) + 1/(n-3))
+  
+  # Z-test statistic
+  z_stat <- (z1 - z2) / se
+  
+  # Two-tailed p-value
+  p_value <- 2 * (1 - pnorm(abs(z_stat)))
+  
+  return(list(z = z_stat, p = p_value))
+}
+
+# Calculate sample size for complete cases at baseline
+n_complete <- sum(complete.cases(baseline_vars))
+cat("Sample size for correlation analysis:", n_complete, "\n")
+
+# Test key theoretical differences
+purpose_bpil_cors <- as.numeric(correlation_table$`Purpose (BPIL)`)
+happiness_cors <- as.numeric(correlation_table$`Happiness (SHS)`)
+
+# Test differences for key theoretical predictions
+key_tests <- data.frame(
+  Measure = correlation_table$Variable,
+  Purpose_r = purpose_bpil_cors,
+  Happiness_r = happiness_cors,
+  Difference = purpose_bpil_cors - happiness_cors
+)
+
+# Add significance tests
+key_tests$z_stat <- mapply(function(r1, r2) {
+  test_correlation_difference(r1, r2, n_complete)$z
+}, key_tests$Purpose_r, key_tests$Happiness_r)
+
+key_tests$p_value <- mapply(function(r1, r2) {
+  test_correlation_difference(r1, r2, n_complete)$p  
+}, key_tests$Purpose_r, key_tests$Happiness_r)
+
+# Add significance indicators
+key_tests$Significance <- case_when(
+  key_tests$p_value < 0.001 ~ "***",
+  key_tests$p_value < 0.01 ~ "**", 
+  key_tests$p_value < 0.05 ~ "*",
+  TRUE ~ ""
+)
+
+# Format for publication
+key_tests_formatted <- key_tests %>%
+  mutate(
+    Purpose_r = sprintf("%.3f", Purpose_r),
+    Happiness_r = sprintf("%.3f", Happiness_r), 
+    Difference = sprintf("%.3f", Difference),
+    z_stat = sprintf("%.2f", z_stat),
+    p_value = ifelse(p_value < 0.001, "< .001", sprintf("%.3f", p_value))
+  ) %>%
+  select(Measure, Purpose_r, Happiness_r, Difference, z_stat, p_value, Significance)
+
+# Create publication table for differential correlations
+differential_table <- key_tests_formatted %>%
+  gt() %>%
+  tab_header(
+    title = "Differential Correlations: Purpose vs. Happiness",
+    subtitle = "Statistical Tests of Correlation Differences (Baseline)"
+  ) %>%
+  cols_label(
+    Measure = "Measure",
+    Purpose_r = "Purpose (BPIL)",
+    Happiness_r = "Happiness (SHS)", 
+    Difference = "Difference",
+    z_stat = "z-statistic",
+    p_value = "p-value",
+    Significance = ""
+  ) %>%
+  tab_row_group(
+    label = "Time Orientation",
+    rows = 1:4
+  ) %>%
+  tab_row_group(
+    label = "Psychological Needs", 
+    rows = 5:7
+  ) %>%
+  tab_row_group(
+    label = "Emotional Tolerance",
+    rows = 8:10
+  ) %>%
+  tab_row_group(
+    label = "Values (Importance)",
+    rows = 11:14
+  ) %>%
+  tab_row_group(
+    label = "Values (Behavioral Consistency)",
+    rows = 15:18
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_row_groups()
+  ) %>%
+  tab_style(
+    style = cell_fill(color = "lightblue", alpha = 0.3),
+    locations = cells_body(
+      columns = Significance,
+      rows = Significance %in% c("*", "**", "***")
+    )
+  ) %>%
+  tab_footnote(
+    footnote = "* p < .05, ** p < .01, *** p < .001. Positive differences indicate stronger correlation with purpose than happiness.",
+    locations = cells_title()
+  )
+
+print(differential_table)
+```
+
+## Longitudinal Stability Analysis
+
+```{r}
+#| label: longitudinal-stability-analysis
+#| echo: false
+#| message: false
+#| warning: false
+#| include: true
+#| results: 'asis'
+
+# Longitudinal Stability Analysis
+longitudinal_vars <- correlation_dat %>%
   select(
-    # ID
-    1,
-    # Purpose and Happiness (POMP converted)
-    all_of(c(697, 698, 735, 736)),  # baseline means
-    # Hope (GSHS) - baseline
-    all_of(c(702:704)),  # mean, pathway, agency
-    # Self-control - baseline
-    all_of(c(716)),  # mean
-    # Psychological Needs (BMPNS) - baseline totals
-    all_of(c(731:733)),  # A, C, R total POMP scores
-    # Distress intolerance - baseline
-    all_of(c(437:446)),  # raw items
-    # Experiential avoidance - baseline
-    all_of(c(699, 738)),  # means
-    # Values importance - baseline
-    all_of(c(285:304)),  # 10 values importance
-    # Values behavioral consistency - baseline  
-    all_of(c(637:646))   # 10 values consistency means
-  ) %>%
-  # Convert purpose and happiness to POMP if not already
+    # Purpose measures across time
+    purpose_bpurp_b, purpose_bpurp_fu1, purpose_bpurp_fu2,
+    purpose_pilea_total_b, purpose_pilea_total_fu1, purpose_pilea_total_fu2,
+    
+    # Happiness across time  
+    happiness_b, happiness_fu1, happiness_fu2,
+    
+    # Key correlates across time (where available)
+    hope_total_b, hope_total_fu1, hope_total_fu2,
+    autonomy_b, autonomy_fu1, autonomy_fu2,
+    competence_b, competence_fu1, competence_fu2,
+    relatedness_b, relatedness_fu1, relatedness_fu2,
+    stress_tolerance_b, stress_tolerance_fu1, stress_tolerance_fu2
+  )
+
+# Calculate stability correlations
+stability_cors <- cor(longitudinal_vars, use = "pairwise.complete.obs")
+
+# Extract key stability correlations
+purpose_stability <- data.frame(
+  Measure = c("Purpose (BPIL)", "Purpose (PILEA)", "Happiness", 
+              "Hope", "Autonomy", "Competence", "Relatedness", "Stress Tolerance"),
+  `T1-T2` = c(
+    stability_cors["purpose_bpurp_b", "purpose_bpurp_fu1"],
+    stability_cors["purpose_pilea_total_b", "purpose_pilea_total_fu1"], 
+    stability_cors["happiness_b", "happiness_fu1"],
+    stability_cors["hope_total_b", "hope_total_fu1"],
+    stability_cors["autonomy_b", "autonomy_fu1"],
+    stability_cors["competence_b", "competence_fu1"], 
+    stability_cors["relatedness_b", "relatedness_fu1"],
+    stability_cors["stress_tolerance_b", "stress_tolerance_fu1"]
+  ),
+  `T1-T3` = c(
+    stability_cors["purpose_bpurp_b", "purpose_bpurp_fu2"],
+    stability_cors["purpose_pilea_total_b", "purpose_pilea_total_fu2"],
+    stability_cors["happiness_b", "happiness_fu2"], 
+    stability_cors["hope_total_b", "hope_total_fu2"],
+    stability_cors["autonomy_b", "autonomy_fu2"],
+    stability_cors["competence_b", "competence_fu2"],
+    stability_cors["relatedness_b", "relatedness_fu2"],
+    stability_cors["stress_tolerance_b", "stress_tolerance_fu2"]
+  ),
+  `T2-T3` = c(
+    stability_cors["purpose_bpurp_fu1", "purpose_bpurp_fu2"],
+    stability_cors["purpose_pilea_total_fu1", "purpose_pilea_total_fu2"],
+    stability_cors["happiness_fu1", "happiness_fu2"],
+    stability_cors["hope_total_fu1", "hope_total_fu2"],
+    stability_cors["autonomy_fu1", "autonomy_fu2"],
+    stability_cors["competence_fu1", "competence_fu2"],
+    stability_cors["relatedness_fu1", "relatedness_fu2"],
+    stability_cors["stress_tolerance_fu1", "stress_tolerance_fu2"]
+  ),
+  check.names = FALSE
+)
+
+# Format stability table
+stability_table <- purpose_stability %>%
   mutate(
-    b_purpose_pomp = ((.[,2] - 0) / (4 - 0)) * 100,
-    b_happiness_pomp = ((.[,3] - 1) / (7 - 1)) * 100
-  )
-
-# Calculate correlation matrix for baseline
-if(ncol(baseline_correlates) > 4) {
-  # Create correlation table for baseline measures
-  baseline_corr_table <- data.frame(
-    Measure = c(
-      "Hope - Total", "Hope - Pathways", "Hope - Agency",
-      "Self-Control", 
-      "Autonomy Need", "Competence Need", "Relatedness Need",
-      "Distress Intolerance",
-      "Experiential Avoidance"
-    ),
-    Purpose_r = c(
-      safe_cor(baseline_correlates$b_purpose_pomp, baseline_correlates[,5]),
-      safe_cor(baseline_correlates$b_purpose_pomp, baseline_correlates[,6]),
-      safe_cor(baseline_correlates$b_purpose_pomp, baseline_correlates[,7]),
-      safe_cor(baseline_correlates$b_purpose_pomp, baseline_correlates[,8]),
-      safe_cor(baseline_correlates$b_purpose_pomp, baseline_correlates[,9]),
-      safe_cor(baseline_correlates$b_purpose_pomp, baseline_correlates[,10]),
-      safe_cor(baseline_correlates$b_purpose_pomp, baseline_correlates[,11]),
-      safe_cor(baseline_correlates$b_purpose_pomp, rowMeans(baseline_correlates[,12:21], na.rm = TRUE)),
-      safe_cor(baseline_correlates$b_purpose_pomp, baseline_correlates[,22])
-    ),
-    Happiness_r = c(
-      safe_cor(baseline_correlates$b_happiness_pomp, baseline_correlates[,5]),
-      safe_cor(baseline_correlates$b_happiness_pomp, baseline_correlates[,6]),
-      safe_cor(baseline_correlates$b_happiness_pomp, baseline_correlates[,7]),
-      safe_cor(baseline_correlates$b_happiness_pomp, baseline_correlates[,8]),
-      safe_cor(baseline_correlates$b_happiness_pomp, baseline_correlates[,9]),
-      safe_cor(baseline_correlates$b_happiness_pomp, baseline_correlates[,10]),
-      safe_cor(baseline_correlates$b_happiness_pomp, baseline_correlates[,11]),
-      safe_cor(baseline_correlates$b_happiness_pomp, rowMeans(baseline_correlates[,12:21], na.rm = TRUE)),
-      safe_cor(baseline_correlates$b_happiness_pomp, baseline_correlates[,22])
-    )
+    across(c(`T1-T2`, `T1-T3`, `T2-T3`), ~ sprintf("%.3f", .))
   ) %>%
+  gt() %>%
+  tab_header(
+    title = "Temporal Stability of Purpose, Happiness, and Key Correlates",
+    subtitle = "Test-Retest Correlations Across Three Time Points"
+  ) %>%
+  cols_label(
+    Measure = "Measure",
+    `T1-T2` = "Baseline - 6 months",
+    `T1-T3` = "Baseline - 2 years", 
+    `T2-T3` = "6 months - 2 years"
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_body(rows = 1:3)
+  ) %>%
+  tab_footnote(
+    footnote = "T1 = Baseline, T2 = 6-month follow-up, T3 = 2-year follow-up. Bold rows indicate primary constructs of interest.",
+    locations = cells_title()
+  )
+
+print(stability_table)
+```
+
+## Cross-Lagged Associations Between Purpose and Happiness
+
+```{r}
+#| label: cross-lagged-analysis
+#| echo: false
+#| message: false
+#| warning: false
+#| include: true
+#| results: 'asis'
+
+
+# Cross-lagged correlations
+cross_lagged <- data.frame(
+  Predictor = c("Baseline Purpose (BPIL)", "Baseline Purpose (PILEA)", "Baseline Happiness",
+               "Baseline Purpose (BPIL)", "Baseline Purpose (PILEA)", "Baseline Happiness"),
+  Outcome = c("6-month Happiness", "6-month Happiness", "6-month Purpose (BPIL)",
+             "2-year Happiness", "2-year Happiness", "2-year Purpose (BPIL)"),
+  Correlation = c(
+    stability_cors["purpose_bpurp_b", "happiness_fu1"],
+    stability_cors["purpose_pilea_total_b", "happiness_fu1"],
+    stability_cors["happiness_b", "purpose_bpurp_fu1"],
+    stability_cors["purpose_bpurp_b", "happiness_fu2"],
+    stability_cors["purpose_pilea_total_b", "happiness_fu2"], 
+    stability_cors["happiness_b", "purpose_bpurp_fu2"]
+  )
+) %>%
   mutate(
-    Difference = Purpose_r - Happiness_r,
-    Purpose_stronger = abs(Purpose_r) > abs(Happiness_r)
+    Correlation = sprintf("%.3f", Correlation),
+    Time_Frame = rep(c("6-month", "2-year"), each = 3)
   )
-  
-} else {
-  # Fallback if variable extraction fails
-  baseline_corr_table <- data.frame(
-    Measure = c("Hope - Total", "Self-Control", "Psychological Needs", "Distress Tolerance"),
-    Purpose_r = c(0.45, 0.32, 0.38, -0.28),
-    Happiness_r = c(0.42, 0.35, 0.48, -0.35),
-    Difference = c(0.03, -0.03, -0.10, 0.07),
-    Purpose_stronger = c(TRUE, FALSE, FALSE, TRUE)
-  )
-}
 
-kable(baseline_corr_table[,1:4], digits = 3, caption = "Baseline Correlations: Purpose and Happiness with Correlate Measures")
+# Format cross-lagged table
+cross_lagged_table <- cross_lagged %>%
+  gt() %>%
+  tab_header(
+    title = "Cross-Lagged Associations Between Purpose and Happiness", 
+    subtitle = "Longitudinal Predictive Relationships"
+  ) %>%
+  tab_row_group(
+    label = "6-Month Predictions",
+    rows = 1:3
+  ) %>%
+  tab_row_group(
+    label = "2-Year Predictions", 
+    rows = 4:6
+  ) %>%
+  cols_hide(Time_Frame) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_row_groups()
+  )
+
+print(cross_lagged_table)
+
+# Summary of key findings for manuscript
+#cat("\n=== KEY FINDINGS SUMMARY ===\n")
+#cat("1. Correlation Magnitudes:\n")
+#cat("   - Purpose-Happiness correlation (baseline):", sprintf("%.3f", cor(correlation_dat$purpose_bpurp_b, correlation_dat$happiness_b, use = "complete.obs")), "\n")
+#cat("   - Purpose (BPIL) stability (baseline to 2-year):", sprintf("%.3f", stability_cors["purpose_bpurp_b", "purpose_bpurp_fu2"]), "\n")
+#cat("   - Happiness stability (baseline to 2-year):", sprintf("%.3f", stability_cors["happiness_b", "happiness_fu2"]), "\n")
+#cat("\n2. Differential Correlations (Purpose vs Happiness):\n")
 ```
 
-```{r}
-#| label: correlational-comparison
-#| echo: false
-#| message: false
-#| warning: false
 
-# Cross-correlations between purpose and happiness at each timepoint
-# Note: Need to check if variables exist and have valid data
-if("b_purpose_pomp" %in% colnames(basic_dat) && "b_happiness_pomp" %in% colnames(basic_dat)) {
-  cross_correlations <- data.frame(
-    Timepoint = c("Baseline", "6-month", "2-year"),
-    Purpose_Happiness_r = c(
-      safe_cor(basic_dat$b_purpose_pomp, basic_dat$b_happiness_pomp),
-      safe_cor(basic_dat$fu1_purpose_pomp, basic_dat$fu1_happiness_pomp),
-      safe_cor(basic_dat$fu2_purpose_pomp, basic_dat$fu2_happiness_pomp)
-    )
-  )
-} else {
-  # Use realistic example values based on literature
-  cross_correlations <- data.frame(
-    Timepoint = c("Baseline", "6-month", "2-year"),
-    Purpose_Happiness_r = c(0.578, 0.612, 0.634)
-  )
-}
 
-kable(cross_correlations, digits = 3, caption = "Cross-sectional Correlations Between Purpose and Happiness")
-```
 
-```{r}
-#| label: fig-correlation-comparison
-#| echo: false
-#| message: false
-#| warning: false
-#| fig-cap: "Differential Correlations: Purpose vs Happiness with Key Correlates"
 
-# Create visualization comparing purpose vs happiness correlations
-if(exists("baseline_corr_table") && nrow(baseline_corr_table) > 0) {
-  corr_plot_data <- baseline_corr_table %>%
-    select(Measure, Purpose_r, Happiness_r) %>%
-    pivot_longer(cols = c(Purpose_r, Happiness_r), names_to = "Construct", values_to = "Correlation") %>%
-    mutate(Construct = ifelse(Construct == "Purpose_r", "Purpose", "Happiness")) %>%
-    filter(!is.na(Correlation))
-  
-  ggplot(corr_plot_data, aes(x = reorder(Measure, Correlation), y = Correlation, fill = Construct)) +
-    geom_bar(stat = "identity", position = "dodge", alpha = 0.8) +
-    coord_flip() +
-    labs(
-      title = "Baseline Correlations: Purpose vs Happiness",
-      x = "Correlate Measures",
-      y = "Correlation Coefficient",
-      fill = "Construct"
-    ) +
-    theme_minimal() +
-    theme(legend.position = "bottom") +
-    scale_fill_manual(values = c("Purpose" = "darkgreen", "Happiness" = "royalblue")) +
-    geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5)
-} else {
-  # Create placeholder plot
-  placeholder_data <- data.frame(
-    Measure = rep(c("Hope", "Self-Control", "Needs", "Distress Tolerance"), 2),
-    Construct = rep(c("Purpose", "Happiness"), each = 4),
-    Correlation = c(0.45, 0.32, 0.38, -0.28, 0.42, 0.35, 0.48, -0.35)
-  )
-  
-  ggplot(placeholder_data, aes(x = Measure, y = Correlation, fill = Construct)) +
-    geom_bar(stat = "identity", position = "dodge", alpha = 0.8) +
-    coord_flip() +
-    labs(
-      title = "Baseline Correlations: Purpose vs Happiness (Illustrative)",
-      x = "Correlate Measures",
-      y = "Correlation Coefficient",
-      fill = "Construct"
-    ) +
-    theme_minimal() +
-    theme(legend.position = "bottom") +
-    scale_fill_manual(values = c("Purpose" = "darkgreen", "Happiness" = "royalblue"))
-}
-```
 
-### Temporal Focus Correlates
 
-```{r}
-#| label: temporal-focus-table
-#| echo: false
-#| message: false
-#| warning: false
 
-# Create table focusing on temporal orientation measures
-temporal_measures <- data.frame(
-  Measure = c(
-    "Goal-Specific Hope - Agency",
-    "Goal-Specific Hope - Pathways", 
-    "Goal-Specific Hope - Total",
-    "Self-Control"
-  ),
-  Baseline_Purpose = c(0.463, 0.445, 0.456, 0.319),
-  Baseline_Happiness = c(0.433, 0.428, 0.431, 0.335),
-  FU1_Purpose = c(0.452, 0.438, 0.447, 0.301),
-  FU1_Happiness = c(0.421, 0.415, 0.419, 0.328),
-  FU2_Purpose = c(0.441, 0.429, 0.437, 0.295),
-  FU2_Happiness = c(0.408, 0.402, 0.406, 0.315)
-)
 
-kable(temporal_measures, digits = 3, caption = "Temporal Focus: Correlations Across Time Points")
-```
-
-### Psychological Needs Correlates
-
-```{r}
-#| label: needs-table
-#| echo: false
-#| message: false
-#| warning: false
-
-# Create table for psychological needs measures
-needs_measures <- data.frame(
-  Measure = c(
-    "Autonomy Satisfaction",
-    "Competence Satisfaction",
-    "Relatedness Satisfaction",
-    "Autonomy Total",
-    "Competence Total", 
-    "Relatedness Total"
-  ),
-  Baseline_Purpose = c(0.310, 0.386, 0.303, 0.325, 0.401, 0.318),
-  Baseline_Happiness = c(0.448, 0.428, 0.479, 0.465, 0.445, 0.495),
-  FU1_Purpose = c(0.298, 0.372, 0.291, 0.312, 0.387, 0.305),
-  FU1_Happiness = c(0.435, 0.415, 0.466, 0.452, 0.432, 0.482),
-  FU2_Purpose = c(0.285, 0.359, 0.278, 0.299, 0.374, 0.292),
-  FU2_Happiness = c(0.422, 0.402, 0.453, 0.439, 0.419, 0.469)
-)
-
-kable(needs_measures, digits = 3, caption = "Psychological Needs: Correlations Across Time Points")
-```
-
-### Values-Based Correlates
-
-```{r}
-#| label: values-table
-#| echo: false
-#| message: false
-#| warning: false
-
-# Create table for values measures
-values_measures <- data.frame(
-  Measure = c(
-    "Values Importance - Achievement",
-    "Values Importance - Benevolence", 
-    "Values Importance - Universalism",
-    "Values Importance - Self-Direction",
-    "Behavioral Consistency - Achievement",
-    "Behavioral Consistency - Benevolence",
-    "Behavioral Consistency - Universalism", 
-    "Behavioral Consistency - Self-Direction"
-  ),
-  Baseline_Purpose = c(0.385, 0.342, 0.358, 0.396, 0.428, 0.365, 0.381, 0.445),
-  Baseline_Happiness = c(0.298, 0.445, 0.387, 0.321, 0.352, 0.488, 0.412, 0.369),
-  Difference_P_minus_H = c(0.087, -0.103, -0.029, 0.075, 0.076, -0.123, -0.031, 0.076)
-)
-
-kable(values_measures, digits = 3, caption = "Values: Purpose vs Happiness Correlations (Baseline)")
-```
-
-## Longitudinal Prediction Analysis
-
-```{r}
-#| label: longitudinal-regression
-#| echo: false
-#| message: false
-#| warning: false
-
-# Hierarchical regression: Does baseline purpose predict future happiness beyond baseline happiness?
-# And vice versa?
-
-# Prepare data for regression - create synthetic data if needed
-# First, check if the variables exist and have valid data
-if(all(c("b_purpose_pomp", "b_happiness_pomp", "fu1_purpose_pomp", "fu1_happiness_pomp", 
-         "fu2_purpose_pomp", "fu2_happiness_pomp") %in% colnames(basic_dat))) {
-  
-  reg_data <- basic_dat %>%
-    select(b_purpose_pomp, b_happiness_pomp, fu1_purpose_pomp, fu1_happiness_pomp, 
-           fu2_purpose_pomp, fu2_happiness_pomp) %>%
-    filter(complete.cases(.))
-  
-  has_real_data <- nrow(reg_data) > 10
-} else {
-  has_real_data <- FALSE
-}
-
-# If we don't have real data, create realistic synthetic data for demonstration
-if(!has_real_data) {
-  set.seed(42)  # For reproducible results
-  n <- 150  # Sample size
-  
-  # Create correlated variables that mimic real longitudinal data
-  b_purpose <- rnorm(n, 65, 15)  # Baseline purpose (POMP scale 0-100)
-  b_happiness <- 0.6 * b_purpose + rnorm(n, 25, 10)  # Correlated baseline happiness
-  
-  # 6-month follow-up (high stability + some cross-lagged effects)
-  fu1_purpose <- 0.75 * b_purpose + 0.1 * b_happiness + rnorm(n, 0, 8)
-  fu1_happiness <- 0.8 * b_happiness + 0.05 * b_purpose + rnorm(n, 0, 7)
-  
-  # 2-year follow-up (moderate stability + cross-lagged effects)
-  fu2_purpose <- 0.65 * b_purpose + 0.15 * b_happiness + rnorm(n, 0, 10)
-  fu2_happiness <- 0.7 * b_happiness + 0.03 * b_purpose + rnorm(n, 0, 9)
-  
-  reg_data <- data.frame(
-    b_purpose_pomp = pmax(0, pmin(100, b_purpose)),
-    b_happiness_pomp = pmax(0, pmin(100, b_happiness)),
-    fu1_purpose_pomp = pmax(0, pmin(100, fu1_purpose)),
-    fu1_happiness_pomp = pmax(0, pmin(100, fu1_happiness)),
-    fu2_purpose_pomp = pmax(0, pmin(100, fu2_purpose)),
-    fu2_happiness_pomp = pmax(0, pmin(100, fu2_happiness))
-  )
-}
-
-# Now run the regression models
-if(nrow(reg_data) > 10) {
-  
-  # Model 1: Baseline happiness predicting 6-month purpose, controlling for baseline purpose
-  model1 <- lm(fu1_purpose_pomp ~ b_purpose_pomp + b_happiness_pomp, data = reg_data)
-  
-  # Model 2: Baseline purpose predicting 6-month happiness, controlling for baseline happiness  
-  model2 <- lm(fu1_happiness_pomp ~ b_happiness_pomp + b_purpose_pomp, data = reg_data)
-  
-  # Model 3: Baseline happiness predicting 2-year purpose, controlling for baseline purpose
-  model3 <- lm(fu2_purpose_pomp ~ b_purpose_pomp + b_happiness_pomp, data = reg_data)
-  
-  # Model 4: Baseline purpose predicting 2-year happiness, controlling for baseline happiness
-  model4 <- lm(fu2_happiness_pomp ~ b_happiness_pomp + b_purpose_pomp, data = reg_data)
-  
-  # Function to safely extract coefficients
-  safe_extract <- function(model, var, stat) {
-    tryCatch({
-      coef_matrix <- summary(model)$coefficients
-      if(var %in% rownames(coef_matrix)) {
-        return(coef_matrix[var, stat])
-      } else {
-        return(NA)
-      }
-    }, error = function(e) NA)
-  }
-  
-  # Create summary table with proper extraction
-  regression_summary <- data.frame(
-    Model = c("Happiness → Future Purpose (6mo)", "Purpose → Future Happiness (6mo)",
-              "Happiness → Future Purpose (2yr)", "Purpose → Future Happiness (2yr)"),
-    Beta = c(
-      safe_extract(model1, "b_happiness_pomp", "Estimate"),
-      safe_extract(model2, "b_purpose_pomp", "Estimate"), 
-      safe_extract(model3, "b_happiness_pomp", "Estimate"),
-      safe_extract(model4, "b_purpose_pomp", "Estimate")
-    ),
-    SE = c(
-      safe_extract(model1, "b_happiness_pomp", "Std. Error"),
-      safe_extract(model2, "b_purpose_pomp", "Std. Error"),
-      safe_extract(model3, "b_happiness_pomp", "Std. Error"), 
-      safe_extract(model4, "b_purpose_pomp", "Std. Error")
-    ),
-    p_value = c(
-      safe_extract(model1, "b_happiness_pomp", "Pr(>|t|)"),
-      safe_extract(model2, "b_purpose_pomp", "Pr(>|t|)"),
-      safe_extract(model3, "b_happiness_pomp", "Pr(>|t|)"),
-      safe_extract(model4, "b_purpose_pomp", "Pr(>|t|)")
-    )
-  )
-  
-  # If still getting NAs, use realistic example values
-  if(all(is.na(regression_summary$Beta))) {
-    regression_summary <- data.frame(
-      Model = c("Happiness → Future Purpose (6mo)", "Purpose → Future Happiness (6mo)",
-                "Happiness → Future Purpose (2yr)", "Purpose → Future Happiness (2yr)"),
-      Beta = c(0.148, 0.034, 0.156, 0.029),
-      SE = c(0.045, 0.048, 0.052, 0.051),
-      p_value = c(0.002, 0.478, 0.004, 0.573)
-    )
-  }
-  
-} else {
-  # Use realistic literature-based values if no data available
-  regression_summary <- data.frame(
-    Model = c("Happiness → Future Purpose (6mo)", "Purpose → Future Happiness (6mo)",
-              "Happiness → Future Purpose (2yr)", "Purpose → Future Happiness (2yr)"),
-    Beta = c(0.148, 0.034, 0.156, 0.029),
-    SE = c(0.045, 0.048, 0.052, 0.051),
-    p_value = c(0.002, 0.478, 0.004, 0.573)
-  )
-}
-
-kable(regression_summary, digits = 3, caption = "Longitudinal Prediction Models")
-```
-
-```{r}
-#| label: fig-prediction
-#| echo: false  
-#| message: false
-#| warning: false
-#| fig-cap: "Cross-lagged Relationships Between Purpose and Happiness"
-
-# Create visualization of cross-lagged relationships
-# Always create meaningful data for visualization
-if(exists("model1") && exists("reg_data") && nrow(reg_data) > 10 && !all(is.na(regression_summary$Beta))) {
-  prediction_plot_data <- data.frame(
-    Direction = rep(c("Happiness → Purpose", "Purpose → Happiness"), 2),
-    Timepoint = rep(c("6-month", "2-year"), each = 2),
-    Beta = c(
-      safe_extract(model1, "b_happiness_pomp", "Estimate"),
-      safe_extract(model2, "b_purpose_pomp", "Estimate"),
-      safe_extract(model3, "b_happiness_pomp", "Estimate"), 
-      safe_extract(model4, "b_purpose_pomp", "Estimate")
-    ),
-    Significant = c(
-      !is.na(safe_extract(model1, "b_happiness_pomp", "Pr(>|t|)")) && safe_extract(model1, "b_happiness_pomp", "Pr(>|t|)") < 0.05,
-      !is.na(safe_extract(model2, "b_purpose_pomp", "Pr(>|t|)")) && safe_extract(model2, "b_purpose_pomp", "Pr(>|t|)") < 0.05,
-      !is.na(safe_extract(model3, "b_happiness_pomp", "Pr(>|t|)")) && safe_extract(model3, "b_happiness_pomp", "Pr(>|t|)") < 0.05,
-      !is.na(safe_extract(model4, "b_purpose_pomp", "Pr(>|t|)")) && safe_extract(model4, "b_purpose_pomp", "Pr(>|t|)") < 0.05
-    )
-  )
-  
-  # Remove rows with NA values for plotting
-  prediction_plot_data <- prediction_plot_data[complete.cases(prediction_plot_data$Beta), ]
-  
-  # If no valid data, use meaningful example values
-  if(nrow(prediction_plot_data) == 0 || all(is.na(prediction_plot_data$Beta))) {
-    prediction_plot_data <- data.frame(
-      Direction = rep(c("Happiness → Purpose", "Purpose → Happiness"), 2),
-      Timepoint = rep(c("6-month", "2-year"), each = 2),
-      Beta = c(0.148, 0.034, 0.156, 0.029),
-      Significant = c(TRUE, FALSE, TRUE, FALSE)
-    )
-  }
-} else {
-  # Create realistic example data based on research literature
-  prediction_plot_data <- data.frame(
-    Direction = rep(c("Happiness → Purpose", "Purpose → Happiness"), 2),
-    Timepoint = rep(c("6-month", "2-year"), each = 2),
-    Beta = c(0.148, 0.034, 0.156, 0.029),
-    Significant = c(TRUE, FALSE, TRUE, FALSE)
-  )
-}
-
-# Create an informative plot with significance indicators
-ggplot(prediction_plot_data, aes(x = Timepoint, y = Beta, fill = Direction, alpha = Significant)) +
-  geom_bar(stat = "identity", position = "dodge", width = 0.7) +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") +
-  labs(
-    title = "Cross-lagged Prediction Effects: Purpose vs Happiness",
-    subtitle = "Higher alpha indicates statistical significance (p < .05)",
-    x = "Follow-up Timepoint", 
-    y = "Standardized Beta Coefficient",
-    fill = "Prediction Direction",
-    alpha = "Significant"
-  ) +
-  theme_minimal() +
-  theme(
-    legend.position = "bottom",
-    plot.title = element_text(size = 12, face = "bold"),
-    plot.subtitle = element_text(size = 10, color = "gray50")
-  ) +
-  scale_fill_manual(values = c("Happiness → Purpose" = "royalblue", "Purpose → Happiness" = "darkgreen")) +
-  scale_alpha_manual(values = c("TRUE" = 0.8, "FALSE" = 0.4), guide = "none") +
-  ylim(-0.02, 0.18)
-```
 
 # Discussion
 
@@ -767,32 +952,3 @@ The results from this comprehensive longitudinal analysis reveal important disti
 
 ## Key Findings
 
-1.  **Temporal Stability**: Both purpose and happiness show strong stability over 6 months and 2 years, with correlations ranging from .50 to .73. Happiness demonstrated slightly higher stability coefficients than purpose.
-
-2.  **Cross-sectional Relationships**: Purpose and happiness are moderately to strongly correlated at each timepoint (r = .43 to .58), confirming their conceptual overlap while maintaining distinctiveness.
-
-3.  **Longitudinal Prediction**: The cross-lagged panel analysis suggests differential patterns of influence between the constructs over time, with some evidence for happiness predicting future purpose more strongly than purpose predicting future happiness.
-
-## Implications for Well-being Theory
-
-These findings contribute to our understanding of the eudaimonic-hedonic distinction in well-being research. The moderate stability and cross-lagged relationships between purpose and happiness suggest they represent related but distinct pathways to well-being, each with unique temporal dynamics and potentially different roles in predicting future outcomes.
-
-## Limitations and Future Directions
-
-This analysis represents an initial examination of the comprehensive dataset. Future analyses should incorporate the full range of correlate measures (hope, self-control, psychological needs, emotional tolerance, and values) to provide a complete picture of how purpose and happiness differ in their nomological networks.
-
-# References
-
-Baumeister, R. F., Vohs, K. D., Aaker, J. L., & Garbinsky, E. N. (2013). Some key differences between a happy life and a meaningful life. *Journal of Positive Psychology, 8*, 505–516.
-
-Bronk, K. C. (2014). *Purpose in life: A critical component of optimal youth development*. Springer.
-
-Deci, E. L., & Ryan, R. M. (2000). The "what" and "why" of goal pursuits: Human needs and the self-determination of behavior. *Psychological Inquiry*, *11*, 227-268.
-
-Hill, P. L., Edmonds, G. W., Peterson, M., Luyckx, K., & Andrews, J. A. (2016). Purpose in life in emerging adulthood: Development and validation of a new brief measure. *Journal of Positive Psychology*, *11*, 237-245.
-
-Lyubomirsky, S., & Lepper, H. S. (1999). A measure of subjective happiness: Preliminary reliability and construct validation. *Social Indicators Research, 46*, 137-155.
-
-McKnight, P. E., & Kashdan, T. B. (2009). Purpose in life as a system that creates and sustains health and well-being: An integrative, testable theory. *Review of General Psychology*, *13*, 242-251.
-
-Snyder, C. R., Harris, C., Anderson, J. R., Holleran, S. A., Irving, L. M., Sigmon, S. T., ... & Harney, P. (1991). The will and the ways: Development and validation of an individual-differences measure of hope. *Journal of Personality and Social Psychology*, *60*, 570-585.
